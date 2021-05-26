@@ -7,6 +7,10 @@ const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var util = require('util');
 var http = require('https');
 
+const accountSid = process.env.twilioAccountSid;
+const authToken = process.env.twilioAccessToken;
+const client = require('twilio')(accountSid, authToken);
+
 exports.logExecuteData = [];
 
 function logData(req) {
@@ -46,6 +50,7 @@ function logData(req) {
     console.log("protocol: " + req.protocol);
     console.log("secure: " + req.secure);
     console.log("originalUrl: " + req.originalUrl);
+    console.log("twilio: " + client);
 }
 
 /*

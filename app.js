@@ -12,10 +12,6 @@ var activity    = require('./routes/activity');
 
 var app = express();
 
-const accountSid = process.env.twilioAccountSid;
-const authToken = process.env.twilioAccessToken;
-const client = require('twilio')(accountSid, authToken);
-
 // Configure Express
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.raw({type: 'application/jwt'}));
