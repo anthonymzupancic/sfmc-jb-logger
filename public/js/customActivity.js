@@ -63,12 +63,7 @@ define([
 
         console.log(inArguments);
 
-        $.each(inArguments, function (index, inArgument) {
-            $.each(inArgument, function (key, val) {
-                
-              
-            });
-        });
+        $('#Message').val(inArguments[0].Message)
 
         connection.trigger('updateButton', {
             button: 'next',
