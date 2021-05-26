@@ -37,13 +37,13 @@ define([
     }
 
     function onRequestedInteraction (interaction) {  
-        let inArguments = payload['arguments'].execute.inArguments[0];
+        let inArguments = checkInArguments(payload);
 
         console.log('*** requestedInteraction ***');
         console.log(interaction);
 
         // set mobile number argument
-        inArgument.toPhone = interaction.defaults.mobileNumber[0]
+        inArguments.toPhone = interaction.defaults.mobileNumber[0]
 
         console.log('*** interaction payload ***')
         console.log(payload)
@@ -59,19 +59,13 @@ define([
         if (data) {
             payload = data;
         }
-        
-        var hasInArguments = Boolean(
-            payload['arguments'] &&
-            payload['arguments'].execute &&
-            payload['arguments'].execute.inArguments &&
-            payload['arguments'].execute.inArguments.length > 0
-        );
-
-        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-
+    
+        let inArguments = checkInArguments(payload);
         console.log(inArguments);
 
-        $('#Message').val(inArguments[0].message)
+        if(inArguments[0].message){
+            $('#Message').val(inArguments[0].message)
+        }
 
         connection.trigger('updateButton', {
             button: 'next',
@@ -90,7 +84,7 @@ define([
     }
 
     function save() {
-        let inArguments = payload['arguments'].execute.inArguments[0];
+        let inArguments = checkInArguments(payload);
         
         // set fields based on user input
         let message = $('#Message').val();
@@ -102,5 +96,17 @@ define([
         connection.trigger('updateActivity', payload);
     }
 
+    function checkInArguments(payload){
+        var hasInArguments = Boolean(
+            payload['arguments'] &&
+            payload['arguments'].execute &&
+            payload['arguments'].execute.inArguments &&
+            payload['arguments'].execute.inArguments.length > 0
+        );
+
+        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+
+        return inArguments;
+    }
 
 });
