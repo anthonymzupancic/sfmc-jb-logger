@@ -37,13 +37,11 @@ define([
     }
 
     function onRequestedInteraction (interaction) {  
-        let inArguments = checkInArguments(payload);
-
         console.log('*** requestedInteraction ***');
         console.log(interaction);
 
         // set mobile number argument
-        inArguments.toPhone = interaction.defaults.mobileNumber[0]
+        payload['arguments'].execute.inArguments[0].toPhone = interaction.defaults.mobileNumber[0]
 
         console.log('*** interaction payload ***')
         console.log(payload)
@@ -83,13 +81,11 @@ define([
         console.log(endpoints);
     }
 
-    function save() {
-        let inArguments = checkInArguments(payload);
-        
+    function save() {        
         // set fields based on user input
         let message = $('#Message').val();
-        inArguments.message = message
-        
+        payload['arguments'].execute.inArguments[0].message = message
+
         payload['metaData'].isConfigured = true;
 
         console.log(payload);
