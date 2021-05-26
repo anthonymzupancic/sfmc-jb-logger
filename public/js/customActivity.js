@@ -87,11 +87,10 @@ define([
     }
 
     function save() {
-        var postcardURLValue = $('#postcard-url').val();
-        var postcardTextValue = $('#postcard-text').val();
+        var message = $('#Message').val();
 
         payload['arguments'].execute.inArguments = [{
-            "tokens": authTokens
+            "message": message
         }];
         
         payload['metaData'].isConfigured = true;
