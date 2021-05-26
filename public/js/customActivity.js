@@ -67,7 +67,9 @@ define([
         
         console.log(inArguments);
         
-        $('#Message').val(inArguments[0].message)
+        if(inArguments[0].message){
+            $('#Message').val(inArguments[0].message)
+        }
 
         connection.trigger('updateButton', {
             button: 'next',
