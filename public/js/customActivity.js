@@ -39,6 +39,13 @@ define([
     function onRequestedInteraction (interaction) {    
         console.log('*** requestedInteraction ***');
         console.log(interaction);
+
+        payload['arguments'].execute.inArguments = [{
+            "toPhone": interaction.defaults.mobileNumber[0];
+        }];
+
+        console.log('*** interaction payload ***')
+        console.log(payload)
      }
 
      function onRequestedTriggerEventDefinition(eventDefinitionModel) {
@@ -83,12 +90,9 @@ define([
 
     function save() {
         var message = $('#Message').val();
-        var interaction = connection.trigger('requestInteraction');
-        var toPhone = `+${interaction.defaults.mobileNumber[0]}`;
-        
+
         payload['arguments'].execute.inArguments = [{
-            "message": message,
-            "toPhone": toPhone
+            "message": message
         }];
         
         payload['metaData'].isConfigured = true;
