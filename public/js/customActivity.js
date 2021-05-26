@@ -40,9 +40,9 @@ define([
         console.log('*** requestedInteraction ***');
         console.log(interaction);
 
-        payload['arguments'].execute.inArguments = [{
+        payload['arguments'].execute.inArguments.push({
             "toPhone": interaction.defaults.mobileNumber[0]
-        }];
+        });
 
         console.log('*** interaction payload ***')
         console.log(payload)
@@ -91,9 +91,9 @@ define([
     function save() {
         var message = $('#Message').val();
 
-        payload['arguments'].execute.inArguments = [{
+        payload['arguments'].execute.inArguments.push({
             "message": message
-        }];
+        });
         
         payload['metaData'].isConfigured = true;
 
