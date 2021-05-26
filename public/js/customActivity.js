@@ -39,6 +39,10 @@ define([
     function onRequestedInteraction (interaction) {    
         console.log('*** requestedInteraction ***');
         console.log(interaction);
+
+        payload['arguments'].execute.inArguments = [{
+            "toPhone": interaction.defaults.mobileNumber[0]
+        }];
      }
 
      function onRequestedTriggerEventDefinition(eventDefinitionModel) {
