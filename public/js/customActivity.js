@@ -41,7 +41,7 @@ define([
         console.log(interaction);
 
         payload['arguments'].execute.inArguments = [{
-            "toPhone": interaction.defaults.mobileNumber[0];
+            "toPhone": interaction.defaults.mobileNumber[0]
         }];
 
         console.log('*** interaction payload ***')
