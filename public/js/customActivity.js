@@ -67,7 +67,7 @@ define([
         
         console.log(inArguments);
         
-        if(inArguments[0].message){
+        if(inArguments && inArguments.length > 0 && inArguments[0].message){
             $('#Message').val(inArguments[0].message)
         }
 
@@ -90,8 +90,10 @@ define([
     function save() {        
         // set fields based on user input
         let message = $('#Message').val();
-        payload['arguments'].execute.inArguments[0].message = message
-        payload['arguments'].execute.inArguments[0].toPhone = interactionRes.defaults.mobileNumber[0]
+        payload['arguments'].execute.inArguments[0] = {
+            'message': message,
+            'toPhone': interactionRes.defaults.mobileNumber[0]
+        }
         
         payload['metaData'].isConfigured = true;
 
@@ -99,17 +101,5 @@ define([
         connection.trigger('updateActivity', payload);
     }
 
-    function checkInArguments(payload){
-        var hasInArguments = Boolean(
-            payload['arguments'] &&
-            payload['arguments'].execute &&
-            payload['arguments'].execute.inArguments &&
-            payload['arguments'].execute.inArguments.length > 0
-        );
-
-        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-
-        return inArguments;
-    }
-
+   
 });
