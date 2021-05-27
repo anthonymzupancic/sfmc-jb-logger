@@ -94,7 +94,7 @@ exports.execute = function (req, res) {
             // decoded in arguments
             let decodedArgs = decoded.inArguments[0];
             const message = decodedArgs.message;
-            const toPhone = decodedArgs.toPhone;
+            const toPhone = `+${decodedArgs.toPhone}`;
 
             // execute twilio message
             client.messages
