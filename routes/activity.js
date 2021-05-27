@@ -10,7 +10,7 @@ var http = require('https');
 //Twilio Client
 const accountSid = process.env.twilioAccountSid;
 const authToken = process.env.twilioAccessToken;
-const client = require('twilio')(accountSid, authToken);
+const client = require('twilio')(accountSid, authToken, {logLevel: 'debug'});
 
 exports.logExecuteData = [];
 
