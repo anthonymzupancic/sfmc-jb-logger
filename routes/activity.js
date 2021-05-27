@@ -79,11 +79,6 @@ exports.save = function (req, res) {
  * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function (req, res) {
-    console.log('*** req ***')
-    console.log(req)
-    console.log('*** jwt ***')
-    console.log(process.env.jwtSecret)
-
 
     // example on how to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
@@ -95,11 +90,19 @@ exports.execute = function (req, res) {
         }
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-            
+            console.log('*** decoded ***')
+            console.log(decoded)
+
             // decoded in arguments
             let decodedArgs = decoded.inArguments[0];
             const message = decodedArgs.message;
             const toPhone = `+${decodedArgs.toPhone}`;
+
+            console.log('*** decodedArgs ***')
+            console.log(decodedArgs)
+
+            console.log('*** client ***')
+            console.log(client)
 
             // execute twilio message
             client.messages
