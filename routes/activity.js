@@ -7,6 +7,7 @@ const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var util = require('util');
 var http = require('https');
 
+//Twilio Client
 const accountSid = process.env.twilioAccountSid;
 const authToken = process.env.twilioAccessToken;
 const client = require('twilio')(accountSid, authToken);
@@ -91,8 +92,20 @@ exports.execute = function (req, res) {
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
             
             // decoded in arguments
-            var decodedArgs = decoded.inArguments[0];
-            
+            let decodedArgs = decoded.inArguments[0];
+            const message = decodedArgs.message;
+            const toPhone = decodedArgs.toPhone;
+
+            // execute twilio message
+            client.messages
+                .create({
+                    body: message,
+                    from: process.env.fromPhone,
+                    to: toPhone
+                })
+                .then(message => console.log(message.sid));
+
+
             logData(req);
             res.send(200, 'Execute');
         } else {
