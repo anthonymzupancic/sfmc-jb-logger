@@ -43,7 +43,7 @@ define([
 
         let options = '';
         fields.forEach((field) => {
-            options += `<option id="${field.id}" value="{{${event.keyPrefix}${field.name}}}">${field.name}</option>`
+            options += `<option id="${field.id}" value="{{${event[0].keyPrefix}${field.name}}}">${field.name}</option>`
         })
 
         $('#dataSource').text(options);
