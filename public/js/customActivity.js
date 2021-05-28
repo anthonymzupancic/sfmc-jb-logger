@@ -37,7 +37,7 @@ define([
         console.log('*** requestedDataSources ***');
         console.log(dataSources);
 
-        $('#dataSource').innerHTML(dataSources)
+        $('#dataSource').text(dataSources.toString())
     }
 
     function onRequestedInteraction (interaction) {  
