@@ -53,6 +53,8 @@ define([
     }
 
     function initialize(data) {
+        connection.trigger('requestDataSources');  
+
         console.log(data);
         if (data) {
             payload = data;
