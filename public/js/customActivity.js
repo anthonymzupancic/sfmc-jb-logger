@@ -46,7 +46,7 @@ define([
             options += `<option id="${field.id}" value="{{${event[0].keyPrefix}${field.name}}}">${field.name}</option>`
         })
 
-        $('#dataSource').text(options);
+        $('#Personalizations').html(options);
     }
 
     function onRequestedInteraction (interaction) {  
