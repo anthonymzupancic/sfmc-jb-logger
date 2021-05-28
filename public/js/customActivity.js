@@ -38,7 +38,15 @@ define([
         console.log(dataSources);
 
         const event = dataSources.filter(e => e.id === 'Event')
-        $('#dataSource').text(JSON.stringify(event));
+        const fields = event[0].deSchema.fields;
+        const eventDefinitionKey = event[0].eventDefinitionKey;
+
+        let options = '';
+        fields.forEach((field) => {
+            options += `<option id="${field.id}" value="{{${event.keyPrefix}${field.name}}}">${field.name}</option>`
+        })
+
+        $('#dataSource').text(options);
     }
 
     function onRequestedInteraction (interaction) {  
