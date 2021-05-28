@@ -37,7 +37,8 @@ define([
         console.log('*** requestedDataSources ***');
         console.log(dataSources);
 
-        $('#dataSource').text(dataSources.toString())
+        const event = dataSources.filter(e => e.id === 'Event')
+        $('#dataSource').text(event.toString())
     }
 
     function onRequestedInteraction (interaction) {  
