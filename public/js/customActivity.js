@@ -38,7 +38,7 @@ define([
         console.log(dataSources);
 
         const event = dataSources.filter(e => e.id === 'Event')
-        $('#dataSource').text(event.toString())
+        $('#dataSource').text(JSON.stringify(event));
     }
 
     function onRequestedInteraction (interaction) {  
@@ -70,14 +70,6 @@ define([
         
         console.log('*** in arguments ***')
         console.log(inArguments);
-        
-        console.log('*** dataSource in init ***')
-        console.log(dataSourcesRes)
-        
-        const event = dataSourcesRes.filter(e => e.id === 'Event')
-        console.log('*** event ***')
-        console.log(event)
-
 
         if(inArguments && inArguments.length > 0 && inArguments[0].message){
             $('#Message').val(inArguments[0].message)
