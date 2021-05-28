@@ -37,7 +37,7 @@ define([
         console.log('*** requestedDataSources ***');
         console.log(dataSources);
 
-        dataSourcesRes = dataSources;
+        $('#dataSource').innerHTML(dataSources)
     }
 
     function onRequestedInteraction (interaction) {  
@@ -53,8 +53,6 @@ define([
     }
 
     function initialize(data) {
-        connection.trigger('requestDataSources');  
-
         console.log(data);
         if (data) {
             payload = data;

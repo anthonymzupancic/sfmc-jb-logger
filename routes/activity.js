@@ -51,7 +51,6 @@ function logData(req) {
     console.log("protocol: " + req.protocol);
     console.log("secure: " + req.secure);
     console.log("originalUrl: " + req.originalUrl);
-    console.log("twilio: " + client);
 }
 
 /*
@@ -79,7 +78,6 @@ exports.save = function (req, res) {
  * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function (req, res) {
-
     // example on how to decode JWT
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
@@ -90,32 +88,32 @@ exports.execute = function (req, res) {
         }
 
         if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-            console.log('*** decoded ***')
-            console.log(decoded)
-
             // decoded in arguments
             let decodedArgs = decoded.inArguments[0];
-            const message = decodedArgs.message;
-            const toPhone = `+${decodedArgs.toPhone}`;
 
-            console.log('*** decodedArgs ***')
-            console.log(decodedArgs)
+            // validate required parameters
+            if (decodedArgs.message && decodedArgs.toPhone && process.env.fromPhone){
+                const message = decodedArgs.message;
+                const toPhone = `+${decodedArgs.toPhone}`;
 
-            console.log('*** client ***')
-            console.log(client)
+                // execute twilio message
+                client.messages
+                    .create({
+                        body: message,
+                        from: process.env.fromPhone,
+                        to: toPhone
+                    })
+                    .then(message => console.log(message.sid))
+                    .catch(err => console.error(err));
 
-            // execute twilio message
-            client.messages
-                .create({
-                    body: message,
-                    from: process.env.fromPhone,
-                    to: toPhone
-                })
-                .then(message => console.log(message.sid));
+                logData(req);
+                res.send(200, 'Execute');
 
-
-            logData(req);
-            res.send(200, 'Execute');
+            } else {
+                console.error('missing required inputs.');
+                return res.status(400).end();
+            }
+            
         } else {
             console.error('inArguments invalid.');
             return res.status(400).end();
