@@ -8,7 +8,7 @@ define([
     let connection = new Postmonger.Session();
     let authTokens = {};
     let payload = {};
-    let interactionRes;
+    let interactionRes = {};
 
     $(window).ready(onRender);
 
@@ -30,12 +30,13 @@ define([
         connection.trigger('requestInteraction');
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');  
-
     }
 
     function onRequestedDataSources(dataSources){
         console.log('*** requestedDataSources ***');
         console.log(dataSources);
+
+        return dataSources;
     }
 
     function onRequestedInteraction (interaction) {  
@@ -65,7 +66,12 @@ define([
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
         
+        console.log('*** in arguments ***')
         console.log(inArguments);
+        
+        const dataSource = connection.trigger('requestDataSources'); 
+        console.log('*** dataSource in init ***')
+        console.log(dataSources)
         
         if(inArguments && inArguments.length > 0 && inArguments[0].message){
             $('#Message').val(inArguments[0].message)
@@ -94,7 +100,7 @@ define([
             'message': message,
             'toPhone': interactionRes.defaults.mobileNumber[0]
         }
-        
+
         payload['metaData'].isConfigured = true;
 
         console.log(payload);
