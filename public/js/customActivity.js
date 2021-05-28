@@ -9,6 +9,7 @@ define([
     let authTokens = {};
     let payload = {};
     let interactionRes = {};
+    let dataSourcesRes = {};
 
     $(window).ready(onRender);
 
@@ -36,7 +37,7 @@ define([
         console.log('*** requestedDataSources ***');
         console.log(dataSources);
 
-        return dataSources;
+        dataSourcesRes = dataSources;
     }
 
     function onRequestedInteraction (interaction) {  
@@ -69,10 +70,14 @@ define([
         console.log('*** in arguments ***')
         console.log(inArguments);
         
-        const dataSource = connection.trigger('requestDataSources'); 
         console.log('*** dataSource in init ***')
-        console.log(dataSources)
+        console.log(dataSourcesRes)
         
+        const event = dataSourcesRes.filter(e => e.id === 'Event')
+        console.log('*** event ***')
+        console.log(event)
+
+
         if(inArguments && inArguments.length > 0 && inArguments[0].message){
             $('#Message').val(inArguments[0].message)
         }
