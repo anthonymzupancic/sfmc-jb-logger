@@ -113,5 +113,9 @@ define([
         connection.trigger('updateActivity', payload);
     }
 
-   
+   function setPersonalization() {
+       console.log('set personalization')
+   }
+
+   $('#Personalization').change(setPersonalization)
 });
