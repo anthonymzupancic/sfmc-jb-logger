@@ -31,6 +31,8 @@ define([
         connection.trigger('requestInteraction');
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');  
+
+        $('#Personalization').change(setPersonalization)
     }
 
     function onRequestedDataSources(dataSources){
@@ -117,5 +119,5 @@ define([
        console.log('set personalization')
    }
 
-   $('#Personalization').change(setPersonalization)
+  
 });
