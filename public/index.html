@@ -50,8 +50,15 @@
     <script>
         $( document ).ready(function() {
         // Handler for .ready() called.
-
-        alert('test')
+            $( "#Personalizations" )
+                .change(function () {
+                    var str = "";
+                    $( "select option:selected" ).each(function() {
+                    str += $( this ).text() + " ";
+                    });
+                    $( "div" ).text( str );
+                })
+                .change();
         });
     </script>
 </body>
