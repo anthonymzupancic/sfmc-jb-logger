@@ -53,7 +53,8 @@
 
             $( "select" )
                 .change(function () {
-                    var selected = $( "select option:selected" ).text();
+                    var selected = $( "select option:selected" ).val();
+                    console.log(selected)
                     insertAtCaret(Message, selected)
                     });
                 })
