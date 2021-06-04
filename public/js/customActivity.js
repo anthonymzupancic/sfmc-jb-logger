@@ -83,6 +83,24 @@ define([
             $('#Message').val(inArguments[0].message)
         }
 
+        
+        $( ".personalization_option" ).click(function(){
+            console.log("clicked")
+            console.log($(this).data("value"));
+            let selected = $(this).data("value");
+            let message = $("#message")
+            let messageVal = message.val()
+            let position = message.prop("selectionStart");
+            
+            let messageStart = messageVal.substring(0,position)
+            let messageEnd = messageVal.substring(position)
+
+            let inserted = `${messageStart} ${selected} ${messageEnd}`
+            console.log(inserted)
+            message.val(inserted)
+            //message.val(inserted)
+        })
+
         connection.trigger('updateButton', {
             button: 'next',
             text: 'done',
