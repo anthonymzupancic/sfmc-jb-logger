@@ -41,43 +41,23 @@
                 <h2>Create a Twilio SMS message:</h2>
                 <p>Twilio's Programmable SMS has the features you’ll need to build quickly and scale to production. We’ve solved the hard problems so you don’t have to.  <a href="https://www.twilio.com/sms" target="_blank">Learn more about about Twilio SMS here</a>.</p>
                 <hr>
-                <h2>Data Sources</h2>
+                <h2>Add Personalization</h2>
                 <div class="form-group">
                     <div class="dropdown">
                         <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Personalization
+                          Source Personalization 
                         </button>
                         <div id="personalization" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         </div>
                       </div>
-                </div>      
+                </div>  
+                <h2>Enter Your Message</h2>    
                 <div class="form-group">
-                    <label for="Message">Enter Your Message</label>
                     <textarea name="Message" id="message" cols="30" rows="10"></textarea>
                 </div>     
             </div>
         </div>
     </div>
-
-    <script>
-        $(window).ready(function(){
-            $( ".personalization_option" ).click(function(){
-                console.log("clicked")
-                console.log($(this).data("value"));
-                let selected = $(this).data("value");
-                let message = $("#message")
-                let messageVal = message.val()
-                let position = message.prop("selectionStart");
-                
-                let messageStart = messageVal.substring(0,position)
-                let messageEnd = messageVal.substring(position)
-
-                let inserted = `${messageStart} ${selected} ${messageEnd}`
-                console.log(inserted)
-                message.val(inserted)
-            })
-        })
-    </script>
 </body>
 
 </html>
