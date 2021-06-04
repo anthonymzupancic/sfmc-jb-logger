@@ -43,10 +43,10 @@ define([
 
         let options = '';
         fields.forEach((field) => {
-            options += `<option id="${field.id}" value="{{${event[0].keyPrefix}${field.name}}}">${field.name}</option>`
+            options += `<li id="${field.id}" class="personalization_option" data-value="{{${event[0].keyPrefix}${field.name}}}">${field.name}</li>`
         })
 
-        $('#Personalizations').html(options);
+        $('#personalization').html(options);
     }
 
     function onRequestedInteraction (interaction) {  

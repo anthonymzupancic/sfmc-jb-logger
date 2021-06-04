@@ -44,19 +44,16 @@
                 <h2>Data Sources</h2>
                 <div class="form-group">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown button
+                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Personalization
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
+                        <div id="personalization" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         </div>
                       </div>
                 </div>      
                 <div class="form-group">
                     <label for="Message">Enter Your Message</label>
-                    <textarea name="Message" id="Message" cols="30" rows="10"></textarea>
+                    <textarea name="Message" id="message" cols="30" rows="10"></textarea>
                 </div>     
             </div>
         </div>
@@ -66,6 +63,24 @@
     <script>
         $( document ).ready(function() {
         // Handler for .ready() called.
+
+        $( ".personalization_option" ).click(function(){
+            console.log("clicked")
+            console.log($(this).data("value"));
+            let selected = $(this).data("value");
+            let message = $("#message")
+            let messageVal = message.val()
+            let position = message.prop("selectionStart");
+            
+            let messageStart = messageVal.substring(0,position)
+            let messageEnd = messageVal.substring(position)
+
+            let inserted = `${messageStart} ${selected} ${messageEnd}`
+            console.log(inserted)
+            message.val(inserted)
+            //message.val(inserted)
+        })
+
 
         $( "select" )
             .change(function () {
