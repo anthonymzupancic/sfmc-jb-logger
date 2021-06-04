@@ -32,21 +32,21 @@ define([
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');  
 
-        $( ".personalization_option" ).click(function(){
-            console.log("clicked")
-            console.log($(this).data("value"));
-            let selected = $(this).data("value");
-            let message = $("#message")
-            let messageVal = message.val()
-            let position = message.prop("selectionStart");
+        // $( ".personalization_option" ).click(function(){
+        //     console.log("clicked")
+        //     console.log($(this).data("value"));
+        //     let selected = $(this).data("value");
+        //     let message = $("#message")
+        //     let messageVal = message.val()
+        //     let position = message.prop("selectionStart");
             
-            let messageStart = messageVal.substring(0,position)
-            let messageEnd = messageVal.substring(position)
+        //     let messageStart = messageVal.substring(0,position)
+        //     let messageEnd = messageVal.substring(position)
 
-            let inserted = `${messageStart} ${selected} ${messageEnd}`
-            console.log(inserted)
-            message.val(inserted)
-        })
+        //     let inserted = `${messageStart} ${selected} ${messageEnd}`
+        //     console.log(inserted)
+        //     message.val(inserted)
+        // })
     }
 
     function onRequestedDataSources(dataSources){
@@ -96,7 +96,7 @@ define([
         console.log(inArguments);
 
         if(inArguments && inArguments.length > 0 && inArguments[0].message){
-            $('#Message').val(inArguments[0].message)
+            $('#message').val(inArguments[0].message)
         }
 
         connection.trigger('updateButton', {
