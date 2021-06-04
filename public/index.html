@@ -51,13 +51,18 @@
         $( document ).ready(function() {
         // Handler for .ready() called.
 
-            $( "select" )
-                .change(function () {
-                    var selected = $( "select option:selected" ).val();
-                    console.log(selected)
-                    insertAtCaret(Message, selected)
-                    });
-                })
+        $( "select" )
+            .change(function () {
+                var str = "";
+                $( "select option:selected" ).each(function() {
+                str += $( this ).text() + " ";
+                });
+
+                var message = $( "#Message" ).val()
+                var newMessage = `${message} ${str}`
+                $( "#Message" ).text( newMessage );
+            })
+            .change();
 
         });
 
