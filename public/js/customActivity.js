@@ -32,21 +32,6 @@ define([
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');  
 
-        // $( ".personalization_option" ).click(function(){
-        //     console.log("clicked")
-        //     console.log($(this).data("value"));
-        //     let selected = $(this).data("value");
-        //     let message = $("#message")
-        //     let messageVal = message.val()
-        //     let position = message.prop("selectionStart");
-            
-        //     let messageStart = messageVal.substring(0,position)
-        //     let messageEnd = messageVal.substring(position)
-
-        //     let inserted = `${messageStart} ${selected} ${messageEnd}`
-        //     console.log(inserted)
-        //     message.val(inserted)
-        // })
     }
 
     function onRequestedDataSources(dataSources){
@@ -117,7 +102,7 @@ define([
 
     function save() {        
         // set fields based on user input
-        let message = $('#Message').val();
+        let message = $('#message').val();
         payload['arguments'].execute.inArguments[0] = {
             'message': message,
             'toPhone': interactionRes.defaults.mobileNumber[0]
