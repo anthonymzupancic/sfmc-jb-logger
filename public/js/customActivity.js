@@ -30,7 +30,23 @@ define([
         connection.trigger('requestEndpoints');
         connection.trigger('requestInteraction');
         connection.trigger('requestTriggerEventDefinition');
-        connection.trigger('requestDataSources');  
+        connection.trigger('requestDataSources'); 
+        
+        $( ".personalization_option" ).click(function(){
+            console.log("clicked")
+            console.log($(this).data("value"));
+            // let selected = $(this).data("value");
+            // let message = $("#message")
+            // let messageVal = message.val()
+            // let position = message.prop("selectionStart");
+            
+            // let messageStart = messageVal.substring(0,position)
+            // let messageEnd = messageVal.substring(position)
+
+            // let inserted = `${messageStart} ${selected} ${messageEnd}`
+            // console.log(inserted)
+            // message.val(inserted)
+        })
 
     }
 
