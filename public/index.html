@@ -12,7 +12,7 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6SpejstrongU02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
     <script type="text/javascript" src="js/require.js"></script>
 
@@ -41,20 +41,27 @@
                 <h2>Create a Twilio SMS message:</h2>
                 <p>Twilio's Programmable SMS has the features you’ll need to build quickly and scale to production. We’ve solved the hard problems so you don’t have to.  <a href="https://www.twilio.com/sms" target="_blank">Learn more about about Twilio SMS here</a>.</p>
                 <hr>
-                <h2>Add Personalization</h2>
-                <div class="form-group">
-                    <div class="dropdown">
-                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Source Personalization 
-                        </button>
-                        <div id="personalization" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        </div>
-                      </div>
+
+                <div class="row d-flex">
+                    <div class="col-4">
+                        <strong class="mb-4">Add Personalization</strong>
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Source Personalization 
+                                </button>
+                                <div id="personalization" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="col-8">
+                        <strong class="mb-4">Enter Your Message</strong>    
+                        <div class="form-group">
+                            <textarea class="w-full-textarea" name="Message" id="message" rows="10" ></textarea>
+                        </div> 
+                    </div>
                 </div>  
-                <h2>Enter Your Message</h2>    
-                <div class="form-group">
-                    <textarea name="Message" id="message" cols="30" rows="10"></textarea>
-                </div>     
             </div>
         </div>
     </div>
