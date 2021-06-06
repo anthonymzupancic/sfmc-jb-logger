@@ -2,10 +2,19 @@ body {
     padding: 20px;
     margin: 0;
 }
+
 html {
     background: #ffffff;
 }
 
 .w-full-textarea {
-    width:100%;
+    width: 100%;
+}
+
+.step {
+    display: none!important;
+}
+
+#step1 {
+    display: block;
 }

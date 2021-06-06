@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"  crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
     <script type="text/javascript" src="js/require.js"></script>
 
-     <script type="text/javascript">
-        (function () {
+    <script type="text/javascript">
+        (function() {
             var config = {
                 baseUrl: 'js'
             };
@@ -35,35 +35,32 @@
 
 <body>
     <div id="step1" class="step">
-        <div class="slds-grid">
-                <h2>Create a Twilio SMS message:</h2>
-                <p>Twilio's Programmable SMS has the features you’ll need to build quickly and scale to production. We’ve solved the hard problems so you don’t have to.  <a href="https://www.twilio.com/sms" target="_blank">Learn more about about Twilio SMS here</a>.</p>
-                <hr>
+        <h2>Create a Twilio SMS message:</h2>
+        <p>Twilio's Programmable SMS has the features you’ll need to build quickly and scale to production. We’ve solved the hard problems so you don’t have to. <a href="https://www.twilio.com/sms" target="_blank">Learn more about about Twilio SMS here</a>.</p>
+        <hr>
 
-                <div class="row d-flex">
-                    <div class="col-4">
-                        <strong class="mb-4">Add Personalization</strong>
-                        <div class="form-group">
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="row d-flex">
+            <div class="col-4">
+                <strong class="mb-4">Add Personalization</strong>
+                <div class="form-group">
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Source Personalization 
                                 </button>
-                                <div id="personalization" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                </div>
-                            </div>
-                        </div>  
+                        <div id="personalization" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        </div>
                     </div>
-                    <div class="col-8">
-                        <strong class="mb-4">Enter Your Message</strong>    
-                        <div class="form-group">
-                            <textarea class="w-full-textarea" name="Message" id="message" rows="10" ></textarea>
-                        </div> 
-                    </div>
-                </div>  
+                </div>
+            </div>
+            <div class="col-8">
+                <strong class="mb-4">Enter Your Message</strong>
+                <div class="form-group">
+                    <textarea class="w-full-textarea" name="Message" id="message" rows="10"></textarea>
+                </div>
+            </div>
         </div>
     </div>
     <div id="step2" class="step">
-        <div class="slds-grid">
         <h2>Step 2 Test</h2>
         <div class="row d-flex">
             <div class="col-4">
@@ -76,16 +73,15 @@
                         <div id="personalization" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         </div>
                     </div>
-                </div>  
+                </div>
             </div>
             <div class="col-8">
-                <strong class="mb-4">Enter Your Message</strong>    
+                <strong class="mb-4">Enter Your Message</strong>
                 <div class="form-group">
-                    <textarea class="w-full-textarea" name="Message" id="message" rows="10" ></textarea>
-                </div> 
+                    <textarea class="w-full-textarea" name="Message" id="message" rows="10"></textarea>
+                </div>
             </div>
-        </div> 
-    </div>
+        </div>
     </div>
 </body>
 
