@@ -11,6 +11,15 @@ define([
     let interactionRes = {};
     let dataSourcesRes = {};
 
+    // Steps of Activity
+    const wizardSteps = [
+        { "label": "Configure Message", "key": "step1" },
+        { "label": "Configure Logging", "key": "step2" }
+      ]
+
+    // Set first step
+    let currentStep = steps[0].key;
+
     $(window).ready(onRender);
 
     connection.on('initActivity', initialize);
@@ -25,14 +34,25 @@ define([
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
-
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
         connection.trigger('requestInteraction');
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources'); 
+
+        // Disable the next button if a value isn't selected
+        $('#select1').change(function() {
+            var message = getMessage();
+            connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+
+            $('#message').html(message);
+        });
         
-        
+
+        /*
+            Add functionality for Message Textarea
+            Inserts personalization at curser point
+        */
         $( '#personalization' ).on('click', '.personalization_option', function() {
             console.log("clicked")
             console.log($(this).data("value"));
@@ -130,6 +150,90 @@ define([
 
         console.log(payload);
         connection.trigger('updateActivity', payload);
+    }
+
+
+    /*
+        Step Control Functions
+    */
+    function onClickedNext () {
+        if (
+            (currentStep.key === 'step3' && steps[3].active === false) ||
+            currentStep.key === 'step4'
+        ) {
+            save();
+        } else {
+            connection.trigger('nextStep');
+        }
+    }
+
+    function onClickedBack () {
+        connection.trigger('prevStep');
+    }
+
+    function onGotoStep (step) {
+        showStep(step);
+        connection.trigger('ready');
+    }
+
+    function showStep(step, stepIndex) {
+        if (stepIndex && !step) {
+            step = steps[stepIndex-1];
+        }
+
+        currentStep = step;
+
+        $('.step').hide();
+
+        switch(currentStep.key) {
+            case 'step1':
+                $('#step1').show();
+                connection.trigger('updateButton', {
+                    button: 'next',
+                    enabled: Boolean(getMessage())
+                });
+                connection.trigger('updateButton', {
+                    button: 'back',
+                    visible: false
+                });
+                break;
+            case 'step2':
+                $('#step2').show();
+                connection.trigger('updateButton', {
+                    button: 'back',
+                    visible: true
+                });
+                connection.trigger('updateButton', {
+                    button: 'next',
+                    text: 'next',
+                    visible: true
+                });
+                break;
+            case 'step3':
+                $('#step3').show();
+                connection.trigger('updateButton', {
+                     button: 'back',
+                     visible: true
+                });
+                if (lastStepEnabled) {
+                    connection.trigger('updateButton', {
+                        button: 'next',
+                        text: 'next',
+                        visible: true
+                    });
+                } else {
+                    connection.trigger('updateButton', {
+                        button: 'next',
+                        text: 'done',
+                        visible: true
+                    });
+                }
+                break;
+        }
+    }
+
+    function getMessage() {
+        return $("#message").val() 
     }
 
 });
