@@ -42,7 +42,7 @@ define([
         connection.trigger('requestDataSources'); 
 
         // Disable the next button if a value isn't selected
-        $('#select1').change(function() {
+        $('#message').change(function() {
             var message = getMessage();
             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
