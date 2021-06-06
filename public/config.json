@@ -49,7 +49,7 @@
       }
     },
     "wizardSteps": [
-      { "label": "Configure Logging", "key": "step1" }
+      { "label": "Configure Logging", "key": "step1" },
       { "label": "Configure Activity", "key": "step2" }
     ],
     "userInterfaces": {
