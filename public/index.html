@@ -36,7 +36,6 @@
 <body>
     <div id="step1" class="step">
         <div class="slds-grid">
-            <div id="step1" class="step">
                 <h2>Create a Twilio SMS message:</h2>
                 <p>Twilio's Programmable SMS has the features you’ll need to build quickly and scale to production. We’ve solved the hard problems so you don’t have to.  <a href="https://www.twilio.com/sms" target="_blank">Learn more about about Twilio SMS here</a>.</p>
                 <hr>
@@ -61,31 +60,32 @@
                         </div> 
                     </div>
                 </div>  
+        </div>
+    </div>
+    <div id="step2" class="step">
+        <div class="slds-grid">
+        <h2>Step 2 Test</h2>
+        <div class="row d-flex">
+            <div class="col-4">
+                <strong class="mb-4">Add Personalization</strong>
+                <div class="form-group">
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Source Personalization 
+                        </button>
+                        <div id="personalization" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        </div>
+                    </div>
+                </div>  
             </div>
-            <div id="step2" class="step">
-                <h2>Step 2 Test</h2>
-                <div class="row d-flex">
-                    <div class="col-4">
-                        <strong class="mb-4">Add Personalization</strong>
-                        <div class="form-group">
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Source Personalization 
-                                </button>
-                                <div id="personalization" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-                    <div class="col-8">
-                        <strong class="mb-4">Enter Your Message</strong>    
-                        <div class="form-group">
-                            <textarea class="w-full-textarea" name="Message" id="message" rows="10" ></textarea>
-                        </div> 
-                    </div>
+            <div class="col-8">
+                <strong class="mb-4">Enter Your Message</strong>    
+                <div class="form-group">
+                    <textarea class="w-full-textarea" name="Message" id="message" rows="10" ></textarea>
                 </div> 
             </div>
-        </div>
+        </div> 
+    </div>
     </div>
 </body>
 
