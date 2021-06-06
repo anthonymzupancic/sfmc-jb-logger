@@ -12,7 +12,8 @@ define([
     let dataSourcesRes = {};
 
     // Steps of Activity
-    const wizardSteps = [
+    var lastStepEnabled = false;
+    const steps = [
         { "label": "Configure Message", "key": "step1" },
         { "label": "Configure Logging", "key": "step2" }
       ]
@@ -47,7 +48,7 @@ define([
 
             $('#message').html(message);
         });
-        
+
 
         /*
             Add functionality for Message Textarea
