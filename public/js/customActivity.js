@@ -234,6 +234,7 @@ define([
     }
 
     function getMessage() {
+        console.log($("#message").val())
         return $("#message").val()
     }
 
