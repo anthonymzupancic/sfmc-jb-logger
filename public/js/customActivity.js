@@ -1,6 +1,6 @@
 define([
     'postmonger'
-], function (
+], function(
     Postmonger
 ) {
     'use strict';
@@ -16,7 +16,7 @@ define([
     const steps = [
         { "label": "Configure Message", "key": "step1" },
         { "label": "Configure Logging", "key": "step2" }
-      ]
+    ]
 
     // Set first step
     let currentStep = steps[0].key;
@@ -31,7 +31,7 @@ define([
     connection.on('requestedDataSources', onRequestedDataSources);
 
     connection.on('clickedNext', save);
-   
+
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
         connection.trigger('ready');
@@ -39,9 +39,9 @@ define([
         connection.trigger('requestEndpoints');
         connection.trigger('requestInteraction');
         connection.trigger('requestTriggerEventDefinition');
-        connection.trigger('requestDataSources'); 
+        connection.trigger('requestDataSources');
 
-        // Disable the next button if a value isn't selected
+        // Disable the next button if a value isn't entered
         $('#message').change(function() {
             var message = getMessage();
             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
@@ -54,26 +54,26 @@ define([
             Add functionality for Message Textarea
             Inserts personalization at curser point
         */
-        $( '#personalization' ).on('click', '.personalization_option', function() {
+        $('#personalization').on('click', '.personalization_option', function() {
             console.log("clicked")
             console.log($(this).data("value"));
             let selected = $(this).data("value");
             let message = $("#message")
             let messageVal = message.val()
             let position = message.prop("selectionStart");
-            
-            let messageStart = messageVal.substring(0,position)
+
+            let messageStart = messageVal.substring(0, position)
             let messageEnd = messageVal.substring(position)
 
             let inserted = `${messageStart} ${selected} ${messageEnd}`
             console.log(inserted)
             message.val(inserted)
         })
-       
+
 
     }
 
-    function onRequestedDataSources(dataSources){
+    function onRequestedDataSources(dataSources) {
         console.log('*** requestedDataSources ***');
         console.log(dataSources);
 
@@ -89,14 +89,14 @@ define([
         $('#personalization').html(options);
     }
 
-    function onRequestedInteraction (interaction) {  
+    function onRequestedInteraction(interaction) {
         console.log('*** requestedInteraction ***');
         console.log(interaction);
-        
-        interactionRes = interaction
-     }
 
-     function onRequestedTriggerEventDefinition(eventDefinitionModel) {
+        interactionRes = interaction
+    }
+
+    function onRequestedTriggerEventDefinition(eventDefinitionModel) {
         console.log('*** requestedTriggerEventDefinition ***');
         console.log(eventDefinitionModel);
     }
@@ -106,7 +106,7 @@ define([
         if (data) {
             payload = data;
         }
-    
+
         var hasInArguments = Boolean(
             payload['arguments'] &&
             payload['arguments'].execute &&
@@ -115,11 +115,11 @@ define([
         );
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-        
+
         console.log('*** in arguments ***')
         console.log(inArguments);
 
-        if(inArguments && inArguments.length > 0 && inArguments[0].message){
+        if (inArguments && inArguments.length > 0 && inArguments[0].message) {
             $('#message').val(inArguments[0].message)
         }
 
@@ -139,7 +139,7 @@ define([
         console.log(endpoints);
     }
 
-    function save() {        
+    function save() {
         // set fields based on user input
         let message = $('#message').val();
         payload['arguments'].execute.inArguments[0] = {
@@ -157,7 +157,7 @@ define([
     /*
         Step Control Functions
     */
-    function onClickedNext () {
+    function onClickedNext() {
         if (
             (currentStep.key === 'step3' && steps[3].active === false) ||
             currentStep.key === 'step4'
@@ -168,25 +168,25 @@ define([
         }
     }
 
-    function onClickedBack () {
+    function onClickedBack() {
         connection.trigger('prevStep');
     }
 
-    function onGotoStep (step) {
+    function onGotoStep(step) {
         showStep(step);
         connection.trigger('ready');
     }
 
     function showStep(step, stepIndex) {
         if (stepIndex && !step) {
-            step = steps[stepIndex-1];
+            step = steps[stepIndex - 1];
         }
 
         currentStep = step;
 
         $('.step').hide();
 
-        switch(currentStep.key) {
+        switch (currentStep.key) {
             case 'step1':
                 $('#step1').show();
                 connection.trigger('updateButton', {
@@ -213,8 +213,8 @@ define([
             case 'step3':
                 $('#step3').show();
                 connection.trigger('updateButton', {
-                     button: 'back',
-                     visible: true
+                    button: 'back',
+                    visible: true
                 });
                 if (lastStepEnabled) {
                     connection.trigger('updateButton', {
@@ -234,7 +234,7 @@ define([
     }
 
     function getMessage() {
-        return $("#message").val() 
+        return $("#message").val()
     }
 
 });

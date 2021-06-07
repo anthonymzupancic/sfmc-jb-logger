@@ -9,16 +9,16 @@
     "lang": {
         "en-US": {
             "name": "SMS App",
-          "description": "A Template for a custom Journey Builder activity",
-          "step1Label": "Configure Activity"
+            "description": "A Template for a custom Journey Builder activity",
+            "step1Label": "Configure Activity"
         }
     },
     "arguments": {
         "execute": {
-           "inArguments":[],
-          "outArguments": [],
-          "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/execute",
-           "verb": "POST",
+            "inArguments": [],
+            "outArguments": [],
+            "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/execute",
+            "verb": "POST",
             "body": "",
             "header": "",
             "format": "json",
@@ -27,36 +27,36 @@
         }
     },
     "configurationArguments": {
-      "save": {
-        "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/save",
-          "verb": "POST",
-        "useJwt": true
-       },
-       "publish": {
-        "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/publish",
-           "verb": "POST",
-        "useJwt": true
-       },
-      "stop": {
-        "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/stop",
-           "verb": "POST",
-        "useJwt": true
-      },
-      "validate": {
-        "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/validate",
-        "verb": "POST",
-        "useJwt": true
-      }
+        "save": {
+            "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/save",
+            "verb": "POST",
+            "useJwt": true
+        },
+        "publish": {
+            "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/publish",
+            "verb": "POST",
+            "useJwt": true
+        },
+        "stop": {
+            "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/stop",
+            "verb": "POST",
+            "useJwt": true
+        },
+        "validate": {
+            "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/validate",
+            "verb": "POST",
+            "useJwt": true
+        }
     },
     "wizardSteps": [
-      { "label": "Configure Message", "key": "step1" },
-      { "label": "Configure Logging", "key": "step2" }
+        { "label": "Configure Message", "key": "step1" },
+        { "label": "Configure Logging", "key": "step2" }
     ],
     "userInterfaces": {
         "configModal": {
             "height": 400,
             "width": 800,
-          "fullscreen": false
+            "fullscreen": false
         }
     },
     "schema": {
