@@ -120,20 +120,21 @@ define([
         $('#message').change(function() {
             var message = getMessage();
 
-            if (!message) {
+            if (message) {
                 connection.trigger('updateButton', {
                     button: 'next',
                     text: 'next',
                     visible: true,
                     enabled: Boolean(message)
                 });
-            } else {
-                connection.trigger('updateButton', {
-                    button: 'next',
-                    text: 'done',
-                    visible: true
-                });
             }
+            // } else {
+            //     connection.trigger('updateButton', {
+            //         button: 'next',
+            //         text: 'done',
+            //         visible: true
+            //     });
+            // }
 
         });
     }
