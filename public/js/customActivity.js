@@ -41,14 +41,6 @@ define([
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
 
-        // Disable the next button if a value isn't entered
-        $('#message').change(function() {
-            var message = getMessage();
-            connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
-
-            $('#message').html(message);
-        });
-
 
         /*
             Add functionality for Message Textarea
@@ -123,10 +115,26 @@ define([
             $('#message').val(inArguments[0].message)
         }
 
-        connection.trigger('updateButton', {
-            button: 'next',
-            text: 'done',
-            visible: true
+
+        // Disable the next button if a value isn't entered
+        $('#message').change(function() {
+            var message = getMessage();
+
+            if (!message) {
+                connection.trigger('updateButton', {
+                    button: 'next',
+                    text: 'next',
+                    visible: true,
+                    enabled: Boolean(message)
+                });
+            } else {
+                connection.trigger('updateButton', {
+                    button: 'next',
+                    text: 'done',
+                    visible: true
+                });
+            }
+
         });
     }
 
