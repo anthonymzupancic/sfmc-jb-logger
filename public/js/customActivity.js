@@ -127,6 +127,8 @@ define([
                     visible: true,
                     enabled: Boolean(message)
                 });
+
+                connection.trigger('nextStep');
             }
             // } else {
             //     connection.trigger('updateButton', {

@@ -12,9 +12,9 @@ html {
 }
 
 .step {
-    display: none!important;
+    display: none;
 }
 
-#step2 {
-    display: block!important;
+#step1 {
+    display: block;
 }
