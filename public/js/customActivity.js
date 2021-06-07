@@ -173,6 +173,8 @@ define([
         ) {
             save();
         } else {
+            var currentStep = currentstep++
+                showStep(step, 2);
             connection.trigger('nextStep');
         }
     }
