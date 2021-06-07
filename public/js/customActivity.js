@@ -127,8 +127,6 @@ define([
                     visible: true,
                     enabled: Boolean(message)
                 });
-
-                connection.trigger('nextStep');
             }
             // } else {
             //     connection.trigger('updateButton', {
@@ -169,16 +167,7 @@ define([
         Step Control Functions
     */
     function onClickedNext() {
-        if (
-            (currentStep.key === 'step3' && steps[3].active === false) ||
-            currentStep.key === 'step4'
-        ) {
-            save();
-        } else {
-            var currentStep = currentstep++
-                showStep(step, 2);
-            connection.trigger('nextStep');
-        }
+        alert('clickedNext')
     }
 
     function onClickedBack() {
