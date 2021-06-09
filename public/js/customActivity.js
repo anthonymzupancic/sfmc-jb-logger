@@ -5,7 +5,6 @@ define([
 ) {
     'use strict';
 
-    const axios = require('axios');
     let connection = new Postmonger.Session();
     let authTokens = {};
     let payload = {};
