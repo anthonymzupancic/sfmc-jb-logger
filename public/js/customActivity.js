@@ -63,8 +63,7 @@ define([
             message.val(inserted)
         })
 
-        axios.get('/journeybuilder/init/')
-            .then((res) => { console.log("get resp", res) })
+
 
     }
 
@@ -97,6 +96,8 @@ define([
     }
 
     function initialize(data) {
+        init();
+
         console.log(data);
         if (data) {
             payload = data;
@@ -258,3 +259,14 @@ define([
     }
 
 });
+
+
+function init() {
+    $.ajax({
+            method: "GET",
+            url: "/journeybuilder/init/"
+        })
+        .done((res) => {
+            console.log(res)
+        });
+}
