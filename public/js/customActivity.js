@@ -41,7 +41,6 @@ define([
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
 
-
         /*
             Add functionality for Message Textarea
             Inserts personalization at curser point
@@ -61,6 +60,7 @@ define([
             console.log(inserted)
             message.val(inserted)
         })
+
 
 
     }
@@ -167,8 +167,28 @@ define([
         Step Control Functions
     */
     function onClickedNext() {
-        alert('clickedNext')
+        if (currentStep.key === 'step1') {
+            if (validateStep1())
+                connection.trigger('nextStep');
+            else
+                connection.trigger('ready');
+        } else {
+            save();
+        }
     }
+
+    function validateStep1() {
+        let valid = false;
+
+        //Check for message length
+        let hasMessage = $('#message').val().length > 1 ? true : false;
+
+        if (hasMessage)
+            valid = true
+
+        return valid
+    }
+
 
     function onClickedBack() {
         connection.trigger('prevStep');
