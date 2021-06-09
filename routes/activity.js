@@ -7,6 +7,7 @@ const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var util = require('util');
 var http = require('https');
 
+
 //Twilio Client
 const accountSid = process.env.twilioAccountSid;
 const authToken = process.env.twilioAccessToken;
@@ -140,4 +141,9 @@ exports.validate = function(req, res) {
     //console.log( req.body );
     logData(req);
     res.send(200, 'Validate');
+};
+
+exports.init = function(req, res) {
+    const msg = "init endpoint";
+    res.send(200, msg);
 };

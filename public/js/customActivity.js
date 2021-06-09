@@ -5,6 +5,7 @@ define([
 ) {
     'use strict';
 
+    const axios = require('axios');
     let connection = new Postmonger.Session();
     let authTokens = {};
     let payload = {};
@@ -63,7 +64,8 @@ define([
             message.val(inserted)
         })
 
-
+        axios.get('/journeybuilder/init/')
+            .then((res) => { console.log("get resp", res) })
 
     }
 
@@ -115,30 +117,22 @@ define([
 
         if (inArguments && inArguments.length > 0 && inArguments[0].message) {
             $('#message').val(inArguments[0].message)
+
         }
 
 
         // Disable the next button if a value isn't entered
-        $('#message').change(function() {
-            var message = getMessage();
+        var message = getMessage();
 
-            if (message) {
-                connection.trigger('updateButton', {
-                    button: 'next',
-                    text: 'next',
-                    visible: true,
-                    enabled: Boolean(message)
-                });
-            }
-            // } else {
-            //     connection.trigger('updateButton', {
-            //         button: 'next',
-            //         text: 'done',
-            //         visible: true
-            //     });
-            // }
+        if (message) {
+            connection.trigger('updateButton', {
+                button: 'next',
+                text: 'next',
+                visible: true,
+                enabled: Boolean(message)
+            });
+        }
 
-        });
     }
 
     function onGetTokens(tokens) {
