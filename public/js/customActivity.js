@@ -169,7 +169,8 @@ define([
     function onClickedNext() {
         if (currentStep.key === 'step1') {
             if (validateStep1())
-                connection.trigger('nextStep');
+                showStep(null, 2)
+            connection.trigger('nextStep');
             else
                 connection.trigger('ready');
         } else {
