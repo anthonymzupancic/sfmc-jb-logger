@@ -39,21 +39,30 @@
         <p>Twilio's Programmable SMS has the features you’ll need to build quickly and scale to production. We’ve solved the hard problems so you don’t have to. <a href="https://www.twilio.com/sms" target="_blank">Learn more about about Twilio SMS here</a>.</p>
         <hr>
 
+
         <div class="row d-flex">
-            <div class="col-4">
-                <strong class="mb-4">Add Personalization</strong>
-                <div class="form-group">
-                    <div class="dropdown">
-                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Source Personalization 
-                                </button>
-                        <div id="personalization" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <div class="col-4 pl-5">
+                <div class="row mb-3">
+                    <h5 class="mb-4">Get Attributes</h5>
+                    <p>Enter the name of an attribute group to load available personalization options.</p>
+                    <div class="form-group">
+                        <input id="getAttributeGroup" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Add Personalization Strings
+                        </button>
+                            <div id="personalization" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-8">
-                <strong class="mb-4">Enter Your Message</strong>
+                <h5 class="mb-4">Enter Your Message</h5>
                 <div class="form-group">
                     <textarea class="w-full-textarea" name="Message" id="message" rows="10"></textarea>
                 </div>
