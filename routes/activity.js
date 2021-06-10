@@ -170,7 +170,7 @@ exports.init = function(req, res) {
         columns: [{ "Name": "Key", "FieldType": "Text", "IsPrimaryKey": "true", "MaxLength": "100", "IsRequired": "true" }, { "Name": "Value", "FieldType": "Text" }]
     };
 
-    var de = ET_Client.dataExtension(options);
+    var de = sfmcClient.dataExtension(options);
 
     de.post(function(err, response) {
         if (err) {
