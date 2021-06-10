@@ -37,7 +37,7 @@ app.post('/journeybuilder/save/', activity.save);
 app.post('/journeybuilder/validate/', activity.validate);
 app.post('/journeybuilder/publish/', activity.publish);
 app.post('/journeybuilder/execute/', activity.execute);
-app.post('/journeybuilder/getAttributeGroup/', activity.getAttributeGroup);
+app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
 app.get('/journeybuilder/init/', activity.init);
 
 http.createServer(app).listen(app.get('port'), function() {

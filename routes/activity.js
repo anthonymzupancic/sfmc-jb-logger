@@ -163,16 +163,20 @@ exports.validate = function(req, res) {
 };
 
 
-exports.getAttributeGroup = function(req, res) {
+exports.getattributegroup = function(req, res) {
 
     // example on how to decode JWT
-    //JWT(req.body, process.env.jwtSecret, (err, decoded) => {
+    JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
-    // verification error -> unauthorized request
+        // verification error -> unauthorized request
+        if (err) {
+            console.error(err);
+            return res.status(401).end();
+        }
 
-    res.json(req.body)
+        res.json(decoded)
 
-    //});
+    });
 
 }
 
