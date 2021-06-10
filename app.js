@@ -10,25 +10,6 @@ var request = require('request');
 var routes = require('./routes');
 var activity = require('./routes/activity');
 
-const ET_Client = require('sfmc-fuelsdk-node');
-const clientId = process.env.sfmcClientId;
-const clientSecret = process.env.sfmcClientSecret;
-const stack = process.env.sfmcStack;
-const origin = process.env.sfmcRestURL;
-const authOrigin = process.env.sfmcAuthURL;
-const soapOrigin = process.env.sfmcSoapURL;
-
-const sfmcClient = new ET_Client(clientId, clientSecret, stack, {
-    origin,
-    authOrigin,
-    soapOrigin,
-    authOptions: {
-        authVersion: 2,
-        applicationType: 'server'
-    }
-});
-
-
 var app = express();
 
 // Configure Express
