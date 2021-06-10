@@ -145,5 +145,6 @@ exports.validate = function(req, res) {
 
 exports.init = function(req, res) {
     const msg = "init endpoint";
+    console.log({ sfmcClient })
     res.send(200, msg);
 };

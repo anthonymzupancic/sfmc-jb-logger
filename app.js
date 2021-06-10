@@ -18,7 +18,7 @@ const origin = process.env.sfmcRestURL;
 const authOrigin = process.env.sfmcAuthURL;
 const soapOrigin = process.env.sfmcSoapURL;
 
-const client = new ET_Client(clientId, clientSecret, stack, {
+const sfmcClient = new ET_Client(clientId, clientSecret, stack, {
     origin,
     authOrigin,
     soapOrigin,
