@@ -46,6 +46,11 @@
             "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/validate",
             "verb": "POST",
             "useJwt": true
+        },
+        "getAttributeGroup": {
+            "url": "https://twilio-integration-dev.herokuapp.com/journeybuilder/getAttributeGroup",
+            "verb": "POST",
+            "useJwt": true
         }
     },
     "wizardSteps": [
