@@ -11,7 +11,7 @@ var http = require('https');
 const ET_Client = require('sfmc-fuelsdk-node');
 const clientId = process.env.sfmcClientId;
 const clientSecret = process.env.sfmcClientSecret;
-const stack = process.env.sfmcStack;
+const stack = 'S4';
 const origin = process.env.sfmcRestURL;
 const authOrigin = process.env.sfmcAuthURL;
 const soapOrigin = process.env.sfmcSoapURL;
@@ -164,6 +164,6 @@ exports.validate = function(req, res) {
 
 exports.init = function(req, res) {
     const msg = "init endpoint";
-    console.log(sfmcClient)
-    res.send(200, msg);
+
+    res.json(sfmcClient);
 };
