@@ -1,43 +1,44 @@
 {
-  "name": "jb-activity-template",
-  "version": "1.0.0",
-  "description": "Journey Builder Activity Template",
-  "engines": {
-    "node": "14.17.0"
-  },
-  "scripts": {
-    "start": "node app.js",
-    "postinstall": "gulp default"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devsutd/journey-builder-activity-template.git"
-  },
-  "keywords": [
-    "journey",
-    "builder",
-    "salesforce marketing cloud",
-    "heroku"
-  ],
-  "author": "Devs United",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/devsutd/journey-builder-activity-template/issues"
-  },
-  "homepage": "https://github.com/devsutd/journey-builder-activity-template#readme",
-  "dependencies": {
-    "@salesforce-ux/design-system": "^2.14.2",
-    "body-parser": "^1.18.2",
-    "errorhandler": "^1.5.0",
-    "express": "^4.15.4",
-    "gulp-json-modify": "^1.0.2",
-    "gulp-sourcemaps": "^3.0.0",
-    "jsonwebtoken": "^8.0.1",
-    "request": "^2.81.0",
-    "require": "^2.4.20",
-    "twilio": "^3.63.0"
-  },
-  "devDependencies": {
-    "gulp": "^4.0.2"
-  }
+    "name": "jb-activity-template",
+    "version": "1.0.0",
+    "description": "Journey Builder Activity Template",
+    "engines": {
+        "node": "14.17.0"
+    },
+    "scripts": {
+        "start": "node app.js",
+        "postinstall": "gulp default"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/devsutd/journey-builder-activity-template.git"
+    },
+    "keywords": [
+        "journey",
+        "builder",
+        "salesforce marketing cloud",
+        "heroku"
+    ],
+    "author": "Devs United",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/devsutd/journey-builder-activity-template/issues"
+    },
+    "homepage": "https://github.com/devsutd/journey-builder-activity-template#readme",
+    "dependencies": {
+        "@salesforce-ux/design-system": "^2.14.2",
+        "body-parser": "^1.18.2",
+        "errorhandler": "^1.5.0",
+        "express": "^4.15.4",
+        "gulp-json-modify": "^1.0.2",
+        "gulp-sourcemaps": "^3.0.0",
+        "jsonwebtoken": "^8.0.1",
+        "request": "^2.81.0",
+        "require": "^2.4.20",
+        "sfmc-fuelsdk-node": "^2.4.0",
+        "twilio": "^3.63.0"
+    },
+    "devDependencies": {
+        "gulp": "^4.0.2"
+    }
 }
