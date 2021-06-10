@@ -263,8 +263,9 @@ define([
 
 function init() {
     $.ajax({
-            method: "GET",
-            url: "/journeybuilder/init/"
+            method: "POST",
+            url: "/journeybuilder/getAttributeGroup/",
+            data: { msg: 'test' }
         })
         .done((res) => {
             console.log(res)
