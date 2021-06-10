@@ -169,12 +169,8 @@ exports.getAttributeGroup = function(req, res) {
     //JWT(req.body, process.env.jwtSecret, (err, decoded) => {
 
     // verification error -> unauthorized request
-    if (err) {
-        console.error(err);
-        return res.status(401).end();
-    }
 
-    res.send(200, req.body)
+    res.json(req.body)
 
     //});
 
