@@ -64,6 +64,20 @@ define([
         })
 
 
+        $('#getAttributeBTN').on('click', '#getAttributeGroup', function() {
+            console.log('clicked')
+        })
+
+
+        // $.ajax({
+        //         method: "POST",
+        //         url: "/journeybuilder/getattributegroup/",
+        //         data: { msg: 'test' }
+        //     })
+        //     .done((res) => {
+        //         console.log(res)
+        //     });
+
 
     }
 
