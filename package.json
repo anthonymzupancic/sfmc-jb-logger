@@ -37,7 +37,7 @@
         "require": "^2.4.20",
         "sfmc-fuelsdk-node": "^2.4.0",
         "twilio": "^3.63.0",
-        "axios": "^0.21.1",
+        "axios": "^0.21.1"
     },
     "devDependencies": {
         "gulp": "^4.0.2"
