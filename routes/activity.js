@@ -251,8 +251,8 @@ exports.getattributegroup = function(req, res) {
 
 
 async function auth(creds) {
-    let authBase = process.env.authOrigin
-    let authURL = `${authBase}/v2/token`
+    let authBase = process.env.sfmcAuthURL
+    let authURL = `${authBase}v2/token`
 
     const response = await axios.post(authURL, creds)
     return response.data
