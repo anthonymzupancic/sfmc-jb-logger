@@ -135,7 +135,7 @@ exports.execute = function(req, res) {
                 //     .catch(err => console.error(err));
 
                 //Authenticate API Calls
-                auth(authCreds)
+                /*auth(authCreds)
                     .then((authRes) => {
                         const restBase = authRes.rest_instance_url
                         const accessToken = authRes.access_token
@@ -163,7 +163,7 @@ exports.execute = function(req, res) {
                     .catch((err) => {
                         console.log(err)
                     })
-
+                    */
                 logData(req);
                 res.send(200, 'Execute');
 
