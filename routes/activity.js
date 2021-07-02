@@ -123,6 +123,12 @@ exports.execute = function(req, res) {
             if (decodedArgs.message && decodedArgs.toPhone && process.env.fromPhone) {
                 const message = decodedArgs.message;
                 const toPhone = `+${decodedArgs.toPhone}`;
+                const email = decodedArgs.sourceFields.filter((item) => {
+                    return item.fieldName === 'EmailAddress'
+                })
+                const id = decodedArgs.sourceFields.filter((item) => {
+                    return item.fieldName === 'Phone'
+                })
 
                 // // execute twilio message
                 // client.messages
@@ -135,7 +141,7 @@ exports.execute = function(req, res) {
                 //     .catch(err => console.error(err));
 
                 //Authenticate API Calls
-                /*auth(authCreds)
+                auth(authCreds)
                     .then((authRes) => {
                         const restBase = authRes.rest_instance_url
                         const accessToken = authRes.access_token
@@ -149,21 +155,22 @@ exports.execute = function(req, res) {
 
                         let updateDE = [{
                             "keys": {
-                                "EmailAddress": "someone@example.com"
+                                "EmailAddress": email.binding,
+                                "ID": id.binding
                             },
                             "values": {
-                                "Response": "Response 1"
+                                "Code": "Response 1"
                             }
                         }]
                         let deInsertURL = `${restBase}/hub/v1/dataevents/key:DFEFBF74-B3E4-45A6-BD18-6AC0D1BA3E97/rowset`
 
-
+                        axios.post('deInsertURL', config, updateDE)
 
                     })
                     .catch((err) => {
                         console.log(err)
                     })
-                    */
+
                 logData(req);
                 res.send(200, 'Execute');
 
