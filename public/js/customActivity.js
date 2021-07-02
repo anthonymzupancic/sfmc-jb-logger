@@ -75,6 +75,7 @@ define([
         const fields = event[0].deSchema.fields;
         const eventDefinitionKey = event[0].eventDefinitionKey;
 
+        let sourceFields = []
         let options = '';
         fields.forEach((field) => {
 
@@ -83,10 +84,14 @@ define([
                 binding: `{{${event[0].keyPrefix}${field.name}}}`
             }
 
-            dataSourceFields.push(fieldSchema)
+            sourceFields.push(fieldSchema)
 
             options += `<li id="${field.id}" class="personalization_option" data-value="{{${event[0].keyPrefix}${field.name}}}">${field.name}</li>`
         })
+
+        let args = payload['arguments'].execute.inArguments[0]
+        args.sourceFields = sourceFields
+
 
         $('#personalization').html(options);
     }
@@ -145,8 +150,7 @@ define([
         let sourceFields = dataSourcesRes[0].deSchema.fields;
         payload['arguments'].execute.inArguments[0] = {
             'message': message,
-            'toPhone': interactionRes.defaults.mobileNumber[0],
-            'sourceFields': dataSourceFields
+            'toPhone': interactionRes.defaults.mobileNumber[0]
         }
 
         payload['metaData'].isConfigured = true;
