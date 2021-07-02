@@ -70,6 +70,7 @@ define([
     function onRequestedDataSources(dataSources) {
         console.log('*** requestedDataSources ***');
         console.log(dataSources);
+        dataSourcesRes = dataSources
 
         const event = dataSources.filter(e => e.id === 'Event')
         const fields = event[0].deSchema.fields;
@@ -115,7 +116,6 @@ define([
 
         if (inArguments && inArguments.length > 0 && inArguments[0].message) {
             $('#message').val(inArguments[0].message)
-
         }
 
     }
