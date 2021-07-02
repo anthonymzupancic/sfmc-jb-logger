@@ -11,15 +11,6 @@ define([
     let interactionRes = {};
     let sourceFieldsArgs = [];
 
-    // // Steps of Activity
-    // var lastStepEnabled = false;
-    // const steps = [
-    //     { "label": "Configure Message", "key": "step1" },
-    //     { "label": "Configure Logging", "key": "step2" }
-    // ]
-
-    // Set first step
-    //let currentStep = steps[0].key;
 
     $(window).ready(onRender);
 
@@ -148,7 +139,6 @@ define([
     function save() {
         // set fields based on user input
         let message = $('#message').val();
-        let sourceFields = dataSourcesRes[0].deSchema.fields;
         payload['arguments'].execute.inArguments[0] = {
             'message': message,
             'toPhone': interactionRes.defaults.mobileNumber[0],
@@ -161,124 +151,4 @@ define([
         connection.trigger('updateActivity', payload);
     }
 
-
-    /*
-        Step Control Functions
-    */
-    /*
-    function onClickedNext() {
-        if (currentStep.key === 'step1') {
-            if (validateStep1()) {
-                showStep(null, 2)
-                connection.trigger('nextStep');
-            } else {
-                connection.trigger('ready');
-            }
-        } else {
-            save();
-        }
-    }
-
-    function validateStep1() {
-        let valid = false;
-
-        //Check for message length
-        let hasMessage = $('#message').val().length > 1 ? true : false;
-
-        if (hasMessage)
-            valid = true
-
-        return valid
-    }
-
-
-    function onClickedBack() {
-        connection.trigger('prevStep');
-    }
-
-    function onGotoStep(step) {
-        showStep(step);
-        connection.trigger('ready');
-    }
-
-    function showStep(step, stepIndex) {
-        if (stepIndex && !step) {
-            step = steps[stepIndex - 1];
-        }
-
-        currentStep = step;
-
-        $('.step').hide();
-
-        switch (currentStep.key) {
-            case 'step1':
-                $('#step1').show();
-                connection.trigger('updateButton', {
-                    button: 'next',
-                    enabled: Boolean(getMessage())
-                });
-                connection.trigger('updateButton', {
-                    button: 'back',
-                    visible: false
-                });
-                break;
-            case 'step2':
-                $('#step2').show();
-                connection.trigger('updateButton', {
-                    button: 'back',
-                    visible: true
-                });
-                connection.trigger('updateButton', {
-                    button: 'next',
-                    text: 'next',
-                    visible: true
-                });
-                break;
-            case 'step3':
-                $('#step3').show();
-                connection.trigger('updateButton', {
-                    button: 'back',
-                    visible: true
-                });
-                if (lastStepEnabled) {
-                    connection.trigger('updateButton', {
-                        button: 'next',
-                        text: 'next',
-                        visible: true
-                    });
-                } else {
-                    connection.trigger('updateButton', {
-                        button: 'next',
-                        text: 'done',
-                        visible: true
-                    });
-                }
-                break;
-        }
-    }
-
-    function getMessage() {
-        console.log($("#message").val())
-        return $("#message").val()
-    }
-*/
 });
-
-/*
-$('#getAttributeBTN').click(function() {
-    console.log('click')
-    let attributeGroup = $('#getAttributeGroup').val()
-
-    if (value)
-        console.log(value)
-
-    $.ajax({
-            method: "POST",
-            url: "/journeybuilder/getattributegroup/",
-            data: { attributeGroup: attributeGroup }
-        })
-        .done((res) => {
-            console.log(res)
-        });
-
-})*/
