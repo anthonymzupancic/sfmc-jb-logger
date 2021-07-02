@@ -121,8 +121,13 @@ exports.execute = function(req, res) {
 
             // validate required parameters
             if (decodedArgs.message && decodedArgs.toPhone && process.env.fromPhone) {
+                console.log('*** Decoded Arguments ***')
+                console.log(decodedArgs)
+
                 const message = decodedArgs.message;
                 const toPhone = `+${decodedArgs.toPhone}`;
+
+
                 const email = decodedArgs.sourceFields.filter((item) => {
                     return item.fieldName === 'EmailAddress'
                 })
