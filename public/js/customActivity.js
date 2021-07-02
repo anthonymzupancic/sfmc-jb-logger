@@ -9,7 +9,7 @@ define([
     let authTokens = {};
     let payload = {};
     let interactionRes = {};
-    let dataSourceFields = [];
+    let sourceFieldsArgs = [];
 
     // // Steps of Activity
     // var lastStepEnabled = false;
@@ -75,7 +75,7 @@ define([
         const fields = event[0].deSchema.fields;
         const eventDefinitionKey = event[0].eventDefinitionKey;
 
-        let sourceFields = []
+
         let options = '';
         fields.forEach((field) => {
 
@@ -84,13 +84,11 @@ define([
                 binding: `{{${event[0].keyPrefix}${field.name}}}`
             }
 
-            sourceFields.push(fieldSchema)
+            sourceFieldsArgs.push(fieldSchema)
 
             options += `<li id="${field.id}" class="personalization_option" data-value="{{${event[0].keyPrefix}${field.name}}}">${field.name}</li>`
         })
 
-        let args = payload['arguments'].execute.inArguments[0]
-        args.sourceFields = sourceFields
 
 
         $('#personalization').html(options);
@@ -130,8 +128,11 @@ define([
             $('#message').val(inArguments[0].message)
         }
 
-        console.log('*** data source log ***')
-        console.log(dataSourcesRes)
+        connection.trigger('updateButton', {
+            button: 'next',
+            text: 'done',
+            visible: true
+        });
 
     }
 
@@ -150,7 +151,8 @@ define([
         let sourceFields = dataSourcesRes[0].deSchema.fields;
         payload['arguments'].execute.inArguments[0] = {
             'message': message,
-            'toPhone': interactionRes.defaults.mobileNumber[0]
+            'toPhone': interactionRes.defaults.mobileNumber[0],
+            'sourceFields': sourceFieldsArgs
         }
 
         payload['metaData'].isConfigured = true;
