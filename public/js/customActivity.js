@@ -118,19 +118,6 @@ define([
 
         }
 
-
-        // Disable the next button if a value isn't entered
-        var message = getMessage();
-
-        if (message) {
-            connection.trigger('updateButton', {
-                button: 'next',
-                text: 'next',
-                visible: true,
-                enabled: Boolean(message)
-            });
-        }
-
     }
 
     function onGetTokens(tokens) {
