@@ -118,6 +118,9 @@ define([
             $('#message').val(inArguments[0].message)
         }
 
+        console.log('*** data source log ***')
+        console.log(dataSourcesRes)
+
     }
 
     function onGetTokens(tokens) {
