@@ -148,6 +148,8 @@ exports.execute = function(req, res) {
                 //Authenticate API Calls
                 auth(authCreds)
                     .then((authRes) => {
+                        console.log('*** auth Response ***')
+                        console.log(authRes)
                         const restBase = authRes.rest_instance_url
                         const accessToken = authRes.access_token
 
