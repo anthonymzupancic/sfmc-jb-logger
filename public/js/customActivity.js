@@ -63,22 +63,6 @@ define([
             message.val(inserted)
         })
 
-
-        $('#getAttributeBTN').on('click', '#getAttributeGroup', function() {
-            console.log('clicked')
-        })
-
-
-        // $.ajax({
-        //         method: "POST",
-        //         url: "/journeybuilder/getattributegroup/",
-        //         data: { msg: 'test' }
-        //     })
-        //     .done((res) => {
-        //         console.log(res)
-        //     });
-
-
     }
 
     function onRequestedDataSources(dataSources) {
@@ -275,13 +259,20 @@ define([
 });
 
 
-function init() {
+$('#getAttributeBTN').click(function() {
+    console.log('click')
+    let attributeGroup = $('#getAttributeGroup').val()
+
+    if (value)
+        console.log(value)
+
     $.ajax({
             method: "POST",
             url: "/journeybuilder/getattributegroup/",
-            data: { msg: 'test' }
+            data: { attributeGroup: attributeGroup }
         })
         .done((res) => {
             console.log(res)
         });
-}
+
+})
