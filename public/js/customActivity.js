@@ -11,15 +11,15 @@ define([
     let interactionRes = {};
     let dataSourcesRes = {};
 
-    // Steps of Activity
-    var lastStepEnabled = false;
-    const steps = [
-        { "label": "Configure Message", "key": "step1" },
-        { "label": "Configure Logging", "key": "step2" }
-    ]
+    // // Steps of Activity
+    // var lastStepEnabled = false;
+    // const steps = [
+    //     { "label": "Configure Message", "key": "step1" },
+    //     { "label": "Configure Logging", "key": "step2" }
+    // ]
 
     // Set first step
-    let currentStep = steps[0].key;
+    //let currentStep = steps[0].key;
 
     $(window).ready(onRender);
 
@@ -94,8 +94,6 @@ define([
     }
 
     function initialize(data) {
-        init();
-
         console.log(data);
         if (data) {
             payload = data;
@@ -147,6 +145,7 @@ define([
     /*
         Step Control Functions
     */
+    /*
     function onClickedNext() {
         if (currentStep.key === 'step1') {
             if (validateStep1()) {
@@ -242,10 +241,10 @@ define([
         console.log($("#message").val())
         return $("#message").val()
     }
-
+*/
 });
 
-
+/*
 $('#getAttributeBTN').click(function() {
     console.log('click')
     let attributeGroup = $('#getAttributeGroup').val()
@@ -262,4 +261,4 @@ $('#getAttributeBTN').click(function() {
             console.log(res)
         });
 
-})
+})*/

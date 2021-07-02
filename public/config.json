@@ -48,14 +48,10 @@
             "useJwt": true
         }
     },
-    "wizardSteps": [
-        { "label": "Configure Message", "key": "step1" },
-        { "label": "Configure Logging", "key": "step2" }
-    ],
     "userInterfaces": {
         "configModal": {
             "height": 900,
-            "width": 1200,
+            "width": 800,
             "fullscreen": false
         }
     },
