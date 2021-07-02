@@ -9,7 +9,7 @@ define([
     let authTokens = {};
     let payload = {};
     let interactionRes = {};
-    let dataSourcesRes = {};
+    let dataSourceFields = [];
 
     // // Steps of Activity
     // var lastStepEnabled = false;
@@ -70,7 +70,6 @@ define([
     function onRequestedDataSources(dataSources) {
         console.log('*** requestedDataSources ***');
         console.log(dataSources);
-        dataSourcesRes = dataSources
 
         const event = dataSources.filter(e => e.id === 'Event')
         const fields = event[0].deSchema.fields;
@@ -78,6 +77,14 @@ define([
 
         let options = '';
         fields.forEach((field) => {
+
+            let fieldSchema = {
+                fieldName: `${field.name}`,
+                binding: `{{${event[0].keyPrefix}${field.name}}}`
+            }
+
+            dataSourceFields.push(fieldSchema)
+
             options += `<li id="${field.id}" class="personalization_option" data-value="{{${event[0].keyPrefix}${field.name}}}">${field.name}</li>`
         })
 
@@ -135,9 +142,11 @@ define([
     function save() {
         // set fields based on user input
         let message = $('#message').val();
+        let sourceFields = dataSourcesRes[0].deSchema.fields;
         payload['arguments'].execute.inArguments[0] = {
             'message': message,
-            'toPhone': interactionRes.defaults.mobileNumber[0]
+            'toPhone': interactionRes.defaults.mobileNumber[0],
+            'sourceFields': dataSourceFields
         }
 
         payload['metaData'].isConfigured = true;
