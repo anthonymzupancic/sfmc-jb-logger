@@ -1,5 +1,6 @@
 'use strict';
 var util = require('util');
+const axios = require('axios');
 
 // Deps
 const Path = require('path');
@@ -25,6 +26,13 @@ const sfmcClient = new ET_Client(clientId, clientSecret, stack, {
         applicationType: 'server'
     }
 });
+
+const authCreds = {
+    "client_id": process.env.sfmcClientId,
+    "client_secret": process.env.sfmcClientSecret,
+    "client_type": 'application/json',
+    "grant_type": 'client_credentials'
+}
 
 
 //Twilio Client
@@ -116,15 +124,45 @@ exports.execute = function(req, res) {
                 const message = decodedArgs.message;
                 const toPhone = `+${decodedArgs.toPhone}`;
 
-                // execute twilio message
-                client.messages
-                    .create({
-                        body: message,
-                        from: process.env.fromPhone,
-                        to: toPhone
+                // // execute twilio message
+                // client.messages
+                //     .create({
+                //         body: message,
+                //         from: process.env.fromPhone,
+                //         to: toPhone
+                //     })
+                //     .then(message => console.log(message.sid))
+                //     .catch(err => console.error(err));
+
+                //Authenticate API Calls
+                auth(authCreds)
+                    .then((authRes) => {
+                        const restBase = authRes.rest_instance_url
+                        const accessToken = authRes.access_token
+
+                        const config = {
+                            headers: {
+                                "Authorization": "Bearer " + accessToken,
+                                "Content-Type": "application/json"
+                            }
+                        }
+
+                        let updateDE = [{
+                            "keys": {
+                                "EmailAddress": "someone@example.com"
+                            },
+                            "values": {
+                                "Response": "Response 1"
+                            }
+                        }]
+                        let deInsertURL = `${restBase}/hub/v1/dataevents/key:DFEFBF74-B3E4-45A6-BD18-6AC0D1BA3E97/rowset`
+
+
+
                     })
-                    .then(message => console.log(message.sid))
-                    .catch(err => console.error(err));
+                    .catch((err) => {
+                        console.log(err)
+                    })
 
                 logData(req);
                 res.send(200, 'Execute');
@@ -189,3 +227,13 @@ exports.init = function(req, res) {
         }
     });
 };
+
+
+
+async function auth(creds) {
+    let authBase = process.env.authOrigin
+    let authURL = `${authBase}/v2/token`
+
+    const response = await axios.post(authURL, creds)
+    return response.data
+}
