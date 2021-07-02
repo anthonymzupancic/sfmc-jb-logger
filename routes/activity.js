@@ -173,7 +173,7 @@ exports.execute = function(req, res) {
                         }]
                         let deInsertURL = `${restBase}hub/v1/dataevents/key:47FA8322-6A33-454B-A019-9C02F16CDBCD/rowset`
 
-                        axios.post(deInsertURL, config, updateDE)
+                        axios.post(deInsertURL, updateDE, config)
                             .then((res) => {
                                 console.log(res)
                             })
