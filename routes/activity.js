@@ -167,7 +167,7 @@ exports.execute = function(req, res) {
                                 "Code": "Response 1"
                             }
                         }]
-                        let deInsertURL = `${restBase}data/v1/async/dataextensions/key:47FA8322-6A33-454B-A019-9C02F16CDBCD/row`
+                        let deInsertURL = `${restBase}data/v1/async/dataextensions/key:F1C5F25C-105D-4D53-AD43-CBD51574F939/row`
 
                         axios.post(deInsertURL, updateDE, config)
                             .then((res) => {
