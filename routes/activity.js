@@ -135,6 +135,10 @@ exports.execute = function(req, res) {
                     return item.fieldName === 'Phone'
                 })
 
+                const code = decodedArgs.sourceFields.filter((item) => {
+                    return item.fieldName === 'Response'
+                })
+
                 // // execute twilio message
                 // client.messages
                 //     .create({
@@ -164,7 +168,7 @@ exports.execute = function(req, res) {
                             "items": [{
                                 "EmailAddress": email[0].binding,
                                 "ID": id[0].binding,
-                                "Code": "Response 1"
+                                "Code": code[0].binding
                             }]
                         }
                         let deInsertURL = `${restBase}data/v1/async/dataextensions/key:F1C5F25C-105D-4D53-AD43-CBD51574F939/rows`
