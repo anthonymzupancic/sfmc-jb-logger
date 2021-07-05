@@ -160,13 +160,13 @@ exports.execute = function(req, res) {
                             }
                         }
 
-                        let updateDE = [{
-                            "items": {
+                        let updateDE = {
+                            "items": [{
                                 "EmailAddress": email[0].binding,
                                 "ID": id[0].binding,
                                 "Code": "Response 1"
-                            }
-                        }]
+                            }]
+                        }
                         let deInsertURL = `${restBase}data/v1/async/dataextensions/key:F1C5F25C-105D-4D53-AD43-CBD51574F939/rows`
 
                         axios.post(deInsertURL, updateDE, config)
