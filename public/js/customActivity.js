@@ -39,7 +39,7 @@ define([
         /*
             Add functionality for Message Textarea
             Inserts personalization at curser point
-        */
+        
         $('#personalization').on('click', '.personalization_option', function() {
             console.log("clicked")
             console.log($(this).data("value"));
@@ -55,7 +55,7 @@ define([
             console.log(inserted)
             message.val(inserted)
         })
-
+*/
     }
 
     function onRequestedDataSources(dataSources) {
@@ -116,7 +116,7 @@ define([
         console.log(inArguments);
 
         if (inArguments && inArguments.length > 0 && inArguments[0].message) {
-            $('#message').val(inArguments[0].message)
+            $('#exitCode').val(inArguments[0].exitCode)
         }
 
         connection.trigger('updateButton', {
@@ -138,10 +138,10 @@ define([
 
     function save() {
         // set fields based on user input
-        let message = $('#message').val();
+        let exitCode = $('#exitCode').val();
+
         payload['arguments'].execute.inArguments[0] = {
-            'message': message,
-            'toPhone': interactionRes.defaults.mobileNumber[0],
+            'exitCode': exitCode,
             'sourceFields': sourceFieldsArgs
         }
 

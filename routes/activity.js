@@ -124,20 +124,18 @@ exports.execute = function(req, res) {
                 console.log('*** Decoded Arguments ***')
                 console.log(decodedArgs)
 
-                const message = decodedArgs.message;
-                const toPhone = `+${decodedArgs.toPhone}`;
+                // const message = decodedArgs.message;
+                const exitCode = decodedArgs.exitCode;
+                // const toPhone = `+${decodedArgs.toPhone}`;
 
 
                 const email = decodedArgs.sourceFields.filter((item) => {
                     return item.fieldName === 'EmailAddress'
                 })
                 const id = decodedArgs.sourceFields.filter((item) => {
-                    return item.fieldName === 'Phone'
+                    return item.fieldName === 'ID'
                 })
 
-                const code = decodedArgs.sourceFields.filter((item) => {
-                    return item.fieldName === 'Response'
-                })
 
                 // // execute twilio message
                 // client.messages
