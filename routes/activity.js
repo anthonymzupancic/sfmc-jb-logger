@@ -120,14 +120,14 @@ exports.execute = function(req, res) {
             let decodedArgs = decoded.inArguments[0];
 
             // validate required parameters
-            if (decodedArgs.message && decodedArgs.toPhone && process.env.fromPhone) {
+            if (decodedArgs.exitCode) {
                 console.log('*** Decoded Arguments ***')
                 console.log(decodedArgs)
 
                 // const message = decodedArgs.message;
                 const exitCode = decodedArgs.exitCode;
                 // const toPhone = `+${decodedArgs.toPhone}`;
-
+                console.log('exitCode', exitCode)
 
                 const email = decodedArgs.sourceFields.filter((item) => {
                     return item.fieldName === 'EmailAddress'
@@ -166,9 +166,10 @@ exports.execute = function(req, res) {
                             "items": [{
                                 "EmailAddress": email[0].binding,
                                 "ID": id[0].binding,
-                                "Code": code[0].binding
+                                "Code": exitCode
                             }]
                         }
+
                         let deInsertURL = `${restBase}data/v1/async/dataextensions/key:F1C5F25C-105D-4D53-AD43-CBD51574F939/rows`
 
                         axios.post(deInsertURL, updateDE, config)

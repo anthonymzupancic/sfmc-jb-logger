@@ -115,7 +115,7 @@ define([
         console.log('*** in arguments ***')
         console.log(inArguments);
 
-        if (inArguments && inArguments.length > 0 && inArguments[0].message) {
+        if (inArguments && inArguments.length > 0 && inArguments[0].exitCode) {
             $('#exitCode').val(inArguments[0].exitCode)
         }
 
