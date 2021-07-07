@@ -135,7 +135,9 @@ exports.execute = function(req, res) {
                 const id = decodedArgs.sourceFields.filter((item) => {
                     return item.fieldName === 'ID'
                 })
-
+                const subscriberKey = decodedArgs.sourceFields.filter((item) => {
+                    return item.fieldName === 'SubscriberKey'
+                })
 
                 // // execute twilio message
                 // client.messages
@@ -165,6 +167,7 @@ exports.execute = function(req, res) {
                         let updateDE = {
                             "items": [{
                                 "EmailAddress": email[0].binding,
+                                "SubscriberKey": subscriberKey[0].binding,
                                 "ID": id[0].binding,
                                 "Code": exitCode
                             }]
