@@ -233,8 +233,10 @@ exports.getattributegroup = function(req, res) {
 
 
 exports.getLoggingSchema = function(req, res) {
-
-    res.json(200, req)
+    let resp = {
+        de: 'de name'
+    }
+    res.json(200, resp)
 
 };
 
