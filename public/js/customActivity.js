@@ -1,3 +1,5 @@
+const { default: axios } = require("axios");
+
 define([
     'postmonger'
 ], function(
@@ -56,6 +58,15 @@ define([
             message.val(inserted)
         })
 */
+
+        $('#getSchema').on('click', function() {
+            let loggingDE = $('#loggingDE').val();
+
+            console.log('get schema clicked')
+            console.log(loggingDE)
+        })
+
+
     }
 
     function onRequestedDataSources(dataSources) {
@@ -136,6 +147,7 @@ define([
         console.log(endpoints);
     }
 
+
     function save() {
         // set fields based on user input
         let exitCode = $('#exitCode').val();
@@ -151,4 +163,20 @@ define([
         connection.trigger('updateActivity', payload);
     }
 
+
+    // async function getSchema() {
+    //     try {
+
+    //         let res = await axios.post('https://twilio-integration-dev.herokuapp.com/journeybuilder/getSchema', {
+    //             loggingDE: 'Custom Log 2'
+    //         })
+
+    //     } catch (e) {
+
+    //         return e
+
+    //     }
+
+    //     return res
+    // }
 });

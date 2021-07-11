@@ -232,25 +232,11 @@ exports.getattributegroup = function(req, res) {
 }
 
 
-// exports.init = function(req, res) {
+exports.getLoggingSchema = function(req, res) {
 
-//     var options = {
-//         props: { "Name": "SDKDataExtension from JB App", "Description": "SDK Created Data Extension" },
-//         columns: [{ "Name": "Key", "FieldType": "Text", "IsPrimaryKey": "true", "MaxLength": "100", "IsRequired": "true" }, { "Name": "Value", "FieldType": "Text" }]
-//     };
+    res.json(decoded)
 
-//     var de = sfmcClient.dataExtension(options);
-
-//     de.post(function(err, response) {
-//         if (err) {
-//             res.status(500).send(err)
-//         } else {
-//             var statusCode = response && response.res && response.res.statusCode ? response.res.statusCode : 200;
-//             var result = response && response.body ? response.body : response;
-//             response && res.status(statusCode).send(result);
-//         }
-//     });
-// };
+};
 
 
 
