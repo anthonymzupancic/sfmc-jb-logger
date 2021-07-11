@@ -65,14 +65,15 @@ define([
             console.log('get schema clicked')
             console.log(loggingDE)
 
-            axios.post('https://twilio-integration-dev.herokuapp.com/journeybuilder/getLoggingSchema', {
-                    logginggDE: loggingDE
+            $.ajax({
+                    method: "POST",
+                    url: "https://twilio-integration-dev.herokuapp.com/journeybuilder/getLoggingSchema",
+                    data: {
+                        logginggDE: loggingDE
+                    }
                 })
-                .then(function(response) {
-                    console.log(response);
-                })
-                .catch(function(error) {
-                    console.log(error);
+                .done(function(msg) {
+                    alert("Data Saved: " + msg);
                 });
         })
 
