@@ -70,8 +70,8 @@ define([
                         logginggDE: loggingDE
                     }
                 })
-                .done(function(msg) {
-                    alert("Data Saved: " + msg);
+                .done(function(data) {
+                    console.log("Data Saved: " + data);
                 });
         })
 
