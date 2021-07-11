@@ -71,7 +71,7 @@ define([
                     }
                 })
                 .done(function(data) {
-                    console.log("Data Saved: " + data);
+                    console.log(data);
                 });
         })
 
