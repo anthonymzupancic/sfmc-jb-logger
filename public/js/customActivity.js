@@ -1,3 +1,5 @@
+const { default: axios } = require("axios");
+
 define([
     'postmonger'
 ], function(
@@ -62,6 +64,16 @@ define([
 
             console.log('get schema clicked')
             console.log(loggingDE)
+
+            axios.post('https://twilio-integration-dev.herokuapp.com/journeybuilder/getLoggingSchema', {
+                    logginggDE: loggingDE
+                })
+                .then(function(response) {
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
         })
 
 

@@ -234,7 +234,7 @@ exports.getattributegroup = function(req, res) {
 
 exports.getLoggingSchema = function(req, res) {
 
-    res.json(decoded)
+    res.json(req.body)
 
 };
 
