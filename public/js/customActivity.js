@@ -10,7 +10,7 @@ define([
     let payload = {};
     let interactionRes = {};
     let sourceFieldsArgs = [];
-
+    let journeyName = ''
 
     $(window).ready(onRender);
 
@@ -143,6 +143,8 @@ define([
         console.log('*** requestedInteraction ***');
         console.log(interaction);
 
+        journeyName = interaction.name;
+
         interactionRes = interaction
     }
 
@@ -207,7 +209,7 @@ define([
         //Add Journey name to Args array
         args.push({
             name: 'JourneyName',
-            value: interactionRes.name
+            value: journeyName
         })
 
         payload['arguments'].execute.inArguments[0] = {
