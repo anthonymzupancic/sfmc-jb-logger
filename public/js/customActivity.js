@@ -36,12 +36,13 @@ define([
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
 
-        let currentField;
+        var currentField = '';
 
 
         $('#loggingFields').on('click', '.field', function() {
             currentField = $(this).attr('id')
         })
+
 
         /*
             Add functionality for Message Textarea
@@ -50,6 +51,7 @@ define([
         $('#personalization').on('click', '.personalization_option', function(currentField) {
             console.log("clicked")
             console.log($(this).data("value"));
+            console.log('*** currentField ***')
             console.log(currentField)
             let selected = $(this).data("value");
             let field = $(`#${currentField}`)
