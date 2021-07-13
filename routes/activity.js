@@ -240,12 +240,13 @@ exports.getLoggingSchema = function(req, res) {
         'FieldType',
         'MaxLength',
         'DataExtension.CustomerKey',
+        'DataExtension.Name',
         'IsPrimaryKey'
     ];
 
     const filter = {
-        leftOperand: 'DataExtension.CustomerKey',
-        operator: 'IN',
+        leftOperand: 'DataExtension.Name',
+        operator: 'like',
         rightOperand: loggingDE
     }
 
