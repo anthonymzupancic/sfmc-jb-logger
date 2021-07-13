@@ -36,7 +36,7 @@ define([
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
 
-        let currentField = null;
+        let currentField;
 
         $('#loggingFields').on('click', '.field', function() {
             currentField = $(this).attr('id')
@@ -47,15 +47,17 @@ define([
             Add functionality for Message Textarea
             Inserts personalization at curser point
         */
-        $('#personalization').on('click', '.personalization_option', function() {
+        $('#personalization').on('click', '.personalization_option', function(currentField) {
             console.log("clicked")
             console.log($(this).data("value"));
+            console.log(currentField)
             let selected = $(this).data("value");
-            let field = $(`#${currentField}`).val();
-            let position = field.prop("selectionStart");
+            let message = $("#message")
+            let messageVal = message.val()
+            let position = message.prop("selectionStart");
 
-            let messageStart = field.substring(0, position)
-            let messageEnd = field.substring(position)
+            let messageStart = messageVal.substring(0, position)
+            let messageEnd = messageVal.substring(position)
 
             let inserted = `${messageStart} ${selected} ${messageEnd}`
             console.log(inserted)
