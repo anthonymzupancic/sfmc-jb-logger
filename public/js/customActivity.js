@@ -72,6 +72,32 @@ define([
                 })
                 .done(function(data) {
                     console.log(data);
+
+                    if (!data.Results) {
+                        html = ''
+                        html += '<div class="form-group">';
+                        html += '<input class="w-full-textarea" name="exitCode" id="exitCode" />';
+                        html += '</div>';
+
+                        $('#loggingFields').html(html)
+                    } else {
+                        html = '';
+
+
+                        data.Results.forEach((field) => {
+                            let fieldName = field.Name;
+                            let isPrimaryKey = field.IsPrimaryKey;
+                            let fieldType = field.FieldType;
+
+                            html += '<div class="form-group">';
+
+                            if (fieldType === 'Text') {
+                                html += '<input class="w-full-textarea" name="' + fieldName + '" id="' + fieldName + '" />';
+                            }
+
+                            html += '</div>'
+                        })
+                    }
                 });
         })
 
