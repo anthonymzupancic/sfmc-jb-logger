@@ -88,9 +88,10 @@ define([
                             let isPrimaryKey = field.IsPrimaryKey;
                             let fieldType = field.FieldType;
 
-                            html += '<div class="form-group">';
+                            html += '<div class="form-group mt-3">';
 
-                            if (fieldType === 'Text') {
+                            if (fieldType === 'Text' || fieldType === 'EmailAddress') {
+                                html += '<label>' + fieldName + '</label>';
                                 html += '<input class="w-full-textarea" name="' + fieldName + '" id="' + fieldName + '" />';
                             }
 
