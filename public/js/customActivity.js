@@ -107,8 +107,8 @@ define([
         })
 
         $('#saveSchema').click(function() {
-            let html = $('#loggingFields').innerHTML
-            console.log(html)
+            let html = $('#loggingFields')
+            console.log(html[0].innerHTML)
                 //localStorage.setItem('schemaHTML', html)
         })
 
