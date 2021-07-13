@@ -249,6 +249,8 @@ exports.getLoggingSchema = function(req, res) {
 
     de.get(function(err, response) {
         if (err) {
+            console.log('*** err ***')
+            console.log(err)
             res.status(500).send(err)
         } else {
             var statusCode = response && response.res && response.res.statusCode ? response.res.statusCode : 200;
