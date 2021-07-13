@@ -252,7 +252,7 @@ exports.getLoggingSchema = function(req, res) {
         }
     };
 
-    var de = sfmcClient.dataExtensionColumns(options);
+    var de = sfmcClient.dataExtensionColumn(options);
 
     de.get(function(err, response) {
         if (err) {
