@@ -245,7 +245,7 @@ exports.getLoggingSchema = function(req, res) {
         }
     };
 
-    var de = ET_Client.dataExtension(options);
+    var de = sfmcClient.dataExtension(options);
 
     de.get(function(err, response) {
         if (err) {
