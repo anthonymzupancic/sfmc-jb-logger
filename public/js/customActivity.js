@@ -37,8 +37,6 @@ define([
         connection.trigger('requestDataSources');
 
         var currentField = '';
-
-
         $('#loggingFields').on('click', '.field', function() {
             currentField = $(this).attr('id')
         })
@@ -104,10 +102,18 @@ define([
                         })
 
                         $('#loggingFields').append(html)
-
                     }
                 });
         })
+
+        $('#saveSchema').click(function() {
+
+            let html = $('#loggingFields')
+            console.log(html)
+
+        })
+
+
 
 
     }
