@@ -81,8 +81,7 @@ define([
 
                         $('#loggingFields').html(html)
                     } else {
-                        html = '';
-
+                        let html = '';
 
                         data.Results.forEach((field) => {
                             let fieldName = field.Name;
@@ -97,6 +96,9 @@ define([
 
                             html += '</div>'
                         })
+
+                        $('#loggingFields').html(html)
+
                     }
                 });
         })
