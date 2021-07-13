@@ -201,7 +201,7 @@ define([
         // }
 
         let args = []
-        $('loggingFields :input').each(function() {
+        $('#loggingFields :input').each(function() {
             args.push({
                 name: $(this).attr('id'),
                 value: $(this).val()
