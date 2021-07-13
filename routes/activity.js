@@ -238,7 +238,12 @@ exports.getLoggingSchema = function(req, res) {
     console.log(req.body)
 
     var options = {
-        props: ['Name', 'CustomerKey', 'Fields'] //required
+        props: ['Name',
+                'FieldType',
+                'MaxLength',
+                'DataExtension.CustomerKey',
+                'IsPrimaryKey'
+            ] //required
             ,
         filter: { //remove filter for all.
             leftOperand: 'CustomerKey',
@@ -247,7 +252,7 @@ exports.getLoggingSchema = function(req, res) {
         }
     };
 
-    var de = sfmcClient.dataExtension(options);
+    var de = sfmcClient.dataExtensionColumns(options);
 
     de.get(function(err, response) {
         if (err) {
