@@ -245,19 +245,20 @@ exports.getLoggingSchema = function(req, res) {
 
     const filter = {
         leftOperand: 'DataExtension.Name',
-        operator: 'equals',
+        operator: 'like',
         rightOperand: loggingDE
     }
+
 
     sfmcClient.dataExtensionColumn({ props, filter }).get((err, resp) => {
         if (err) {
             console.log("\n\nerror \n\n")
             console.log(err)
-            res.json(400, err)
-
+            res.status('400').json(err)
         } else {
             console.log(resp)
-            res.json(200, resp)
+            res.status('200').json(resp)
+
 
         }
     });
