@@ -54,7 +54,7 @@ define([
             console.log('*** currentField ***')
             console.log(currentField)
             let selected = $(this).data("value");
-            let field = $(`${currentField}`)
+            let field = $(`#${currentField}`)
             console.log(field)
 
             console.log(selected)
