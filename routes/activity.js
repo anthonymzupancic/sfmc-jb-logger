@@ -235,7 +235,7 @@ exports.getattributegroup = function(req, res) {
 exports.getLoggingSchema = function(req, res) {
     const loggingDE = req.body.loggingDE
     console.log('•••loggingDE•••')
-    console.log(loggingDE)
+    console.log(req.body)
 
     var options = {
         props: ['Name', 'CustomerKey'] //required
