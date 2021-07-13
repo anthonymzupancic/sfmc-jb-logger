@@ -234,12 +234,14 @@ exports.getattributegroup = function(req, res) {
 
 exports.getLoggingSchema = function(req, res) {
     const loggingDE = req.body.loggingDE
+    console.log('•••loggingDE•••')
+    console.log(loggingDE)
 
     var options = {
         props: ['Name', 'CustomerKey'] //required
             ,
         filter: { //remove filter for all.
-            leftOperand: 'Name',
+            leftOperand: 'CustomerKey',
             operator: 'equals',
             rightOperand: loggingDE
         }
