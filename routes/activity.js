@@ -120,7 +120,7 @@ exports.execute = function(req, res) {
             let decodedArgs = decoded.inArguments[0];
 
             // validate required parameters
-            if (decodedArgs.exitCode) {
+            if (decodedArgs.logging) {
                 console.log('*** Decoded Arguments ***')
                 console.log(decodedArgs)
 
