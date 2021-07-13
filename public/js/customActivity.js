@@ -48,7 +48,7 @@ define([
             Add functionality for Message Textarea
             Inserts personalization at curser point
         */
-        $('#personalization').on('click', '.personalization_option', function(currentField) {
+        $('#personalization').on('click', '.personalization_option', function() {
             console.log("clicked")
             console.log($(this).data("value"));
             console.log('*** currentField ***')
