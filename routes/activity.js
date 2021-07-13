@@ -235,33 +235,28 @@ exports.getattributegroup = function(req, res) {
 exports.getLoggingSchema = function(req, res) {
     const loggingDE = req.body.loggingDE
 
-    const props = [
-        'Name',
-        'FieldType',
-        'MaxLength',
-        'DataExtension.CustomerKey',
-        'IsPrimaryKey'
-    ];
+    var options = {
+        props: ['Name', 'CustomerKey'] //required
+            ,
+        filter: { //remove filter for all.
+            leftOperand: 'Name',
+            operator: 'equals',
+            rightOperand: loggingDE
+        }
+    };
 
-    const filter = {
-        leftOperand: 'DataExtension.CustomerKey',
-        operator: 'like',
-        rightOperand: loggingDE
-    }
+    var de = ET_Client.dataExtension(options);
 
-
-    sfmcClient.dataExtensionColumn({ props, filter }).get((err, resp) => {
+    de.get(function(err, response) {
         if (err) {
-            console.log("\n\nerror \n\n")
-            console.log(err)
-            res.status('400').json(err)
+            res.status(500).send(err)
         } else {
-            console.log(resp)
-            res.status('200').json(resp)
-
-
+            var statusCode = response && response.res && response.res.statusCode ? response.res.statusCode : 200;
+            var result = response && response.body ? response.body : response;
+            response && res.status(statusCode).send(result);
         }
     });
+
 
 
 };
