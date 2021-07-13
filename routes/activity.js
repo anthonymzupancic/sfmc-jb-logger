@@ -246,7 +246,7 @@ exports.getLoggingSchema = function(req, res) {
             ] //required
             ,
         filter: { //remove filter for all.
-            leftOperand: 'CustomerKey',
+            leftOperand: 'DataExtension.CustomerKey',
             operator: 'equals',
             rightOperand: loggingDE
         }
