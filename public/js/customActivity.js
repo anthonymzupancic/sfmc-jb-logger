@@ -193,17 +193,19 @@ define([
 
     function save() {
         // set fields based on user input
-        let exitCode = $('#exitCode').val();
+        // let exitCode = $('#exitCode').val();
 
-        payload['arguments'].execute.inArguments[0] = {
-            'exitCode': exitCode,
-            'sourceFields': sourceFieldsArgs
-        }
+        // payload['arguments'].execute.inArguments[0] = {
+        //     'exitCode': exitCode,
+        //     'sourceFields': sourceFieldsArgs
+        // }
 
+        let arguments = {}
         $('loggingFields :input').each(function() {
-            console.log(this)
+            arguments[$(this).attr('id')] = $(this).val()
         })
 
+        payload['arguments'].execute.inArguments[0].push(arguments)
 
         payload['metaData'].isConfigured = true;
 
