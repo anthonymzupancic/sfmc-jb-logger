@@ -205,7 +205,7 @@ define([
             args[$(this).attr('id')] = $(this).val()
         })
 
-        payload['arguments'].execute.inArguments[0].push(args)
+        payload['arguments'].execute.inArguments.push(args)
 
         payload['metaData'].isConfigured = true;
 
