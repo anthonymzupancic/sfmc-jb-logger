@@ -169,10 +169,6 @@ define([
         console.log('*** in arguments ***')
         console.log(inArguments);
 
-        if (inArguments && inArguments.length > 0 && inArguments[0].exitCode) {
-            $('#exitCode').val(inArguments[0].exitCode)
-        }
-
         connection.trigger('updateButton', {
             button: 'next',
             text: 'done',
@@ -190,7 +186,6 @@ define([
         console.log(endpoints);
     }
 
-
     function save() {
         // set fields based on user input
         // let exitCode = $('#exitCode').val();
@@ -200,12 +195,19 @@ define([
         //     'sourceFields': sourceFieldsArgs
         // }
 
+        //Add configured Fields to args array
         let args = []
         $('#loggingFields :input').each(function() {
             args.push({
                 name: $(this).attr('id'),
                 value: $(this).val()
             })
+        })
+
+        //Add Journey name to Args array
+        args.push({
+            name: 'JourneyName',
+            value: interactionRes.name
         })
 
         payload['arguments'].execute.inArguments[0] = {
