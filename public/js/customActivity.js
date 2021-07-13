@@ -200,6 +200,12 @@ define([
             'sourceFields': sourceFieldsArgs
         }
 
+        let fields = $('loggingFields :input')
+
+        fields.forEach((field) => {
+            console.log(field)
+        })
+
         payload['metaData'].isConfigured = true;
 
         console.log(payload);
