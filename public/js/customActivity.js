@@ -52,16 +52,15 @@ define([
             console.log($(this).data("value"));
             console.log(currentField)
             let selected = $(this).data("value");
-            let message = $("#message")
-            let messageVal = message.val()
-            let position = message.prop("selectionStart");
+            let field = $(`#${currentField}`)
+            let fieldVal = field.val()
 
-            let messageStart = messageVal.substring(0, position)
-            let messageEnd = messageVal.substring(position)
+            if (fieldVal) {
+                field.val('')
+            }
 
-            let inserted = `${messageStart} ${selected} ${messageEnd}`
-            console.log(inserted)
-            message.val(inserted)
+            console.log(selected)
+            field.val(selected)
         })
 
 
