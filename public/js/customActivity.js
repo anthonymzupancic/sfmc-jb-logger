@@ -200,12 +200,18 @@ define([
         //     'sourceFields': sourceFieldsArgs
         // }
 
-        let args = {}
+        let args = []
         $('loggingFields :input').each(function() {
-            args[$(this).attr('id')] = $(this).val()
+            args.push({
+                name: $(this).attr('id'),
+                value: $(this).val()
+            })
         })
 
-        payload['arguments'].execute.inArguments.push(args)
+        payload['arguments'].execute.inArguments[0] = {
+            'logging': args,
+            'sourceFields': sourceFieldsArgs
+        }
 
         payload['metaData'].isConfigured = true;
 
