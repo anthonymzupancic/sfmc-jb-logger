@@ -40,7 +40,7 @@ define([
 
 
         $('#loggingFields').on('click', '.field', function() {
-            currentField = this
+            currentField = $(this).attr('id')
         })
 
 
@@ -54,7 +54,7 @@ define([
             console.log('*** currentField ***')
             console.log(currentField)
             let selected = $(this).data("value");
-            let field = $(`#${currentField}`)
+            let field = $(id)
             console.log(field)
 
             console.log(selected)
