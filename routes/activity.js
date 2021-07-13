@@ -172,11 +172,14 @@ exports.execute = function(req, res) {
                         }
 
                         let updateDE = {
-                            "items": [payloadObj]
+                            "items": []
                         }
+
+                        updateDE.items.push(payloadObj)
+
                         console.log(updateDE)
 
-                        let deInsertURL = `${restBase}data/v1/async/dataextensions/key:F1C5F25C-105D-4D53-AD43-CBD51574F939/rows`
+                        let deInsertURL = `${restBase}data/v1/async/dataextensions/key:CustomLog2/rows`
 
                         axios.post(deInsertURL, updateDE, config)
                             .then((res) => {
