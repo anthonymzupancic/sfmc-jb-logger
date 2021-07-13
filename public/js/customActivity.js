@@ -36,6 +36,13 @@ define([
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
 
+        let currentField = null;
+
+        $('#loggingFields').on('click', '.fields', function() {
+            currentField = $(this).attr('id')
+            console.log(currentField)
+        })
+
         /*
             Add functionality for Message Textarea
             Inserts personalization at curser point
@@ -75,9 +82,9 @@ define([
 
                     if (!data.Results) {
                         html = ''
-                        html += '<div class="form-group">';
-                        html += '<input class="w-full-textarea" name="exitCode" id="exitCode" />';
-                        html += '</div>';
+                        html += '<p class="text-danger">';
+                        html += 'There was an issue getting the logging Data Extension.';
+                        html += '</p>';
 
                         $('#loggingFields').append(html)
                     } else {
@@ -92,7 +99,7 @@ define([
 
                             if (fieldType === 'Text' || fieldType === 'EmailAddress') {
                                 html += '<label>' + fieldName + '</label>';
-                                html += '<input class="w-full-textarea" name="' + fieldName + '" id="' + fieldName + '" />';
+                                html += '<input class="w-full-textarea field" name="' + fieldName + '" id="' + fieldName + '" />';
                             }
 
                             html += '</div>'
