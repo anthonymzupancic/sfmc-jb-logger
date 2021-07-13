@@ -238,7 +238,7 @@ exports.getLoggingSchema = function(req, res) {
     console.log(req.body)
 
     var options = {
-        props: ['Name', 'CustomerKey'] //required
+        props: ['Name', 'CustomerKey', 'Fields'] //required
             ,
         filter: { //remove filter for all.
             leftOperand: 'CustomerKey',
