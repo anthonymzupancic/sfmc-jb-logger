@@ -233,7 +233,7 @@ exports.getattributegroup = function(req, res) {
 
 
 exports.getLoggingSchema = function(req, res) {
-    const loggingDE = req.body.loggingDE
+    const loggingDE = new Array(req.body.loggingDE)
 
     const props = [
         'Name',
@@ -245,7 +245,7 @@ exports.getLoggingSchema = function(req, res) {
 
     const filter = {
         leftOperand: 'DataExtension.CustomerKey',
-        operator: 'equals',
+        operator: 'IN',
         rightOperand: loggingDE
     }
 
