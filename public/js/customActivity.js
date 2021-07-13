@@ -36,7 +36,12 @@ define([
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
 
+        let currentField;
 
+
+        $('#loggingFields').on('click', '.field', function() {
+            currentField = $(this).attr('id')
+        })
 
         /*
             Add functionality for Message Textarea
@@ -47,12 +52,8 @@ define([
             console.log($(this).data("value"));
             console.log(currentField)
             let selected = $(this).data("value");
-            let field = getFieldID()
-            let fieldVal = field.val()
-
-            if (fieldVal) {
-                field.val('')
-            }
+            let field = $(`#${currentField}`)
+            console.log(field)
 
             console.log(selected)
             field.val(selected)
@@ -201,13 +202,6 @@ define([
 
         console.log(payload);
         connection.trigger('updateActivity', payload);
-    }
-
-    function getFieldID() {
-        $('#loggingFields').on('click', '.field', function() {
-            currentField = $(this).attr('id')
-            return currentField
-        })
     }
 
 });
