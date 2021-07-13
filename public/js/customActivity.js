@@ -107,16 +107,14 @@ define([
         })
 
         $('#saveSchema').click(function() {
-
-            let html = $('#loggingFields')
+            let html = $('#loggingFields').innerHTML()
             console.log(html)
-
+            localStorage.setItem('schemaHTML', html)
         })
 
 
-
-
     }
+
 
     function onRequestedDataSources(dataSources) {
         console.log('*** requestedDataSources ***');
@@ -163,6 +161,11 @@ define([
         console.log(data);
         if (data) {
             payload = data;
+        }
+
+        let storedSchema = localStorage.getItem('schemaHTML')
+        if (storedSchema) {
+            $('#loggingFields').append(storedSchema)
         }
 
         var hasInArguments = Boolean(
