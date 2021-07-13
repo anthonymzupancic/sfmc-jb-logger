@@ -233,12 +233,35 @@ exports.getattributegroup = function(req, res) {
 
 
 exports.getLoggingSchema = function(req, res) {
-    const { loggingDE } = req.body
+    const loggingDE = req.body.loggingDE
 
-    let resp = {
-        de: loggingDE
+    const props = [
+        'Name',
+        'FieldType',
+        'MaxLength',
+        'DataExtension.CustomerKey',
+        'IsPrimaryKey'
+    ];
+
+    const filter = {
+        leftOperand: 'DataExtension.Name',
+        operator: 'equals',
+        rightOperand: loggingDE
     }
-    res.json(200, resp)
+
+    sfmcClient.dataExtensionColumn({ props, filter }).get((err, resp) => {
+        if (err) {
+            console.log("\n\nerror \n\n")
+            console.log(err)
+            res.json(400, err)
+
+        } else {
+            console.log(resp)
+            res.json(200, resp)
+
+        }
+    });
+
 
 };
 
