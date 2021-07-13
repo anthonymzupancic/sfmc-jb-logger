@@ -245,7 +245,7 @@ exports.getLoggingSchema = function(req, res) {
 
     const filter = {
         leftOperand: 'DataExtension.CustomerKey',
-        operator: 'like',
+        operator: 'equals',
         rightOperand: loggingDE
     }
 
