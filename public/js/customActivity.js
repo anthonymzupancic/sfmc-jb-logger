@@ -67,7 +67,7 @@ define([
                     method: "POST",
                     url: "https://twilio-integration-dev.herokuapp.com/journeybuilder/getLoggingSchema",
                     data: {
-                        logginggDE: loggingDE
+                        loggingDE: loggingDE
                     }
                 })
                 .done(function(data) {
