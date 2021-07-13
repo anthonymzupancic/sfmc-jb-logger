@@ -79,7 +79,7 @@ define([
                         html += '<input class="w-full-textarea" name="exitCode" id="exitCode" />';
                         html += '</div>';
 
-                        $('#loggingFields').html(html)
+                        $('#loggingFields').innerHTML(html)
                     } else {
                         let html = '';
 
@@ -97,7 +97,7 @@ define([
                             html += '</div>'
                         })
 
-                        $('#loggingFields').html(html)
+                        $('#loggingFields').innerHTML(html)
 
                     }
                 });
