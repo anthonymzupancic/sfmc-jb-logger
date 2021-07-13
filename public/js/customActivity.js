@@ -38,7 +38,7 @@ define([
 
         let currentField = null;
 
-        $('#loggingFields').on('click', '.fields', function() {
+        $('#loggingFields').on('click', '.field', function() {
             currentField = $(this).attr('id')
             console.log(currentField)
         })
