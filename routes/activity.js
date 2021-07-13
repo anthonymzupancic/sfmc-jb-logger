@@ -233,7 +233,7 @@ exports.getattributegroup = function(req, res) {
 
 
 exports.getLoggingSchema = function(req, res) {
-    const loggingDE = new Array(req.body.loggingDE)
+    const loggingDE = req.body.loggingDE
 
     const props = [
         'Name',
