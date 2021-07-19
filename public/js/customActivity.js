@@ -112,6 +112,9 @@ define([
             localStorage.setItem('schemaHTML', html[0].innerHTML)
         })
 
+        $('#clearSchema').click(function() {
+            localStorage.clearItem('schemaHTML')
+        })
 
     }
 
