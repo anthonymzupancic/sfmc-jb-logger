@@ -113,7 +113,7 @@ define([
         })
 
         $('#clearSchema').click(function() {
-            localStorage.clearItem('schemaHTML')
+            localStorage.removeItem('schemaHTML')
         })
 
     }
