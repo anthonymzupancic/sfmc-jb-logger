@@ -8,11 +8,8 @@ var activity = require('./activity');
  */
 exports.index = function(req, res) {
     console.log(req)
-    express.static(path.join(__dirname, 'public'))
-    res.render('./public/index', {
-        title: 'Unauthenticated',
-        errorMessage: 'This app may only be loaded via Salesforce Marketing Cloud',
-    });
+        //express.static(path.join(__dirname, 'public'))
+    res.render('./public/index');
 
     // if (!req.session.token) {
     //     res.render('index', {
