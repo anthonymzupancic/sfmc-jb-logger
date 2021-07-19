@@ -7,7 +7,13 @@ var activity = require('./activity');
  * GET home page.
  */
 exports.index = function(req, res) {
-    // console.log(req)
+    console.log(req)
+
+    res.render('index', {
+        title: 'Unauthenticated',
+        errorMessage: 'This app may only be loaded via Salesforce Marketing Cloud',
+    });
+
     // if (!req.session.token) {
     //     res.render('index', {
     //         title: 'Unauthenticated',

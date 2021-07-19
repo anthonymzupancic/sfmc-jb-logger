@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.favicon());
 
 //app.use(express.static(path.join(__dirname, 'public')));
+app.use(routes.index);
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
