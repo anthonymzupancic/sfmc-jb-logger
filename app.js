@@ -7,7 +7,7 @@ var errorhandler = require('errorhandler');
 var http = require('http');
 var path = require('path');
 var request = require('request');
-var routes = require('./routes/index');
+var routes = require('./routes');
 var activity = require('./routes/activity');
 
 var app = express();
@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
