@@ -17,6 +17,14 @@ app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+var myLogger = function(req, res, next) {
+    console.log('LOGGED')
+    next()
+}
+
+app.use(myLogger)
+
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
