@@ -41,7 +41,6 @@ define([
             currentField = $(this).attr('id')
         })
 
-
         /*
             Add functionality for Message Textarea
             Inserts personalization at curser point

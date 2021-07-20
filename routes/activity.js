@@ -1,5 +1,4 @@
 'use strict';
-var util = require('util');
 const axios = require('axios');
 
 // Deps
@@ -12,7 +11,7 @@ var http = require('https');
 const ET_Client = require('sfmc-fuelsdk-node');
 const clientId = process.env.sfmcClientId;
 const clientSecret = process.env.sfmcClientSecret;
-const stack = 'S4';
+const stack = process.env.sfmcStack;
 const origin = process.env.sfmcRestURL;
 const authOrigin = process.env.sfmcAuthURL;
 const soapOrigin = process.env.sfmcSoapURL;
@@ -34,11 +33,6 @@ const authCreds = {
     "grant_type": 'client_credentials'
 }
 
-
-//Twilio Client
-const accountSid = process.env.twilioAccountSid;
-const authToken = process.env.twilioAccessToken;
-const client = require('twilio')(accountSid, authToken, { logLevel: 'debug' });
 
 exports.logExecuteData = [];
 

@@ -33,10 +33,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
-JWT(null, process.env.jwtSecret, (err, decoded) => {
-    console.log(decoded)
-});
-
 
 // Simple custom middleware
 function tokenFromJWT(err, req, res, next) {
