@@ -33,6 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
+
 // Simple custom middleware
 function tokenFromJWT(err, req, res, next) {
     if (err) {
@@ -72,7 +73,7 @@ app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
 app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
 
 
-app.use(express.static(path.join(__dirname, 'public')), tokenFromJWT);
+//app.use(express.static(path.join(__dirname, 'public')), tokenFromJWT);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
