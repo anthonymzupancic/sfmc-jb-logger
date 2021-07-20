@@ -35,7 +35,7 @@ app.use(myLogger)
 // Simple custom middleware
 function tokenFromJWT(req, res, next) {
     // Setup the signature for decoding the JWT
-    var jwt = new JWT({ appSignature: process.env. });
+    var jwt = new JWT({ appSignature: process.env.jwtSecret });
 
     // Object representing the data in the JWT
     var jwtData = jwt.decode(req);
