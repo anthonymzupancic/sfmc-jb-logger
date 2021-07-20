@@ -4,9 +4,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var errorhandler = require('errorhandler');
+const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var http = require('http');
-var path = require('path');
 var request = require('request');
 var routes = require('./routes');
 var activity = require('./routes/activity');
@@ -77,7 +77,7 @@ app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
 app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(Path.join(__dirname, 'public')));
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
