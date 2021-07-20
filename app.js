@@ -32,7 +32,7 @@ app.use(myLogger)
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Express in Development Mode
@@ -41,7 +41,7 @@ if ('development' == app.get('env')) {
 }
 
 // HubExchange Routes
-//app.get('/', routes.index);
+app.get('/', routes.index);
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
 
