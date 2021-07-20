@@ -4,12 +4,12 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var errorhandler = require('errorhandler');
-const JWT = require('./lib/jwtDecoder.js');
 var http = require('http');
 var path = require('path');
 var request = require('request');
 var routes = require('./routes');
 var activity = require('./routes/activity');
+const JWT = require(path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 
 var app = express();
 
