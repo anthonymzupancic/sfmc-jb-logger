@@ -15,10 +15,12 @@ exports.index = function(req, res) {
         console.log(req.session.token)
         console.log('*** Token ***')
 
-        res.render('index', {
-            title: 'Journey Builder Activity',
-            results: activity.logExecuteData,
-        });
+        // res.render('index', {
+        //     title: 'Journey Builder Activity',
+        //     results: activity.logExecuteData,
+        // });
+
+        res.send('./public/index.html')
 
     } else if (!req.session) {
         res.status(404).send('Unauthorized')
@@ -28,8 +30,7 @@ exports.index = function(req, res) {
 
 exports.login = function(req, res) {
     console.log('req.body: ', req.body);
-    res.sendFile(__dirname + "/public/index.html");
-
+    res.redirect('/');
 };
 
 exports.logout = function(req, res) {
