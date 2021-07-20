@@ -28,7 +28,7 @@ app.use(myLogger)
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.get('/', express.static(path.join(__dirname, 'public')));
 
 
 // Express in Development Mode
