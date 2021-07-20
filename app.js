@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.favicon());
 
 //app.use(express.static(path.join(__dirname, 'public')));
-app.get('/', routes.index);
+app.use(routes.index);
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
@@ -29,7 +29,7 @@ if ('development' == app.get('env')) {
 }
 
 // HubExchange Routes
-app.get('/', routes.index);
+//app.get('/', routes.index);
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
 
