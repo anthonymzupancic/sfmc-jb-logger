@@ -19,6 +19,8 @@ exports.index = function(req, res) {
         //     results: activity.logExecuteData,
         // });
         res.render('index');
+    } else {
+        res.status(404).send('File not found')
     }
 
 };
