@@ -46,7 +46,6 @@ function tokenFromJWT(req, res, next) {
     // persistent storage system and manage tokens properly with
     // node-fuel
     req.session.token = jwtData.token;
-    console.log(req.session.token)
     next();
 }
 
@@ -59,7 +58,7 @@ if ('development' == app.get('env')) {
 }
 
 // HubExchange Routes
-app.get('/', routes.index);
+app.get('/', tokenFromJWT, routes.index);
 app.post('/login', tokenFromJWT, routes.login);
 app.post('/logout', routes.logout);
 
