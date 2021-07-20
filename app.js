@@ -19,16 +19,16 @@ app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-var myLogger = function(req, res, next) {
-    console.log('LOGGED')
-    console.log(req)
+// var myLogger = function(req, res, next) {
+//     console.log('LOGGED')
+//     console.log(req)
 
-    //let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F';
-    //res.redirect(`https://mcbysvkcmn3dcll1b2pnw0rw7c94.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=${process.env.sfmcClientId}&redirect_uri=${redirectURI}`);
-    next()
-}
+//     //let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F';
+//     //res.redirect(`https://mcbysvkcmn3dcll1b2pnw0rw7c94.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=${process.env.sfmcClientId}&redirect_uri=${redirectURI}`);
+//     next()
+// }
 
-app.use(myLogger)
+// app.use(myLogger)
 
 //app.use(express.methodOverride());
 //app.use(express.favicon());
@@ -72,7 +72,7 @@ app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
 app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')), tokenFromJWT);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
