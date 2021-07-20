@@ -37,6 +37,10 @@ function tokenFromJWT(req, res, next) {
     // Setup the signature for decoding the JWT
     var jwt = new JWT({ appSignature: process.env.jwtSecret });
 
+    if (!jwt) {
+        res.status(404).send('File not found')
+    }
+
     // Object representing the data in the JWT
     var jwtData = jwt.decode(req);
 
