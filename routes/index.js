@@ -2,7 +2,8 @@
 
 // Deps
 var activity = require('./activity');
-
+var express = require('express');
+var path = require('path');
 
 /*
  * GET home page.
@@ -27,7 +28,8 @@ exports.index = function(req, res) {
 
 exports.login = function(req, res) {
     console.log('req.body: ', req.body);
-    res.redirect('/');
+    res.sendFile(__dirname + "/public/index.html");
+
 };
 
 exports.logout = function(req, res) {
