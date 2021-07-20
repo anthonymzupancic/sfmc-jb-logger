@@ -34,13 +34,12 @@ app.use(myLogger)
 //app.use(express.favicon());
 
 // Simple custom middleware
-function tokenFromJWT(req, res, next) {
+function tokenFromJWT(err, req, res, next) {
+    if (err) {
+        res.status(404).send('Unauthorized')
+    }
     // Setup the signature for decoding the JWT
     var jwt = new JWT({ appSignature: process.env.jwtSecret });
-
-    if (typeof jwt === 'undefined') {
-        res.status(404).send('File not found')
-    }
 
     // Object representing the data in the JWT
     var jwtData = jwt.decode(req);
