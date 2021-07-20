@@ -50,13 +50,14 @@ function tokenFromJWT(err, req, res, next) {
     next();
 }
 
-
-
+app.use(tokenFromJWT)
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 // HubExchange Routes
 app.get('/', tokenFromJWT, routes.index);
@@ -73,7 +74,6 @@ app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
 app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
 
 
-//app.use(express.static(path.join(__dirname, 'public')), tokenFromJWT);
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
