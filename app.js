@@ -33,6 +33,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
+JWT(null, process.env.jwtSecret, (err, decoded) => {
+    console.log(decoded)
+});
+
 
 // Simple custom middleware
 function tokenFromJWT(err, req, res, next) {
@@ -50,14 +54,11 @@ function tokenFromJWT(err, req, res, next) {
     next();
 }
 
-app.use(tokenFromJWT)
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 // HubExchange Routes
 app.get('/', tokenFromJWT, routes.index);
@@ -73,7 +74,7 @@ app.post('/journeybuilder/execute/', activity.execute);
 app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
 app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
 
-
+//app.use(express.static(path.join(__dirname, 'public')));
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
