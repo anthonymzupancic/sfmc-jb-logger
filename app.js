@@ -42,7 +42,7 @@ if ('development' == app.get('env')) {
 
 // HubExchange Routes
 app.get('/', routes.index);
-app.post('/login', routes.login);
+app.get('/login', routes.login);
 app.post('/logout', routes.logout);
 
 // Custom Hello World Activity Routes
