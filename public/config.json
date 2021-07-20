@@ -8,7 +8,7 @@
     "type": "REST",
     "lang": {
         "en-US": {
-            "name": "SMS App",
+            "name": "Logger App",
             "description": "A Template for a custom Journey Builder activity",
             "step1Label": "Configure Activity"
         }

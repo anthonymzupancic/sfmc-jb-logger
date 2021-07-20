@@ -10,8 +10,8 @@ var activity = require('./activity');
 exports.index = function(req, res) {
     //console.log(req)
 
-    console.log('*** in index route ***')
-    console.log(req.session)
+    // console.log('*** in index route ***')
+    // console.log(req.session)
 
     if (req.session.token) {
         res.render('index', {
