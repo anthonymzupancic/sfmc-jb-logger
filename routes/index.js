@@ -9,7 +9,7 @@ var path = require('path');
  * GET home page.
  */
 exports.index = function(req, res) {
-
+    console.log("INDEX ROUTE")
     if (req.session && req.session.token) {
         console.log('*** Token ***')
         console.log(req.session.token)
@@ -29,10 +29,14 @@ exports.index = function(req, res) {
 };
 
 exports.login = function(req, res) {
+    console.log("LOGIN ROUTE")
+
     console.log('req.body: ', req.body);
     res.redirect('/');
 };
 
 exports.logout = function(req, res) {
+    console.log("LOGOUT ROUTE")
+
     req.session.token = '';
 };
