@@ -14,11 +14,13 @@ exports.index = function(req, res) {
     // console.log(req.session)
 
     if (req.session.token) {
-        res.render('index', {
-            title: 'Journey Builder Activity',
-            results: activity.logExecuteData,
-        });
+        // res.render('index', {
+        //     title: 'Journey Builder Activity',
+        //     results: activity.logExecuteData,
+        // });
+        res.render('index');
     }
+
 };
 
 exports.login = function(req, res) {
