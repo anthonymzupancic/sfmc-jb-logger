@@ -45,10 +45,6 @@ function tokenFromJWT(err, req, res, next) {
     var jwtData = jwt.decode(req);
 
     // Bolt the data we need to make this call onto the session.
-    // Since the UI for this app is only used as a management console,
-    // we can get away with this. Otherwise, you should use a
-    // persistent storage system and manage tokens properly with
-    // node-fuel
     req.session.token = jwtData.token;
     next();
 }
