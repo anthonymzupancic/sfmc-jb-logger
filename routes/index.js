@@ -2,14 +2,14 @@
 
 // Deps
 var activity = require('./activity');
+var path = require('path');
 
 /*
  * GET home page.
  */
 exports.index = function(req, res) {
     console.log(req)
-        //express.static(path.join(__dirname, 'public'))
-    res.render('./public/index');
+    res.send(express.static(path.join(__dirname, 'public')));
 
     // if (!req.session.token) {
     //     res.render('index', {
