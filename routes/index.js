@@ -13,13 +13,13 @@ exports.index = function(req, res) {
     // console.log('*** in index route ***')
     // console.log(req.session)
 
-    if (req.session.token) {
+    if (req.session && req.session.token) {
         // res.render('index', {
         //     title: 'Journey Builder Activity',
         //     results: activity.logExecuteData,
         // });
         res.render('index');
-    } else {
+    } else if (!req.session) {
         res.status(404).send('File not found')
     }
 
