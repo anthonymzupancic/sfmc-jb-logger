@@ -32,7 +32,24 @@ app.use(myLogger)
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
-//app.use(express.static(path.join(__dirname, 'public')));
+// Simple custom middleware
+function tokenFromJWT(req, res, next) {
+    // Setup the signature for decoding the JWT
+    var jwt = new JWT({ appSignature: process.env. });
+
+    // Object representing the data in the JWT
+    var jwtData = jwt.decode(req);
+
+    // Bolt the data we need to make this call onto the session.
+    // Since the UI for this app is only used as a management console,
+    // we can get away with this. Otherwise, you should use a
+    // persistent storage system and manage tokens properly with
+    // node-fuel
+    req.session.token = jwtData.token;
+    next();
+}
+
+
 
 
 // Express in Development Mode
@@ -42,8 +59,9 @@ if ('development' == app.get('env')) {
 
 // HubExchange Routes
 app.get('/', routes.index);
-app.get('/login', routes.login);
+app.post('/login', tokenFromJWT, routes.login);
 app.post('/logout', routes.logout);
+
 
 // Custom Hello World Activity Routes
 app.post('/journeybuilder/save/', activity.save);
@@ -52,6 +70,9 @@ app.post('/journeybuilder/publish/', activity.publish);
 app.post('/journeybuilder/execute/', activity.execute);
 app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
 app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
+
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
