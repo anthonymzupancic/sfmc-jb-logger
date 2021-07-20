@@ -18,6 +18,8 @@ exports.index = function(req, res) {
             errorMessage: 'This app may only be loaded via Salesforce Marketing Cloud',
         });
     } else {
+        console.log('*** in index route ***')
+        console.log(req.session.token)
         res.render('index', {
             title: 'Journey Builder Activity',
             results: activity.logExecuteData,

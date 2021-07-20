@@ -46,6 +46,7 @@ function tokenFromJWT(req, res, next) {
     // persistent storage system and manage tokens properly with
     // node-fuel
     req.session.token = jwtData.token;
+    console.log(req.session.token)
     next();
 }
 
