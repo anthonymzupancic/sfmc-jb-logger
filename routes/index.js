@@ -1,6 +1,7 @@
 'use strict';
 
 // Deps
+var express = require('express');
 var activity = require('./activity');
 var path = require('path');
 
