@@ -10,6 +10,7 @@ var request = require('request');
 var routes = require('./routes');
 var activity = require('./routes/activity');
 const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
+const axios = require('axios');
 
 var app = express();
 
@@ -23,8 +24,17 @@ var auth = function(req, res, next) {
     console.log('LOGGED')
     console.log(req)
 
+    const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
     let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F';
-    res.redirect(`https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=${process.env.sfmcClientId}&redirect_uri=${redirectURI}`);
+
+    axios.get(`${authBase}${process.env.sfmcClientId}&redirect_uri=${redirectURI}`)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        });
+
     next()
 }
 
