@@ -12,7 +12,7 @@ var activity = require('./routes/activity');
 const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
 const axios = require('axios');
 
-var app = express.Router();
+var app = express();
 var admin = express.Router();
 
 // Configure Express
