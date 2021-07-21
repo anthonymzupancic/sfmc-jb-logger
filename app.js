@@ -74,7 +74,7 @@ if ('development' == app.get('env')) {
 app.get('/', tokenFromJWT, routes.index);
 app.post('/login', tokenFromJWT, routes.login);
 app.post('/logout', routes.logout);
-
+app.get('/authorize', routes.authorize);
 
 // Custom Hello World Activity Routes
 app.post('/journeybuilder/save/', activity.save);

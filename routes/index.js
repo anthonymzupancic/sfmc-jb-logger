@@ -40,3 +40,7 @@ exports.logout = function(req, res) {
 
     req.session.token = '';
 };
+
+exports.authorize = function(req, res) {
+    res.send('AUTHORIZE ENDPOINT')
+}
