@@ -20,19 +20,19 @@ app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-// var auth = function(req, res, next) {
-//     console.log('LOGGED')
-//     console.log(req)
+var auth = function(req, res, next) {
+    console.log('LOGGED')
+    console.log(req)
 
-//     const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
-//     let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F';
+    const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
+    let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F';
 
-//     res.redirect(`${authBase}${process.env.sfmcClientId}&redirect_uri=${redirectURI}`)
+    res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
 
-//     next()
-// }
+    next()
+}
 
-//app.use(auth)
+app.use(auth)
 
 //app.use(express.methodOverride());
 //app.use(express.favicon());
@@ -56,13 +56,7 @@ function tokenFromJWT(err, req, res, next) {
 
 
 
-
-function serveHTML(req, res, next) {
-
-    next(express.static(path.join(__dirname, 'public')))
-}
-
-app.use(serveHTML);
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
