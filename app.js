@@ -33,6 +33,7 @@ var auth = function(req, res, next) {
     next()
 }
 
+admin.use('/', admin)
 admin.use(auth)
 
 
