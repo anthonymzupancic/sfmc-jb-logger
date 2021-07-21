@@ -19,7 +19,6 @@ app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, 'public')));
 
 
 var auth = function(req, res, next) {
@@ -29,12 +28,19 @@ var auth = function(req, res, next) {
     const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
     let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F';
 
-    res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
+    axios.get(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 
     next()
 }
 
 app.use(auth)
+app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use(express.methodOverride());
 //app.use(express.favicon());
