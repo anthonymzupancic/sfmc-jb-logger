@@ -13,7 +13,6 @@ const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
 const axios = require('axios');
 
 var app = express();
-var admin = express.Router();
 
 // Configure Express
 app.set('port', process.env.PORT || 3000);
@@ -21,19 +20,19 @@ app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-// var auth = function(req, res, next) {
-//     console.log('LOGGED')
-//         //console.log(req)
+var auth = function(req, res, next) {
+    console.log('LOGGED')
+        //console.log(req)
 
-//     const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
-//     let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F/authorize';
+    const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
+    let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F/authorize';
 
-//     res.redirect(`${authBase}${process.env.sfmcAuthClientID}?redirect_uri=${redirectURI}`)
+    res.redirect(`${authBase}${process.env.sfmcAuthClientID}?redirect_uri=${redirectURI}`)
 
-//     next()
-// }
+    next()
+}
 
-//admin.use(auth)
+app.use(auth)
 
 
 //admin.use(express.static(path.join(__dirname, 'public')));
@@ -67,10 +66,10 @@ if ('development' == app.get('env')) {
 }
 
 // HubExchange Routes
-admin.use('/', routes.index);
-admin.get('/authorize', routes.authorize);
-admin.post('/login', routes.login);
-admin.post('/logout', routes.logout);
+app.use('/', routes.index);
+app.get('/authorize', routes.authorize);
+app.post('/login', routes.login);
+app.post('/logout', routes.logout);
 
 
 // Custom Hello World Activity Routes
