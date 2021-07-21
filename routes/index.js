@@ -28,7 +28,8 @@ exports.logout = function(req, res) {
 };
 
 exports.authorize = function(req, res) {
+    console.log('Authorize')
+    console.log(req.body)
 
-    console.log(req)
     res.send('AUTHORIZE')
 }
