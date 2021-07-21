@@ -44,9 +44,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 var authorize = function(req, res, next) {
     res.redirect('/authorize')
+    next()
 }
-
 app.use(authorize)
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use(express.methodOverride());
@@ -78,10 +79,12 @@ if ('development' == app.get('env')) {
 }
 
 // HubExchange Routes
+app.get('/authorize', routes.authorize);
+app.get('/authenticate', routes.authorize);
 app.get('/', tokenFromJWT, routes.index);
 app.post('/login', tokenFromJWT, routes.login);
 app.post('/logout', routes.logout);
-app.get('/authorize', routes.authorize);
+
 
 // Custom Hello World Activity Routes
 app.post('/journeybuilder/save/', activity.save);
