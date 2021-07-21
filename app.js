@@ -21,20 +21,19 @@ app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-var auth = function(req, res, next) {
-    console.log('LOGGED')
-        //console.log(req)
+// var auth = function(req, res, next) {
+//     console.log('LOGGED')
+//         //console.log(req)
 
-    const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
-    let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F/authorize';
+//     const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
+//     let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F/authorize';
 
-    res.redirect(`${authBase}${process.env.sfmcAuthClientID}?redirect_uri=${redirectURI}`)
+//     res.redirect(`${authBase}${process.env.sfmcAuthClientID}?redirect_uri=${redirectURI}`)
 
-    next()
-}
+//     next()
+// }
 
-admin.use('/', admin)
-    //admin.use(auth)
+//admin.use(auth)
 
 
 //admin.use(express.static(path.join(__dirname, 'public')));
@@ -43,21 +42,21 @@ admin.use('/', admin)
 //app.use(express.favicon());
 
 
-// Simple custom middleware
-function tokenFromJWT(err, req, res, next) {
-    if (err) {
-        res.status(404).send('Unauthorized')
-    }
-    // Setup the signature for decoding the JWT
-    var jwt = new JWT({ appSignature: process.env.jwtSecret });
+// // Simple custom middleware
+// function tokenFromJWT(err, req, res, next) {
+//     if (err) {
+//         res.status(404).send('Unauthorized')
+//     }
+//     // Setup the signature for decoding the JWT
+//     var jwt = new JWT({ appSignature: process.env.jwtSecret });
 
-    // Object representing the data in the JWT
-    var jwtData = jwt.decode(req);
+//     // Object representing the data in the JWT
+//     var jwtData = jwt.decode(req);
 
-    // Bolt the data we need to make this call onto the session.
-    req.session.token = jwtData.token;
-    next();
-}
+//     // Bolt the data we need to make this call onto the session.
+//     req.session.token = jwtData.token;
+//     next();
+// }
 
 
 
@@ -68,8 +67,8 @@ if ('development' == app.get('env')) {
 }
 
 // HubExchange Routes
-admin.get('/authorize', routes.authorize);
 admin.get('/', routes.index);
+admin.get('/authorize', routes.authorize);
 admin.post('/login', routes.login);
 admin.post('/logout', routes.logout);
 
