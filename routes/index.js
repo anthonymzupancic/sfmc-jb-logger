@@ -42,5 +42,12 @@ exports.logout = function(req, res) {
 };
 
 exports.authorize = function(req, res) {
-    res.send('AUTHORIZE ENDPOINT')
+    const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
+    let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F';
+
+    res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
+}
+
+exports.authenticate = function(req, res) {
+    res.send('AUTHENTICATE')
 }

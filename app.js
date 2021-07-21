@@ -21,25 +21,32 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
-var auth = function(req, res, next) {
-    console.log('LOGGED')
-    console.log(req)
+// var auth = function(req, res, next) {
+//     console.log('LOGGED')
+//     console.log(req)
 
-    const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
-    let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F';
+//     const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
+//     let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2F';
 
-    axios.get(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
-        .then((res) => {
-            console.log(res)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+//     axios.get(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
+//         .then((res) => {
+//             console.log(res)
+//         })
+//         .catch((err) => {
+//             console.log(err)
+//         })
 
-    next()
+//     next()
+// }
+
+// app.use(auth)
+
+
+var authorize = function(req, res, next) {
+    res.redirect('/authorize')
 }
 
-app.use(auth)
+app.use(authorize)
 app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use(express.methodOverride());
