@@ -67,7 +67,7 @@ if ('development' == app.get('env')) {
 }
 
 // HubExchange Routes
-admin.get('/', routes.index);
+app.get('/', routes.index);
 admin.get('/authorize', routes.authorize);
 admin.post('/login', routes.login);
 admin.post('/logout', routes.logout);
