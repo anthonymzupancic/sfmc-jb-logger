@@ -19,6 +19,8 @@ app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 var auth = function(req, res, next) {
     console.log('LOGGED')
@@ -56,7 +58,6 @@ function tokenFromJWT(err, req, res, next) {
 
 
 
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
