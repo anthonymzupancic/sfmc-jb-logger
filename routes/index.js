@@ -5,14 +5,15 @@ var activity = require('./activity');
 var express = require('express');
 var path = require('path');
 const { nextTick } = require('process');
+const { default: axios } = require('axios');
 
 /*
  * GET home page.
  */
 exports.index = function(req, res) {
     console.log("INDEX ROUTE")
-    console.log(req)
-    console.log(req.query)
+        //console.log(req)
+        //console.log(req.query)
 
     if (!req.query.code) {
         const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
@@ -20,8 +21,25 @@ exports.index = function(req, res) {
 
         res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
     } else {
+        const authCheck = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/token';
+        let options = {
+            "grant_type": "authorization_code",
+            "code": req.query.code,
+            "client_id": process.env.sfmcAuthClientID,
+            "redirect_uri": redirectURI
+        }
 
-        res.send(req.query)
+        axios.post(authCheck, options)
+            .then((res) => {
+                console.log(res)
+                res.send(res)
+            })
+            .catch((err) => {
+                console.log(err)
+                res.send(err)
+
+            })
+
 
     }
 
