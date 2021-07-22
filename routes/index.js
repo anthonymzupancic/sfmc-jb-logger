@@ -20,14 +20,13 @@ exports.index = function(req, res) {
 
     res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
 
-
 };
 
 exports.login = function(req, res) {
     console.log("LOGIN ROUTE")
 
     console.log('req.body: ', req.body);
-    res.redirect('/');
+    res.send('login');
 };
 
 exports.logout = function(req, res) {
