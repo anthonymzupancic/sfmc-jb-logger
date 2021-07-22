@@ -29,8 +29,9 @@ exports.logout = function(req, res) {
 
 exports.authorize = function(req, res) {
     console.log('Authorize')
-    const path = req.path;
-    console.log(path)
+    const params = req.params;
+    const code = params.code;
+    console.log(params)
+    console.log(code)
 
-    next()
 }
