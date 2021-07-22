@@ -52,7 +52,7 @@ exports.index = async function(req, res) {
             let validation = await validateAuthCode(config, code)
             console.log(validation)
             if (validation.data.access_token) {
-                res.send('valid')
+                res.sendFile('./public/index.html')
             } else {
                 res.send('Unauthorized')
             }
