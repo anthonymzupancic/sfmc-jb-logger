@@ -25,32 +25,36 @@ async function validateAuthCode(config, code) {
  * GET home page.
  */
 exports.index = async function(req, res) {
-    console.log("INDEX ROUTE")
-        //console.log(req)
-        //console.log(req.query)
-        //updates
-    let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2Fauthorize';
+    try {
+        console.log("INDEX ROUTE")
+            //console.log(req)
+            //console.log(req.query)
+            //updates
+        let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2Fauthorize';
 
-    if (!req.query.code) {
-        const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
+        if (!req.query.code) {
+            const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
 
-        res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
-    } else {
-        const code = req.query.code;
-        const config = {
-            url: 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/token',
-            options: {
-                "grant_type": "authorization_code",
-                "code": req.query.code,
-                "client_id": process.env.sfmcAuthClientID,
-                "client_secret": process.env.sfmcAuthClientSecret,
-                "redirect_uri": "https://twilio-integration-dev.herokuapp.com/authorize"
+            res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
+        } else {
+            const code = req.query.code;
+            const config = {
+                url: 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/token',
+                options: {
+                    "grant_type": "authorization_code",
+                    "code": req.query.code,
+                    "client_id": process.env.sfmcAuthClientID,
+                    "client_secret": process.env.sfmcAuthClientSecret,
+                    "redirect_uri": "https://twilio-integration-dev.herokuapp.com/authorize"
+                }
             }
-        }
 
-        let authorization = await validateAuthCode(config, code)
-        console.log(authorization)
-        res.send(authorization)
+            let authorization = await validateAuthCode(config, code)
+            console.log(authorization)
+            res.send(authorization)
+        }
+    } catch (err) {
+        res.status(404).send(err)
     }
 
 
