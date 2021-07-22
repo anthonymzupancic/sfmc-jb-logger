@@ -48,9 +48,9 @@ exports.index = async function(req, res) {
             }
         }
 
-        let authorization = await authCheck(config, code)
+        let authorization = await validateAuthCode(config, code)
         console.log(authorization)
-
+        res.send(authorization)
     }
 
 
