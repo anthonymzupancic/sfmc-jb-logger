@@ -12,13 +12,19 @@ const { nextTick } = require('process');
 exports.index = function(req, res) {
     console.log("INDEX ROUTE")
     console.log(req)
-    console.log(req.params)
+    console.log(req.query)
 
+    if (!req.query && !req.query.code) {
+        const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
+        let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2Fauthorize';
 
-    const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
-    let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2Fauthorize';
+        res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
+    } else {
 
-    res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
+        res.send(req.query)
+
+    }
+
 
 };
 
@@ -37,8 +43,8 @@ exports.logout = function(req, res) {
 
 exports.authorize = function(req, res) {
     console.log('Authorize')
-    const params = req.params;
-    const code = params.code;
+    const query = req.query;
+    const code = query.code;
     console.log(params)
     console.log(code)
     res.send(code)
