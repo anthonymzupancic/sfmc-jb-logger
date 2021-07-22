@@ -20,19 +20,6 @@ app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-var auth = function(req, res, next) {
-    console.log('LOGGED')
-        //console.log(req)
-
-    const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
-    let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2Fauthorize';
-
-    res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
-    next()
-}
-
-
-
 //admin.use(express.static(path.join(__dirname, 'public')));
 
 //app.use(express.methodOverride());
@@ -63,11 +50,11 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
-app.use(auth)
+
 
 // HubExchange Routes
-app.use('/authorize', routes.authorize);
 app.use('/', routes.index);
+app.use('/authorize', routes.authorize);
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
 
