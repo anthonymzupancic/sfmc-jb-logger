@@ -27,7 +27,7 @@ exports.index = function(req, res) {
             "grant_type": "authorization_code",
             "code": req.query.code,
             "client_id": process.env.sfmcAuthClientID,
-            "redirect_uri": "https://twilio-integration-dev.herokuapp.com"
+            "redirect_uri": "https://twilio-integration-dev.herokuapp.com/authorize"
         }
 
         axios.post(authCheck, options)
