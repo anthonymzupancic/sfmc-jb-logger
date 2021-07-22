@@ -15,7 +15,7 @@ exports.index = function(req, res) {
         //console.log(req)
         //console.log(req.query)
         //updates
-    let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com';
+    let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2Fauthorize';
 
     if (!req.query.code) {
         const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
@@ -27,7 +27,7 @@ exports.index = function(req, res) {
             "grant_type": "authorization_code",
             "code": req.query.code,
             "client_id": process.env.sfmcAuthClientID,
-            "redirect_uri": redirectURI
+            "redirect_uri": "https%3A%2F%2Ftwilio-integration-dev.herokuapp.com"
         }
 
         axios.post(authCheck, options)
