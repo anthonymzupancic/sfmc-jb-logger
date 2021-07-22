@@ -11,7 +11,7 @@ const { nextTick } = require('process');
  */
 exports.index = function(req, res) {
     console.log("INDEX ROUTE")
-        //console.log(req)
+    console.log(req)
     console.log(req.params)
 
 
@@ -41,5 +41,5 @@ exports.authorize = function(req, res) {
     const code = params.code;
     console.log(params)
     console.log(code)
-
+    res.send(code)
 }
