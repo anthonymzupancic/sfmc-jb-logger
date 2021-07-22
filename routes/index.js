@@ -27,7 +27,7 @@ exports.index = function(req, res) {
             "grant_type": "authorization_code",
             "code": req.query.code,
             "client_id": process.env.sfmcAuthClientID,
-            "redirect_uri": "https%3A%2F%2Ftwilio-integration-dev.herokuapp.com"
+            "redirect_uri": "https://twilio-integration-dev.herokuapp.com"
         }
 
         axios.post(authCheck, options)
@@ -38,7 +38,6 @@ exports.index = function(req, res) {
             .catch((err) => {
                 console.log(err)
                 res.send(err)
-
             })
 
 
