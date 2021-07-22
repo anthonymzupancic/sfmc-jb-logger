@@ -31,16 +31,21 @@ exports.index = function(req, res) {
             "redirect_uri": "https://twilio-integration-dev.herokuapp.com/authorize"
         }
 
+        let autenticated = false;
         axios.post(authCheck, options)
             .then((res) => {
                 console.log(res)
-                res.send(res)
+                if (res.data.access_token)
+                    authenticated = true;
             })
             .catch((err) => {
                 console.log(err)
                 res.send(err)
             })
 
+
+        if (authenticated)
+            res.sendFile('./public/index.html')
 
     }
 
