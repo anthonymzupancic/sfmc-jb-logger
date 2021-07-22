@@ -29,7 +29,8 @@ exports.logout = function(req, res) {
 
 exports.authorize = function(req, res) {
     console.log('Authorize')
-    console.log(req.body)
+    const path = req.path;
+    console.log(path)
 
-    res.send('AUTHORIZE')
+    res.redirect('/')
 }
