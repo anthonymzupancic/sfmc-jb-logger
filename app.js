@@ -54,7 +54,7 @@ if ('development' == app.get('env')) {
 
 // HubExchange Routes
 app.use('/', routes.index);
-app.use('/authorize', routes.authorize);
+app.get('/authorize', routes.authorize);
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
 
