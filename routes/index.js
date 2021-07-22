@@ -49,9 +49,13 @@ exports.index = async function(req, res) {
                 }
             }
 
-            let authorization = await validateAuthCode(config, code)
-            console.log(authorization)
-            res.send(authorization)
+            let validation = await validateAuthCode(config, code)
+            console.log(validation)
+            if (validation.data.access_token) {
+                res.send('valid')
+            } else {
+                res.send('Unauthorized')
+            }
         }
     } catch (err) {
         res.status(404).send(err)
