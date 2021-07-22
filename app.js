@@ -28,9 +28,8 @@ var auth = function(req, res, next) {
     let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2Fauthorize';
 
     res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
+    next()
 }
-
-app.use(auth)
 
 
 //admin.use(express.static(path.join(__dirname, 'public')));
@@ -64,7 +63,7 @@ if ('development' == app.get('env')) {
 }
 
 // HubExchange Routes
-app.use('/', routes.index);
+app.use('/', auth, routes.index);
 app.use('/authorize', routes.authorize);
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
