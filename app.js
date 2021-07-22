@@ -20,7 +20,6 @@ app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-//admin.use(express.static(path.join(__dirname, 'public')));
 
 //app.use(express.methodOverride());
 //app.use(express.favicon());
@@ -66,6 +65,8 @@ app.post('/journeybuilder/publish/', activity.publish);
 app.post('/journeybuilder/execute/', activity.execute);
 app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
 app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 http.createServer(app).listen(app.get('port'), function() {
