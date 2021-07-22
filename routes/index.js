@@ -4,6 +4,7 @@
 var activity = require('./activity');
 var express = require('express');
 var path = require('path');
+const { nextTick } = require('process');
 
 /*
  * GET home page.
@@ -11,7 +12,6 @@ var path = require('path');
 exports.index = function(req, res) {
     console.log("INDEX ROUTE")
     res.send('INDEX')
-
 };
 
 exports.login = function(req, res) {
@@ -32,5 +32,5 @@ exports.authorize = function(req, res) {
     const path = req.path;
     console.log(path)
 
-    res.redirect('/')
+    next()
 }
