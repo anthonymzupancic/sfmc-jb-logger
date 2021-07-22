@@ -28,8 +28,6 @@ var auth = function(req, res, next) {
     let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2Fauthorize';
 
     res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
-
-    next()
 }
 
 app.use(auth)
