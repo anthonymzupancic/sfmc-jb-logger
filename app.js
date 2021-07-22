@@ -32,6 +32,7 @@ var auth = function(req, res, next) {
 }
 
 
+
 //admin.use(express.static(path.join(__dirname, 'public')));
 
 //app.use(express.methodOverride());
@@ -62,8 +63,10 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
+app.use(auth)
+
 // HubExchange Routes
-app.use('/', auth, routes.index);
+app.use('/', routes.index);
 app.use('/authorize', routes.authorize);
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
