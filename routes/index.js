@@ -14,6 +14,7 @@ exports.index = function(req, res) {
     console.log("INDEX ROUTE")
         //console.log(req)
         //console.log(req.query)
+        //updates
     let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com%2Fauthorize';
 
     if (!req.query.code) {
