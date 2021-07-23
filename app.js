@@ -47,7 +47,7 @@ const getCode = ((req, res, next) => {
     }
 })
 
-const verifyCode = ((req, res, next) => {
+const verifyCode = async((req, res, next) => {
     try {
         if (req.query.code) {
             const config = {
