@@ -82,7 +82,8 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'public')));
+
 // HubExchange Routes
 app.get('/', routes.index);
 app.post('/login', routes.login);
