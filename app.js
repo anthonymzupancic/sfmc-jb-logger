@@ -84,6 +84,8 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
+app.use(getCode)
+app.use(verifyCode)
 app.use(express.static(path.join(__dirname, 'public')));
 
 // HubExchange Routes
