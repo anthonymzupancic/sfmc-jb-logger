@@ -27,7 +27,7 @@ const { default: axios } = require('axios');
 exports.index = function(req, res) {
     try {
         console.log("INDEX ROUTE")
-        console.log(req.body)
+        console.log(req)
             //if( !req.session.token ) {
             //     res.render( 'index', {
             //         title: 'Unauthenticated',
