@@ -50,7 +50,9 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
     try {
-        if (req.query.code) {
+        const code = req.query.code
+
+        if (code) {
             const config = {
                 url: 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/token',
                 options: {
@@ -70,7 +72,7 @@ app.use((req, res, next) => {
                 next()
             }
         } else {
-
+            res.send('Unautorized: no code provided.')
         }
     } catch (err) {
         console.log(err)
