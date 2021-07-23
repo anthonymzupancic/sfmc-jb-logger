@@ -64,13 +64,19 @@ app.use((req, res, next) => {
                 }
             }
 
-            let validation = validateAuthCode(config, code)
-            console.log(validation)
-            if (!validation.data.access_token) {
-                res.send('Unauthorized')
-            } else {
-                next()
-            }
+            axios.post(config.url, config.options)
+                .then((res) => {
+                    if (!res.data.access_token) {
+                        res.send('Unauthorized')
+                    } else {
+                        next()
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                    res.send(err)
+                })
+
         } else {
             res.send('Unautorized: no code provided.')
         }
