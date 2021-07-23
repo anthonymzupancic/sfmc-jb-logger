@@ -47,7 +47,7 @@ const getCode = ((req, res, next) => {
     }
 })
 
-const verifyCode = async((req, res, next) => {
+const verifyCode = ((req, res, next) => {
     try {
         if (req.query.code) {
             const config = {
@@ -61,7 +61,7 @@ const verifyCode = async((req, res, next) => {
                 }
             }
 
-            let validation = await validateAuthCode(config, code)
+            let validation = validateAuthCode(config, code)
             console.log(validation)
             if (!validation.data.access_token) {
                 res.send('Unauthorized')
