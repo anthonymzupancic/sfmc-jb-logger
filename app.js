@@ -38,7 +38,7 @@ async function validateAuthCode(config, code) {
     }
 }
 
-const getCode = ((req, res, next) => {
+app.use((req, res, next) => {
     if (req.query.code) {
         next()
     } else {
@@ -47,7 +47,7 @@ const getCode = ((req, res, next) => {
     }
 })
 
-const verifyCode = ((req, res, next) => {
+app.use((req, res, next) => {
     try {
         if (req.query.code) {
             const config = {
@@ -84,8 +84,6 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
-app.use(getCode)
-app.use(verifyCode)
 app.use(express.static(path.join(__dirname, 'public')));
 
 // HubExchange Routes
