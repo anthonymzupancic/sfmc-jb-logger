@@ -69,6 +69,8 @@ app.use((req, res, next) => {
                     if (!res.data.access_token) {
                         res.send('Unauthorized')
                     } else {
+                        console.log('Access Token Found')
+                        console.log(res.data.access_token)
                         next()
                     }
                 })
