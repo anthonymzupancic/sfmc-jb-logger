@@ -57,10 +57,10 @@ app.use((req, res, next) => {
                 url: 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/token',
                 options: {
                     "grant_type": "authorization_code",
-                    "code": req.query.code,
+                    "code": code,
                     "client_id": process.env.sfmcAuthClientID,
                     "client_secret": process.env.sfmcAuthClientSecret,
-                    "redirect_uri": "https://twilio-integration-dev.herokuapp.com/"
+                    "redirect_uri": "https://twilio-integration-dev.herokuapp.com"
                 }
             }
 
