@@ -25,19 +25,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
-async function validateAuthCode(config, code) {
-    try {
-
-        let authCheck = await axios.post(config.url, config.options)
-        return authCheck
-
-    } catch (err) {
-
-        return err
-
-    }
-}
-
 app.use((req, res, next) => {
     if (req.query.code) {
         next()
@@ -95,7 +82,7 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 // HubExchange Routes
 app.get('/', routes.index);
