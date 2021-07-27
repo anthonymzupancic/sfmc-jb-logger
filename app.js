@@ -3,6 +3,7 @@
 // -------------------
 var express = require('express');
 var bodyParser = require('body-parser');
+var session = require('express-session')
 var errorhandler = require('errorhandler');
 var http = require('http');
 var path = require('path');
@@ -15,11 +16,24 @@ const { query } = require('express');
 
 var app = express();
 
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+    genid: function(req) {
+        return genuuid() // use UUIDs for session IDs
+    },
+    name: 'sfmc-jb-logger',
+    secret: 'testSecret-jb-logger',
+    maxAge: 6000 * 1,
+    resave: false,
+    saveUninitialized: false,
+    sameSite: 'strict',
+    cookie: { secure: true }
+}))
+
 // Configure Express
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 
 //app.use(express.methodOverride());
@@ -82,10 +96,8 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
-//app.use('/', express.static(path.join(__dirname, 'public')));
-
 // HubExchange Routes
-app.get('/', express.static(path.join(__dirname, 'public')), routes.index);
+app.get('/', routes.index);
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
 
