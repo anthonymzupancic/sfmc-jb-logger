@@ -98,7 +98,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     sameSite: 'strict',
-    cookie: { secure: true }
+    cookie: { secure: false }
 }))
 
 app.use(express.static(path.join(__dirname, 'public')))
