@@ -24,7 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //app.use(express.methodOverride());
 //app.use(express.favicon());
-
+app.use((req, res, next) => {
+    console.log(req.cookies)
+})
 
 app.use((req, res, next) => {
     if (!req.sessionID) {
