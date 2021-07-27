@@ -16,17 +16,6 @@ const { query } = require('express');
 
 var app = express();
 
-app.set('trust proxy', 1) // trust first proxy
-app.use(session({
-    name: 'sfmc-jb-logger',
-    secret: 'testSecret-jb-logger',
-    maxAge: 6000 * 1,
-    resave: false,
-    saveUninitialized: false,
-    sameSite: 'strict',
-    cookie: { secure: true }
-}))
-
 // Configure Express
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.raw({ type: 'application/jwt' }));
@@ -96,6 +85,18 @@ app.use((req, res, next) => {
 })
 
 
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+    name: 'sfmc-jb-logger',
+    secret: 'testSecret-jb-logger',
+    maxAge: 6000 * 1,
+    resave: false,
+    saveUninitialized: false,
+    sameSite: 'strict',
+    cookie: { secure: true }
+}))
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
