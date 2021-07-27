@@ -14,7 +14,7 @@ var activity = require('./routes/activity');
 const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
 const axios = require('axios');
 const { query } = require('express');
-var cookieParser = require('cookie-parser')
+
 var app = express();
 
 // Configure Express
