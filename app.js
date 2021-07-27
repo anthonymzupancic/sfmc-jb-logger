@@ -1,9 +1,10 @@
 'use strict';
 // Module Dependencies
 // -------------------
-var express = require('express');
-var bodyParser = require('body-parser');
-var session = require('express-session')
+const express = require('express');
+const bodyParser = require('body-parser');
+const session = require('express-session')
+const cookieParser = require("cookie-parser");
 var errorhandler = require('errorhandler');
 var http = require('http');
 var path = require('path');
@@ -21,11 +22,13 @@ app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(cookieParser());
 
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 app.use((req, res, next) => {
     console.log(req.cookies)
+    next()
 })
 
 app.use((req, res, next) => {
