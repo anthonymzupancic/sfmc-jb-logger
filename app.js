@@ -27,7 +27,7 @@ app.use(cookieParser('testSecret-jb-logger'));
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 app.use((req, res, next) => {
-    console.log(req.headers.cookie)
+    console.log(req.signedCookies)
     next()
 })
 
