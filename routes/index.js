@@ -43,7 +43,6 @@ exports.index = function(req, res) {
         res.status(404).send(err)
     }
 
-
 };
 
 exports.login = function(req, res) {
@@ -58,12 +57,3 @@ exports.logout = function(req, res) {
 
     req.session.token = '';
 };
-
-exports.authorize = function(req, res) {
-    console.log('Authorize')
-    const query = req.query;
-    const code = query.code;
-    console.log(params)
-    console.log(code)
-    res.send(code)
-}

@@ -23,7 +23,7 @@ app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser('testSecret-jb-logger'));
-
+/*
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 app.use((req, res, next) => {
@@ -100,6 +100,7 @@ app.use(session({
     sameSite: 'strict',
     cookie: { secure: false }
 }))
+*/
 
 app.use(express.static(path.join(__dirname, 'public')))
 
