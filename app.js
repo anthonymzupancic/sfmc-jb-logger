@@ -89,14 +89,9 @@ app.use(cookieParser('testSecret-jb-logger'));
 //     cookie: { secure: false }
 // }))
 
-//app.use('/', routes.authorize);
-
-app.use((req, res, next) => {
-    console.log('**** Next Route Used *** ')
-    next()
-})
-
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/', routes.authorize);
+
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
