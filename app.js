@@ -89,7 +89,7 @@ app.use(cookieParser('testSecret-jb-logger'));
 //     cookie: { secure: false }
 // }))
 
-app.use('/', routes.authorize);
+//app.use('/', routes.authorize);
 
 app.use((req, res, next) => {
     console.log('**** Next Route Used *** ')
