@@ -89,8 +89,8 @@ app.use(cookieParser('testSecret-jb-logger'));
 //     cookie: { secure: false }
 // }))
 
-
-//app.use(express.static(path.join(__dirname, 'public')))
+app.use('/', routes.authorize);
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
@@ -98,7 +98,7 @@ if ('development' == app.get('env')) {
 }
 
 // HubExchange Routes
-app.use('/', routes.authorize);
+
 //app.get('/authorize', routes.authorize)
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);

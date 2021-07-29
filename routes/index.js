@@ -58,9 +58,9 @@ exports.logout = function(req, res) {
     req.session.token = '';
 };
 
-exports.authorize = function(req, res) {
+exports.authorize = function(req, res, next) {
     console.log('*** Authorize Endpoint ***')
     console.log(req)
 
-    res.send('Authorize Endpoint')
+    next()
 }
