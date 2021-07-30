@@ -25,20 +25,17 @@ const { default: axios } = require('axios');
  * GET home page.
  */
 exports.index = function(req, res) {
-    try {
-        console.log("INDEX ROUTE")
-        console.log(req)
-            //if( !req.session.token ) {
-            //     res.render( 'index', {
-            //         title: 'Unauthenticated',
-            //         errorMessage: 'This app may only be loaded via the ExactTarget Marketing Cloud',
-            //     });
-            // } else {
-        res.sendFile('index.html');
-        //}
-    } catch (err) {
-        res.status(404).send(err)
-    }
+
+    console.log("INDEX ROUTE")
+    console.log(req)
+        //if( !req.session.token ) {
+        //     res.render( 'index', {
+        //         title: 'Unauthenticated',
+        //         errorMessage: 'This app may only be loaded via the ExactTarget Marketing Cloud',
+        //     });
+        // } else {
+    res.sendFile('index.html');
+    //}
 
 };
 
