@@ -34,10 +34,7 @@ exports.index = function(req, res) {
             //         errorMessage: 'This app may only be loaded via the ExactTarget Marketing Cloud',
             //     });
             // } else {
-        res.render('index', {
-            title: 'Journey Builder Activity Example: Desk.com API',
-            results: activityUtils.logExecuteData,
-        });
+        res.sendFile('index.html');
         //}
     } catch (err) {
         res.status(404).send(err)
