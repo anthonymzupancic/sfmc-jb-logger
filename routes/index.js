@@ -34,7 +34,7 @@ exports.index = function(req, res) {
         //         errorMessage: 'This app may only be loaded via the ExactTarget Marketing Cloud',
         //     });
         // } else {
-    res.sendFile('index.html');
+    res.render('index.html');
     //}
 
 };
