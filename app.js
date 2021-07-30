@@ -93,7 +93,7 @@ app.use('/', routes.authorize);
 app.use(express.static(path.join(__dirname, 'images')))
 app.use(express.static(path.join(__dirname, 'css')))
 app.use(express.static(path.join(__dirname, 'js')))
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public'), { index: false }))
 
 
 // Express in Development Mode
