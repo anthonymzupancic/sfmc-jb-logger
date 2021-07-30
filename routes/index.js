@@ -27,14 +27,13 @@ const { default: axios } = require('axios');
 exports.index = function(req, res) {
 
     console.log("INDEX ROUTE")
-    console.log(req)
         //if( !req.session.token ) {
         //     res.render( 'index', {
         //         title: 'Unauthenticated',
         //         errorMessage: 'This app may only be loaded via the ExactTarget Marketing Cloud',
         //     });
         // } else {
-    res.render('index.html');
+    res.sendFile('index.html');
     //}
 
 };
@@ -86,7 +85,8 @@ exports.authorize = function(req, res, next) {
                         } else {
                             console.log('Access Token Found')
                             console.log(res.data.access_token)
-                            next()
+
+                            res.redirect('/')
                         }
                     })
                     .catch((err) => {
@@ -101,6 +101,4 @@ exports.authorize = function(req, res, next) {
             console.log(err)
         }
     }
-
-    next()
 }
