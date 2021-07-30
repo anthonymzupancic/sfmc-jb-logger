@@ -90,7 +90,7 @@ app.use(cookieParser('testSecret-jb-logger'));
 // }))
 
 
-app.use('/', routes.authorize);
+app.use(routes.authorize);
 app.use(express.static(path.join(__dirname, 'public'), { index: false }))
 
 // Express in Development Mode
