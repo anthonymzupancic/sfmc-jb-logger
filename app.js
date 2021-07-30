@@ -89,7 +89,7 @@ app.use(cookieParser('testSecret-jb-logger'));
 //     cookie: { secure: false }
 // }))
 
-app.use('/authorize', routes.authorize);
+app.use('/', routes.authorize);
 app.use(express.static(path.join(__dirname, 'public')))
 
 
