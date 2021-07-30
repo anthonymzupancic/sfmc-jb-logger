@@ -79,12 +79,12 @@ exports.authorize = function(req, res, next) {
                 }
 
                 axios.post(config.url, config.options)
-                    .then((res) => {
-                        if (!res.data.access_token) {
+                    .then((resp) => {
+                        if (!resp.data.access_token) {
                             res.send('Unauthorized')
                         } else {
                             console.log('Access Token Found')
-                            console.log(res.data.access_token)
+                            console.log(resp.data.access_token)
 
                             res.redirect('/')
                         }
