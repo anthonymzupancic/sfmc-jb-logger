@@ -89,12 +89,9 @@ app.use(cookieParser('testSecret-jb-logger'));
 //     cookie: { secure: false }
 // }))
 
-app.use('/', routes.authorize);
-app.use(express.static(path.join(__dirname, 'images')))
-app.use(express.static(path.join(__dirname, 'css')))
-app.use(express.static(path.join(__dirname, 'js')))
-app.use(express.static(path.join(__dirname, 'public'), { index: false }))
 
+app.use('/', routes.authorize);
+app.use(express.static(path.join(__dirname, 'public'), { index: false }))
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
