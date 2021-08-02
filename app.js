@@ -94,18 +94,15 @@ app.use(cookieParser('testSecret-jb-logger'));
 //app.use(express.static(path.join(__dirname, 'public'), { index: false }))
 
 
+app.use(express.static(path.join(__dirname, 'public/config.json')))
 app.use(function(req, res, next) {
-
-    express.static(path.join(__dirname, 'public'))
+    console.log("after files loaded")
     next()
 })
+app.use(express.static(path.join(__dirname, 'public')))
 
-app.use(function(req, res, next) {
-        console.log("after files loaded")
-        next()
-    })
-    // //sleep
-    // app.use(routes.authorize);
+// //sleep
+// app.use(routes.authorize);
 
 
 // Express in Development Mode
