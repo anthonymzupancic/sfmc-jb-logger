@@ -95,6 +95,10 @@ app.use(cookieParser('testSecret-jb-logger'));
 
 
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(function(req, res, next) {
+        console.log("after files loaded")
+        next()
+    })
     // //sleep
     // app.use(routes.authorize);
 
