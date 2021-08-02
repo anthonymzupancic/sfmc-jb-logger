@@ -99,10 +99,11 @@ app.use(function(req, res, next) {
     console.log("after files loaded")
     next()
 })
+app.use(routes.authorize);
 app.use(express.static(path.join(__dirname, 'public')))
 
 // //sleep
-// app.use(routes.authorize);
+
 
 
 // Express in Development Mode

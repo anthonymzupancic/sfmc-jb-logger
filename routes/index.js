@@ -54,10 +54,7 @@ exports.logout = function(req, res) {
 exports.authorize = function(req, res, next) {
     console.log('*** Authorize Endpoint ***')
     console.log(req)
-        //TODO: Move authorization flow here
-        //TODO: if no code => authorization redirect
-        //TODO: if code => validate code
-        //TODO: if accessToken => next else 'unauthorized'
+
     if (!req.query.code) {
         let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com';
         const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
@@ -85,8 +82,7 @@ exports.authorize = function(req, res, next) {
                         } else {
                             console.log('Access Token Found')
                             console.log(resp.data.access_token)
-
-                            res.redirect('/')
+                            next()
                         }
                     })
                     .catch((err) => {
