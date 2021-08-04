@@ -92,7 +92,7 @@ define([
 
                             html += '<div class="form-group mt-3">';
 
-                            if (fieldType === 'Text' || fieldType === 'EmailAddress' || !fieldName.includes('Journey')) {
+                            if (fieldType === 'Text' || fieldType === 'EmailAddress' || fieldName.indexOf('JourneyName') === -1) {
                                 html += '<label>' + fieldName + '</label>';
                                 html += '<input class="w-full-textarea field" name="' + fieldName + '" id="' + fieldName + '" />';
                             }
