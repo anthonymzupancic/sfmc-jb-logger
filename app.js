@@ -94,12 +94,13 @@ app.use(cookieParser('testSecret-jb-logger'));
 //app.use(express.static(path.join(__dirname, 'public'), { index: false }))
 
 
-// app.use(express.static(path.join(__dirname, 'public/config.json')))
+//app.use(express.static(path.join(__dirname, 'public/config.json')))
 // app.use(function(req, res, next) {
 //     console.log("after files loaded")
 //     next()
 // })
-// app.use(routes.authorize);
+
+app.use(routes.authorize);
 app.use(express.static(path.join(__dirname, 'public')))
 
 // //sleep

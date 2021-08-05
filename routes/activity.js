@@ -80,7 +80,8 @@ function logData(req) {
  */
 exports.edit = function(req, res) {
     // Data from the req and put it in an array accessible to the main app.
-    console.log(req.body);
+    console.log("----- Edit Req -----");
+    console.log("Edit: " + req.body);
     logData(req);
     res.send(200, 'Edit');
 };
@@ -91,7 +92,7 @@ exports.edit = function(req, res) {
 exports.save = function(req, res) {
     // Data from the req and put it in an array accessible to the main app.
     console.log("----- Save Req -----");
-    console.log(req.body);
+    console.log("Save: " + req.body);
     //logData(req);
     res.send(200, 'Save');
 };
