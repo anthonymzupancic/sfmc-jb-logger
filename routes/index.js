@@ -33,7 +33,7 @@ exports.index = function(req, res) {
         //         errorMessage: 'This app may only be loaded via the ExactTarget Marketing Cloud',
         //     });
         // } else {
-    res.sendFile(path.join(__dirname, '../public', 'index1.html'));
+    res.sendFile(path.join(__dirname, '../public', 'index.html'));
 
     //res.sendFile('/views/index.html');
     //}
