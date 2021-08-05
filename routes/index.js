@@ -24,7 +24,7 @@ const { default: axios } = require('axios');
 /*
  * GET home page.
  */
-exports.index = function(req, res, next) {
+exports.index = function(req, res) {
 
     console.log("INDEX ROUTE")
         //if( !req.session.token ) {
@@ -33,7 +33,9 @@ exports.index = function(req, res, next) {
         //         errorMessage: 'This app may only be loaded via the ExactTarget Marketing Cloud',
         //     });
         // } else {
-    res.sendFile(path.join(__dirname, '../views', 'index.html'));
+    res.sendFile(path.join(__dirname, '../public', 'index1.html'));
+
+    //res.sendFile('/views/index.html');
     //}
 
 };

@@ -14,7 +14,6 @@ var activity = require('./routes/activity');
 const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
 const axios = require('axios');
 const { query } = require('express');
-const { nextTick } = require('process');
 
 var app = express();
 
@@ -24,8 +23,6 @@ app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser('testSecret-jb-logger'));
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-
 
 //app.use(express.methodOverride());
 //app.use(express.favicon());
@@ -105,17 +102,19 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 //app.use(routes.authorize);
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(routes.index)
-    // Express in Development Mode
+
+// //sleep
+
+
+
+// Express in Development Mode
 if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
 // HubExchange Routes
 
-//app.use('/', routes.index)
-
-
+app.use('/', routes.index)
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
 
