@@ -24,7 +24,7 @@ const { default: axios } = require('axios');
 /*
  * GET home page.
  */
-exports.index = function(req, res) {
+exports.index = function(req, res, next) {
 
     console.log("INDEX ROUTE")
         //if( !req.session.token ) {
