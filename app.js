@@ -112,11 +112,9 @@ if ('development' == app.get('env')) {
 }
 
 // HubExchange Routes
-setTimeout(() => {
-        app.use('/', routes.index)
-    },
-    2000
-)
+
+app.use('/', routes.index)
+
 
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
