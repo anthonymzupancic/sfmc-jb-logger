@@ -25,6 +25,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 app.use(cookieParser('testSecret-jb-logger'));
 
+// enable pre-flight request for loggingSchema request
+app.options('/journeybuilder/getLoggingSchema/', cors())
+
 //app.use(express.methodOverride());
 //app.use(express.favicon());
 
@@ -124,7 +127,7 @@ app.post('/journeybuilder/validate/', activity.validate);
 app.post('/journeybuilder/publish/', activity.publish);
 app.post('/journeybuilder/execute/', activity.execute);
 app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
-app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
+app.post('/journeybuilder/getLoggingSchema/', cors(), activity.getLoggingSchema);
 
 
 
