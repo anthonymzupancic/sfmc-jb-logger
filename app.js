@@ -24,6 +24,8 @@ app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser('testSecret-jb-logger'));
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
+
 
 //app.use(express.methodOverride());
 //app.use(express.favicon());
@@ -106,7 +108,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // //sleep
 app.use(function(req, res, next) {
-    sleep(2000)
+    await delay(1000) /// waiting 1 second.
+
     next();
 })
 
@@ -129,15 +132,6 @@ app.post('/journeybuilder/publish/', activity.publish);
 app.post('/journeybuilder/execute/', activity.execute);
 app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
 app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
-
-
-/**
- * Delay for a number of milliseconds
- */
-function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
-}
 
 
 
