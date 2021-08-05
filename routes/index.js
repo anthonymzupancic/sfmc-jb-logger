@@ -61,8 +61,8 @@ exports.authorize = function(req, res, next) {
     console.log('*** Authorize Endpoint ***')
     console.log('*** Cookies ***')
         //console.log(req)
-    const cookies = getcookie(req);
-    console.log(cookies)
+        // const cookies = getcookie(req);
+        // console.log(cookies)
 
     if (!req.query.code) {
         let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com';
@@ -92,14 +92,14 @@ exports.authorize = function(req, res, next) {
                             console.log('Access Token Found')
                             console.log(resp.data.access_token)
 
-                            let options = {
-                                maxAge: 1000 * 60 * 60, // would expire after 1 hour
-                                httpOnly: true, // The cookie only accessible by the web server
-                                signed: true // Indicates if the cookie should be signed
-                            }
+                            // let options = {
+                            //     maxAge: 1000 * 60 * 60, // would expire after 1 hour
+                            //     httpOnly: true, // The cookie only accessible by the web server
+                            //     signed: true // Indicates if the cookie should be signed
+                            // }
 
-                            // Set cookie
-                            res.cookie('jb-logger-app', uuidv4(), options) // options is optional
+                            // // Set cookie
+                            // res.cookie('jb-logger-app', uuidv4(), options) // options is optional
 
                             next()
                         }
