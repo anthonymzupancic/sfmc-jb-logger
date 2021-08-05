@@ -106,25 +106,18 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 //app.use(routes.authorize);
 app.use(express.static(path.join(__dirname, 'public')))
 
-// //sleep
-app.use(function(req, res, next) {
-    console.log('wait')
-
-    delay(1000)
-        .then(() => {
-            next()
-        }) /// waiting 1 second.
-
-})
-
 // Express in Development Mode
 if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
 // HubExchange Routes
+setTimeout(() => {
+        app.use('/', routes.index)
+    },
+    2000
+)
 
-app.use('/', routes.index)
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
 
