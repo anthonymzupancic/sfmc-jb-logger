@@ -4,6 +4,7 @@
 var activity = require('./activity');
 var express = require('express');
 var path = require('path');
+const cookieParser = require("cookie-parser");
 const { nextTick } = require('process');
 const { default: axios } = require('axios');
 
