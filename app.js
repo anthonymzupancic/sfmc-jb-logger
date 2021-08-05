@@ -101,11 +101,10 @@ app.use(cookieParser('testSecret-jb-logger'));
 // })
 
 //app.use(routes.authorize);
-//app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 // //sleep
-
-
+sleep(6000)
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
@@ -126,6 +125,15 @@ app.post('/journeybuilder/publish/', activity.publish);
 app.post('/journeybuilder/execute/', activity.execute);
 app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
 app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
+
+
+/**
+ * Delay for a number of milliseconds
+ */
+function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
 
 
 
