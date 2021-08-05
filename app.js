@@ -14,6 +14,7 @@ var activity = require('./routes/activity');
 const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
 const axios = require('axios');
 const { query } = require('express');
+const { nextTick } = require('process');
 
 var app = express();
 
@@ -104,7 +105,7 @@ app.use(cookieParser('testSecret-jb-logger'));
 app.use(express.static(path.join(__dirname, 'public')))
 
 // //sleep
-sleep(6000)
+app.use(sleep(2000))
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
@@ -133,6 +134,7 @@ app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
 function sleep(delay) {
     var start = new Date().getTime();
     while (new Date().getTime() < start + delay);
+    next()
 }
 
 
