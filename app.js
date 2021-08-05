@@ -108,6 +108,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // //sleep
 app.use(function(req, res, next) {
+    console.log('wait')
     await delay(1000) /// waiting 1 second.
 
     next();
