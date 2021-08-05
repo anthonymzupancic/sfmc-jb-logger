@@ -100,8 +100,8 @@ app.use(cookieParser('testSecret-jb-logger'));
 //     next()
 // })
 
-app.use(routes.authorize);
-app.use(express.static(path.join(__dirname, 'public')))
+//app.use(routes.authorize);
+//app.use(express.static(path.join(__dirname, 'public')))
 
 // //sleep
 
@@ -114,7 +114,7 @@ if ('development' == app.get('env')) {
 
 // HubExchange Routes
 
-app.get('/', routes.index)
+app.use('/', routes.index)
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
 
