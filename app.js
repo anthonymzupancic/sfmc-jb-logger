@@ -14,6 +14,7 @@ var activity = require('./routes/activity');
 const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
 const axios = require('axios');
 const { query } = require('express');
+var cors = require('cors')
 
 var app = express();
 
@@ -21,7 +22,7 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cors())
 app.use(cookieParser('testSecret-jb-logger'));
 
 //app.use(express.methodOverride());
