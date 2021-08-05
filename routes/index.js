@@ -7,19 +7,22 @@ var path = require('path');
 const { nextTick } = require('process');
 const { default: axios } = require('axios');
 
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0,
+            v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
 
-// async function validateAuthCode(config, code) {
-//     try {
+function getcookie(req) {
+    const { headers: { cookie } } = req;
 
-//         let authCheck = await axios.post(config.url, config.options)
-//         return authCheck
-
-//     } catch (err) {
-
-//         return err
-
-//     }
-// }
+    return cookie.split(';').reduce((res, item) => {
+        const data = item.trim().split('=');
+        return {...res, [data[0]]: data[1] };
+    }, {});
+}
 
 /*
  * GET home page.
@@ -55,7 +58,10 @@ exports.logout = function(req, res) {
 
 exports.authorize = function(req, res, next) {
     console.log('*** Authorize Endpoint ***')
-    console.log(req)
+    console.log('*** Cookies ***')
+        //console.log(req)
+    const cookies = getcookie(req);
+    console.log(cookies)
 
     if (!req.query.code) {
         let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com';
@@ -84,6 +90,16 @@ exports.authorize = function(req, res, next) {
                         } else {
                             console.log('Access Token Found')
                             console.log(resp.data.access_token)
+
+                            let options = {
+                                maxAge: 1000 * 60 * 60, // would expire after 1 hour
+                                httpOnly: true, // The cookie only accessible by the web server
+                                signed: true // Indicates if the cookie should be signed
+                            }
+
+                            // Set cookie
+                            res.cookie('jb-logger-app', uuidv4(), options) // options is optional
+
                             next()
                         }
                     })
