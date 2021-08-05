@@ -105,7 +105,10 @@ app.use(cookieParser('testSecret-jb-logger'));
 app.use(express.static(path.join(__dirname, 'public')))
 
 // //sleep
-app.use(sleep(2000))
+app.use(function(req, res, next) {
+    sleep(2000)
+    next();
+})
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
@@ -134,7 +137,6 @@ app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
 function sleep(delay) {
     var start = new Date().getTime();
     while (new Date().getTime() < start + delay);
-    next()
 }
 
 
