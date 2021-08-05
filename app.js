@@ -103,10 +103,6 @@ app.use(cookieParser('testSecret-jb-logger'));
 //app.use(routes.authorize);
 app.use(express.static(path.join(__dirname, 'public')))
 
-// //sleep
-
-
-
 // Express in Development Mode
 if ('development' == app.get('env')) {
     app.use(errorhandler());
@@ -114,7 +110,7 @@ if ('development' == app.get('env')) {
 
 // HubExchange Routes
 
-app.use('/', routes.index)
+//app.use('/', routes.index)
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
 
