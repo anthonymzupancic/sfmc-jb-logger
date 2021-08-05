@@ -105,15 +105,15 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 //app.use(routes.authorize);
 app.use(express.static(path.join(__dirname, 'public')))
-
-// Express in Development Mode
+app.use(routes.index)
+    // Express in Development Mode
 if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
 // HubExchange Routes
 
-app.use('/', routes.index)
+//app.use('/', routes.index)
 
 
 app.post('/login', routes.login);
