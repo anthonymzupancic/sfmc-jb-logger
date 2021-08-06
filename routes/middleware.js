@@ -30,7 +30,8 @@ exports.cookie = function(req, res, next) {
 
 exports.authorize = function(req, res, next) {
     console.log('*** Authorize Endpoint ***')
-    console.log(req.sessionCookies)
+    console.log('*** session ***')
+    console.log(req.session)
 
     if (typeof req.session === 'undefined' || typeof req.session.auth === 'undefined' || !req.session.auth) {
         if (!req.query.code) {
