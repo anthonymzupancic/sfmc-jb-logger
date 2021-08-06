@@ -112,8 +112,8 @@ app.use(function(req, res, next) {
     // check if client sent cookie
     var cookie = req.cookies.JBLoggerApp;
     console.log('*** Coookies ***')
-    console.log(req.headers.cookies)
-    console.log(req.headers)
+    console.log(req.cookies)
+
     if (cookie === undefined) {
         // no: set a new cookie
         var randomNumber = Math.random().toString();
