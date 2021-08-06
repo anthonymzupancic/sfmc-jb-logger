@@ -30,7 +30,8 @@ exports.cookie = function(req, res, next) {
 
 exports.authorize = function(req, res, next) {
     console.log('*** Authorize Endpoint ***')
-    console.log(req)
+    console.log(req.sessionCookies)
+
     if (typeof req.session === 'undefined' || typeof req.session.auth === 'undefined' || !req.session.auth) {
         if (!req.query.code) {
             console.log('*** Retrieve Code ***')
@@ -64,7 +65,7 @@ exports.authorize = function(req, res, next) {
                                 console.log('Access Token Found')
                                 console.log(resp.data.access_token)
 
-                                req.session.auth = true;
+                                req.sessionCookies.session.auth = true;
                                 next()
                             }
                         })
