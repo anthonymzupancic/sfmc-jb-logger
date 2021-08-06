@@ -40,10 +40,6 @@ exports.logout = function(req, res) {
 
 exports.authorize = function(req, res, next) {
     console.log('*** Authorize Endpoint ***')
-    console.log('*** Cookies ***')
-        //console.log(req)
-        // const cookies = getcookie(req);
-    console.log(req.headers)
 
     if (!req.query.code) {
         console.log('*** Retrieve Code ***')
