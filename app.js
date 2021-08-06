@@ -118,7 +118,7 @@ app.use(function(req, res, next) {
         // no: set a new cookie
         var randomNumber = Math.random().toString();
         randomNumber = randomNumber.substring(2, randomNumber.length);
-        res.cookie('JBLoggerApp', randomNumber, { maxAge: 900000, httpOnly: true });
+        res.cookie('JBLoggerApp', randomNumber, { maxAge: 900000, httpOnly: true, SameSite = 'None', Secure: true });
         console.log('cookie created successfully');
     } else {
         // yes, cookie was already present 
