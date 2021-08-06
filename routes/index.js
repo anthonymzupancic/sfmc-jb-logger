@@ -8,6 +8,8 @@ const cookieParser = require("cookie-parser");
 const { nextTick } = require('process');
 const { default: axios } = require('axios');
 
+app.use(cookie - parser)
+
 function uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random() * 16 | 0,
@@ -65,10 +67,14 @@ exports.authorize = function(req, res, next) {
     console.log(req.headers)
 
     if (!req.query.code) {
+        console.log('*** Retrieve Code ***')
+
         let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com';
         const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
         res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
     } else if (req.query.code) {
+        console.log('*** Validate Code ***')
+
         try {
             const code = req.query.code
 
@@ -91,15 +97,6 @@ exports.authorize = function(req, res, next) {
                         } else {
                             console.log('Access Token Found')
                             console.log(resp.data.access_token)
-
-                            let options = {
-                                maxAge: 1000 * 60 * 60, // would expire after 1 hour
-                                httpOnly: true, // The cookie only accessible by the web server
-                                signed: true // Indicates if the cookie should be signed
-                            }
-
-                            // Set cookie
-                            res.cookie('jb-logger-app', uuidv4(), options) // options is optional
 
                             next()
                         }
