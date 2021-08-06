@@ -17,6 +17,7 @@ const { query } = require('express');
 var cors = require('cors')
 
 var app = express();
+app.use(cookieParser())
 
 // Configure Express
 app.set('port', process.env.PORT || 3000);
