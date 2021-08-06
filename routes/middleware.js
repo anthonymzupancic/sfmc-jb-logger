@@ -31,7 +31,7 @@ exports.authorize = function(req, res, next) {
     console.log('*** Authorize Endpoint ***')
     console.log("auth session: " + req.session.auth)
 
-    if (!req.session.auth) {
+    if (typeof req.session === 'undefined' || !req.session.auth) {
         if (!req.query.code) {
             console.log('*** Retrieve Code ***')
 
