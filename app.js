@@ -5,7 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session')
 const cookieParser = require("cookie-parser");
-let cookieSession = require('cookie-session')
+var cookieSession = require('cookie-session')
 const errorhandler = require('errorhandler');
 const http = require('http');
 const path = require('path');
@@ -39,7 +39,8 @@ const middleware = require('./routes/middleware');
 app.use(cookieSession({
     name: 'jbLoggerSession',
     keys: ['key1', 'key2'],
-    auth: false
+    // Cookie Options
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
 
 //use routes/middleware
