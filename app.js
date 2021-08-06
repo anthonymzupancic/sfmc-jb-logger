@@ -113,7 +113,7 @@ app.use(function(req, res, next) {
     var cookie = req.cookies.JBLoggerApp;
     console.log('*** Coookies ***')
     console.log(req.cookies)
-
+    console.log(req.signedCookies)
     if (cookie === undefined) {
         // no: set a new cookie
         var randomNumber = Math.random().toString();
