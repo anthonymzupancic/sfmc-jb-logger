@@ -62,7 +62,7 @@ exports.authorize = function(req, res, next) {
     console.log('*** Cookies ***')
         //console.log(req)
         // const cookies = getcookie(req);
-        // console.log(cookies)
+    console.log(req.headers)
 
     if (!req.query.code) {
         let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com';
