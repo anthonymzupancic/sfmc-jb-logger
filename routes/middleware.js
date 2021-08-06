@@ -3,6 +3,7 @@
 // Deps
 const express = require('express');
 const path = require('path');
+var cookieSession = require('cookie-session')
 
 const axios = require('axios');
 
@@ -29,8 +30,7 @@ exports.cookie = function(req, res, next) {
 
 exports.authorize = function(req, res, next) {
     console.log('*** Authorize Endpoint ***')
-
-
+    console.log(req)
     if (typeof req.session === 'undefined' || typeof req.session.auth === 'undefined' || !req.session.auth) {
         if (!req.query.code) {
             console.log('*** Retrieve Code ***')
