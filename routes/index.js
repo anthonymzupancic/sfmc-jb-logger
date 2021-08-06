@@ -4,28 +4,7 @@
 var activity = require('./activity');
 var express = require('express');
 var path = require('path');
-const cookieParser = require("cookie-parser");
-const { nextTick } = require('process');
 const { default: axios } = require('axios');
-
-app.use(cookie - parser)
-
-function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16 | 0,
-            v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
-}
-
-function getcookie(req) {
-    const { headers: { cookie } } = req;
-
-    return cookie.split(';').reduce((res, item) => {
-        const data = item.trim().split('=');
-        return {...res, [data[0]]: data[1] };
-    }, {});
-}
 
 /*
  * GET home page.
