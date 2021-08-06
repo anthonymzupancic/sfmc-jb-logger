@@ -92,14 +92,14 @@ exports.authorize = function(req, res, next) {
                             console.log('Access Token Found')
                             console.log(resp.data.access_token)
 
-                            // let options = {
-                            //     maxAge: 1000 * 60 * 60, // would expire after 1 hour
-                            //     httpOnly: true, // The cookie only accessible by the web server
-                            //     signed: true // Indicates if the cookie should be signed
-                            // }
+                            let options = {
+                                maxAge: 1000 * 60 * 60, // would expire after 1 hour
+                                httpOnly: true, // The cookie only accessible by the web server
+                                signed: true // Indicates if the cookie should be signed
+                            }
 
-                            // // Set cookie
-                            // res.cookie('jb-logger-app', uuidv4(), options) // options is optional
+                            // Set cookie
+                            res.cookie('jb-logger-app', uuidv4(), options) // options is optional
 
                             next()
                         }
