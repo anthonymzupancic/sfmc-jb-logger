@@ -36,29 +36,9 @@ const middleware = require('./routes/middleware');
 
 //use routes/middleware
 app.use('/', express.static(path.join(__dirname, 'public')))
-app.use('/', routes.authorize);
-
+app.use('/', middleware.authorize);
 // set a cookie
-app.use(function(req, res, next) {
-    // check if client sent cookie
-    var cookie = req.cookies;
-    console.log('*** Coookies ***')
-    console.log(req.cookies)
-    console.log(req.signedCookies)
-    if (cookie === undefined) {
-        // no: set a new cookie
-        var randomNumber = Math.random().toString();
-        randomNumber = randomNumber.substring(2, randomNumber.length);
-        //res.cookie('JBLoggerApp', randomNumber, { maxAge: 900000, httpOnly: true});
-        res.cookie('JBLoggerApp', randomNumber);
-        console.log('cookie created successfully');
-    } else {
-        // yes, cookie was already present 
-        console.log('cookie exists', cookie);
-    }
-    next(); // <-- important!
-});
-
+app.use('/', middleware.cookie);
 app.use('/', express.static(path.join(__dirname, 'views')))
 
 

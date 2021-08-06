@@ -2,7 +2,6 @@
 
 // Deps
 var activity = require('./activity');
-var express = require('express');
 var path = require('path');
 
 const axios = require('axios');
