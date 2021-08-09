@@ -1,6 +1,7 @@
 'use strict';
 const axios = require('axios');
-
+const express = require('express');
+var app = express();
 // Deps
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));

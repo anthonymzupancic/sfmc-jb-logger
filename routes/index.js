@@ -1,4 +1,6 @@
 'use strict';
+const express = require('express');
+var app = express();
 
 // Deps
 var activity = require('./activity');

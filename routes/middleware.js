@@ -2,9 +2,11 @@
 
 // Deps
 const express = require('express');
+var app = express();
 const path = require('path');
 var cookieSession = require('cookie-session')
 var cors = require('cors')
+
 app.use(cors())
 
 const axios = require('axios');
