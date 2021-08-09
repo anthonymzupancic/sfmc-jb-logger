@@ -9,20 +9,18 @@ const axios = require('axios');
 
 exports.cookie = function(req, res, next) {
     // check if client sent cookie
-    var cookie = req.cookies.JBLoggerApp;
-    console.log('*** Coookies ***')
-    console.log(req.cookies)
-    console.log(req.signedCookies)
-    if (cookie === undefined) {
+
+
+    if (!req.session && req.session.id === undefined) {
         // no: set a new cookie
         var randomNumber = Math.random().toString();
         randomNumber = randomNumber.substring(2, randomNumber.length);
         //res.cookie('JBLoggerApp', randomNumber, { maxAge: 900000, httpOnly: true});
-        res.cookie('JBLoggerApp', randomNumber);
-        console.log('cookie created successfully');
+        req.session.id = randomNumber
+        console.log(req.session.id)
     } else {
         // yes, cookie was already present 
-        console.log('cookie exists', cookie);
+        console.log('cookie exists', req.session.id);
     }
     next(); // <-- important!
 }
