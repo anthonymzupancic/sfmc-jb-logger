@@ -3,6 +3,7 @@
 // Deps
 var activity = require('./activity');
 var path = require('path');
+var cors = require('cors')
 
 const axios = require('axios');
 

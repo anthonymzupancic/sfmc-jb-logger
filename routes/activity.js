@@ -4,6 +4,8 @@ const axios = require('axios');
 // Deps
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
+var cors = require('cors')
+
 var util = require('util');
 var http = require('https');
 
