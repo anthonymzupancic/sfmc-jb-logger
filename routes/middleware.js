@@ -10,17 +10,16 @@ const axios = require('axios');
 exports.cookie = function(req, res, next) {
     // check if client sent cookie
 
-
-    if (!req.session && req.session.id === undefined) {
+    if (req.session && req.session.id) {
+        // yes, cookie was already present 
+        console.log('cookie exists ', req.session.id);
+    } else {
         // no: set a new cookie
         var randomNumber = Math.random().toString();
         randomNumber = randomNumber.substring(2, randomNumber.length);
         //res.cookie('JBLoggerApp', randomNumber, { maxAge: 900000, httpOnly: true});
         req.session.id = randomNumber
-        console.log(req.session.id)
-    } else {
-        // yes, cookie was already present 
-        console.log('cookie exists', req.session.id);
+        console.log("session id: ", req.session.id)
     }
     next(); // <-- important!
 }
@@ -28,8 +27,7 @@ exports.cookie = function(req, res, next) {
 
 exports.authorize = function(req, res, next) {
     console.log('*** Authorize Endpoint ***')
-    console.log('*** session ***')
-    console.log(req)
+        // console.log(req)
 
     // if (typeof req.session === 'undefined' || typeof req.session.auth === 'undefined' || !req.session.auth) {
     if (!req.query.code) {
@@ -40,7 +38,6 @@ exports.authorize = function(req, res, next) {
         res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
     } else if (req.query.code) {
         console.log('*** Validate Code ***')
-
         try {
             const code = req.query.code
 
