@@ -23,6 +23,7 @@ exports.cookie = function(req, res, next) {
         randomNumber = randomNumber.substring(2, randomNumber.length);
         //res.cookie('JBLoggerApp', randomNumber, { maxAge: 900000, httpOnly: true});
         req.session.id = randomNumber
+        res.cookie('session', req.session.id)
         console.log("session id: ", req.session.id)
     }
     next(); // <-- important!
