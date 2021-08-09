@@ -80,6 +80,7 @@ exports.authorize = function(req, res, next) {
             }
         }
     } else {
+        console.log(req.session.id)
         next();
     }
 
