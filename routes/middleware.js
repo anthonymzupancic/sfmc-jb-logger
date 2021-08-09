@@ -64,7 +64,6 @@ exports.authorize = function(req, res, next) {
                             console.log('Access Token Found')
                             console.log(resp.data.access_token)
 
-                            req.sessionCookies.session.auth = true;
                             next()
                         }
                     })
