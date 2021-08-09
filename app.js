@@ -10,7 +10,7 @@ const errorhandler = require('errorhandler');
 const http = require('http');
 const path = require('path');
 const request = require('request');
-
+var cookies = require('cookies');
 const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
 const axios = require('axios');
 var cors = require('cors')

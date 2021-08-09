@@ -6,10 +6,13 @@ var app = express();
 const path = require('path');
 var cookieSession = require('cookie-session')
 var cors = require('cors')
+var cookies = require('cookies');
+
 
 app.use(cors())
 
 const axios = require('axios');
+const { CompositionHookInstance } = require('twilio/lib/rest/video/v1/compositionHook');
 
 exports.cookie = function(req, res, next) {
     // check if client sent cookie
@@ -23,7 +26,7 @@ exports.cookie = function(req, res, next) {
         randomNumber = randomNumber.substring(2, randomNumber.length);
         //res.cookie('JBLoggerApp', randomNumber, { maxAge: 900000, httpOnly: true});
         req.session.id = randomNumber
-        res.cookie('session', req.session.id)
+        cookies.set('sessionId', req.session.id)
         console.log("session id: ", req.session.id)
     }
     next(); // <-- important!
