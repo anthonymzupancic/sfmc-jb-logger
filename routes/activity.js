@@ -35,6 +35,7 @@ const authCreds = {
     "grant_type": 'client_credentials'
 }
 
+app.use(cors())
 
 exports.logExecuteData = [];
 

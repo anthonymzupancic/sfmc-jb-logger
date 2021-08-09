@@ -47,8 +47,6 @@ app.use(cookieSession({
 app.use('/', express.static(path.join(__dirname, 'public')))
 app.use('/', middleware.authorize);
 
-
-
 // set a cookie
 app.use('/', middleware.cookie);
 app.use('/', express.static(path.join(__dirname, 'views')))
