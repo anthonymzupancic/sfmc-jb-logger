@@ -269,7 +269,8 @@ exports.getLoggingSchema = function(req, res) {
             } else {
                 var statusCode = response && response.res && response.res.statusCode ? response.res.statusCode : 200;
                 var result = response && response.body ? response.body : response;
-                response && res.status(statusCode).send(result);
+
+                res.status(statusCode).send(result);
             }
         });
     } catch (err) {
