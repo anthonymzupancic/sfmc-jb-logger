@@ -20,7 +20,7 @@ exports.authorize = function(req, res, next) {
     try {
         console.log('cookies: ', req.cookies)
 
-        if (req.cookies.jbLoggerSession) {
+        if (req.cookies) {
             next()
         }
 
@@ -76,7 +76,6 @@ exports.authorize = function(req, res, next) {
     } catch (err) {
         console.log('*** Err ***')
         console.log(err)
-
     }
 
 
