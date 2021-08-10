@@ -239,39 +239,43 @@ exports.getattributegroup = function(req, res) {
 
 
 exports.getLoggingSchema = function(req, res) {
-    const loggingDE = req.body.loggingDE
-    console.log('•••loggingDE•••')
-    console.log(req.body)
+    try {
+        const loggingDE = req.body.loggingDE
+        console.log('•••loggingDE•••')
+        console.log(req.body)
 
-    var options = {
-        props: ['Name',
-                'FieldType',
-                'MaxLength',
-                'DataExtension.CustomerKey',
-                'IsPrimaryKey'
-            ] //required
-            ,
-        filter: { //remove filter for all.
-            leftOperand: 'DataExtension.CustomerKey',
-            operator: 'equals',
-            rightOperand: loggingDE
-        }
-    };
+        var options = {
+            props: ['Name',
+                    'FieldType',
+                    'MaxLength',
+                    'DataExtension.CustomerKey',
+                    'IsPrimaryKey'
+                ] //required
+                ,
+            filter: { //remove filter for all.
+                leftOperand: 'DataExtension.CustomerKey',
+                operator: 'equals',
+                rightOperand: loggingDE
+            }
+        };
 
-    var de = sfmcClient.dataExtensionColumn(options);
+        var de = sfmcClient.dataExtensionColumn(options);
 
-    de.get(function(err, response) {
-        if (err) {
-            console.log('*** err ***')
-            console.log(err)
-            res.status(500).send(err)
-        } else {
-            var statusCode = response && response.res && response.res.statusCode ? response.res.statusCode : 200;
-            var result = response && response.body ? response.body : response;
-            response && res.status(statusCode).send(result);
-        }
-    });
-
+        de.get(function(err, response) {
+            if (err) {
+                console.log('*** err ***')
+                console.log(err)
+                res.status(500).send(err)
+            } else {
+                var statusCode = response && response.res && response.res.statusCode ? response.res.statusCode : 200;
+                var result = response && response.body ? response.body : response;
+                response && res.status(statusCode).send(result);
+            }
+        });
+    } catch (err) {
+        console.log('*** schema err ***')
+        console.log(err)
+    }
 
 
 };
