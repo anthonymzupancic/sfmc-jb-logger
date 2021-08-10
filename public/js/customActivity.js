@@ -246,6 +246,7 @@ function setCookie(cname, exdays) {
     let cvalue = uuidv4();
 
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    console.log(document.cookie)
 }
 
 function getCookie(cname) {
@@ -266,6 +267,7 @@ function getCookie(cname) {
 
 function sessionCookie(cookieName) {
     let cookie = getCookie(cookieName)
+    console.log("cookie: ", cookie)
 
     if (!cookie) {
         setCookie(cookieName, 1)
