@@ -25,8 +25,6 @@ app.set('trust proxy', 1) // trust first proxy
 app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
-    // enable pre-flight request for loggingSchema request
-app.options('/journeybuilder/getLoggingSchema/', cors())
 
 //app.use(express.methodOverride());
 //app.use(express.favicon());
@@ -38,9 +36,9 @@ const middleware = require('./routes/middleware');
 
 
 //use routes/middleware
-app.use('/', express.static(path.join(__dirname, 'public')))
-app.use('/', middleware.authorize);
-app.use('/', express.static(path.join(__dirname, 'views')))
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(middleware.authorize);
+app.use(express.static(path.join(__dirname, 'views')))
 
 
 // Express in Development Mode
@@ -59,11 +57,6 @@ app.post('/journeybuilder/publish/', activity.publish);
 app.post('/journeybuilder/execute/', activity.execute);
 app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
 app.post('/journeybuilder/getLoggingSchema/', cors(), activity.getLoggingSchema);
-
-// error handler
-app.use(function(err, req, res, next) {
-    res.status(400).send(err.message)
-})
 
 
 http.createServer(app).listen(app.get('port'), function() {
