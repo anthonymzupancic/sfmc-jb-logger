@@ -18,7 +18,7 @@ const axios = require('axios');
 
 exports.authorize = function(req, res, next) {
     try {
-        console.log('cookies: ', req.cookies)
+        console.log('cookies: ', req.cookies.jbLoggerSession)
 
         if (req.cookies) {
             next()
@@ -78,4 +78,5 @@ exports.authorize = function(req, res, next) {
         console.log('*** Err ***')
         console.log(err)
     }
+
 }
