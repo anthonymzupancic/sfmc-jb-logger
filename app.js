@@ -36,12 +36,6 @@ const routes = require('./routes');
 const activity = require('./routes/activity');
 const middleware = require('./routes/middleware');
 
-app.use(cookieSession({
-    name: 'jbLoggerSession',
-    keys: ['key1', 'key2'],
-    // Cookie Options
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
-}))
 
 //use routes/middleware
 app.use('/', express.static(path.join(__dirname, 'public')))
@@ -53,10 +47,6 @@ app.use('/', express.static(path.join(__dirname, 'views')))
 if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
-
-
-app.get('/getCookie', routes.getCookie);
-app.post('/setCookie', routes.setCookie);
 
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);

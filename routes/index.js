@@ -28,27 +28,6 @@ exports.index = function(req, res) {
 
 };
 
-exports.getCookie = function(req, res) {
-
-    if (req.session && req.session.id) {
-        // yes, cookie was already present 
-        console.log('cookie exists ', req.session.id);
-    } else {
-        // no: set a new cookie
-        var randomNumber = Math.random().toString();
-        randomNumber = randomNumber.substring(2, randomNumber.length);
-        //res.cookie('JBLoggerApp', randomNumber, { maxAge: 900000, httpOnly: true});
-        req.session.id = randomNumber
-            // check if client sent cookie
-        console.log("session id: ", req.session.id)
-    }
-
-}
-
-exports.setCookie = function(req, res) {
-
-}
-
 exports.login = function(req, res) {
     console.log("LOGIN ROUTE")
 
