@@ -37,24 +37,8 @@ const activity = require('./routes/activity');
 const middleware = require('./routes/middleware');
 
 
-async function cookieValidator(cookies) {
-    try {
-        return cookies.jbLoggerSession
-    } catch {
-        throw new Error('Invalid cookies')
-    }
-}
-
-async function validateCookies(req, res, next) {
-    await cookieValidator(req.cookies)
-    next()
-}
-
 //use routes/middleware
 app.use('/', express.static(path.join(__dirname, 'public')))
-app.use(validateCookies)
-
-
 app.use('/', middleware.authorize);
 app.use('/', express.static(path.join(__dirname, 'views')))
 
