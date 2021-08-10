@@ -16,9 +16,7 @@ const axios = require('axios');
 
 
 exports.authorize = function(req, res, next) {
-    if (req.session.id) {
-        next()
-    }
+    console.log('headers: ', req)
 
     console.log('*** Authorize Endpoint ***')
         // console.log(req)
