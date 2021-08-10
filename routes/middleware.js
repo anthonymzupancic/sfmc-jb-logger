@@ -12,25 +12,7 @@ var cookies = require('cookies');
 app.use(cors())
 
 const axios = require('axios');
-const { CompositionHookInstance } = require('twilio/lib/rest/video/v1/compositionHook');
 
-exports.cookie = function(req, res, next) {
-    // check if client sent cookie
-
-    if (req.session && req.session.id) {
-        // yes, cookie was already present 
-        console.log('cookie exists ', req.session.id);
-    } else {
-        // no: set a new cookie
-        var randomNumber = Math.random().toString();
-        randomNumber = randomNumber.substring(2, randomNumber.length);
-        //res.cookie('JBLoggerApp', randomNumber, { maxAge: 900000, httpOnly: true});
-        req.session.id = randomNumber
-        cookies.set('sessionId', req.session.id)
-        console.log("session id: ", req.session.id)
-    }
-    next(); // <-- important!
-}
 
 
 exports.authorize = function(req, res, next) {

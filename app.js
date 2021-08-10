@@ -46,9 +46,6 @@ app.use(cookieSession({
 //use routes/middleware
 app.use('/', express.static(path.join(__dirname, 'public')))
 app.use('/', middleware.authorize);
-
-// set a cookie
-app.use('/', middleware.cookie);
 app.use('/', express.static(path.join(__dirname, 'views')))
 
 
@@ -57,9 +54,10 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
-// HubExchange Routes
 
-//app.use('/', routes.index)
+app.get('/getCookie', routes.getCookie);
+app.post('/setCookie', routes.setCookie);
+
 app.post('/login', routes.login);
 app.post('/logout', routes.logout);
 
