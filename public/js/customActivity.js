@@ -29,7 +29,7 @@ define([
 
     $.ajaxSetup({
         beforeSend: function(xhr) {
-            xhr.setRequestHeader('jb-session', getCookie('jb-logger-session'));
+            xhr.setRequestHeader('jb-session', getCookie('jbLoggerSession'));
         }
     });
 
@@ -43,7 +43,7 @@ define([
         connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestDataSources');
 
-        sessionCookie('jb-logger-session')
+        sessionCookie('jbLoggerSession')
 
 
         var currentField = '';

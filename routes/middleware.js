@@ -13,10 +13,12 @@ app.use(cors())
 
 const axios = require('axios');
 
-
-
 exports.authorize = function(req, res, next) {
-    console.log('headers: ', req)
+    console.log('headers: ', req.cookie)
+
+    if (req.cookie.jbLoggerSession) {
+        next()
+    }
 
     console.log('*** Authorize Endpoint ***')
         // console.log(req)
