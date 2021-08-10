@@ -39,7 +39,7 @@ const middleware = require('./routes/middleware');
 
 async function cookieValidator(cookies) {
     try {
-        await externallyValidateCookie(cookies.jbLoggerSession)
+        return cookies.jbLoggerSession
     } catch {
         throw new Error('Invalid cookies')
     }
@@ -74,7 +74,7 @@ app.post('/journeybuilder/validate/', activity.validate);
 app.post('/journeybuilder/publish/', activity.publish);
 app.post('/journeybuilder/execute/', activity.execute);
 app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
-app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
+app.post('/journeybuilder/getLoggingSchema/', cors(), activity.getLoggingSchema);
 
 // error handler
 app.use(function(err, req, res, next) {
