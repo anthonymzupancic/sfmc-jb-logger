@@ -7,6 +7,9 @@ const path = require('path');
 var cookieSession = require('cookie-session')
 var cors = require('cors')
 var cookies = require('cookies');
+const cookieParser = require("cookie-parser");
+
+app.use(cookieParser())
 
 
 app.use(cors())
@@ -14,7 +17,7 @@ app.use(cors())
 const axios = require('axios');
 
 exports.authorize = function(req, res, next) {
-    console.log('headers: ', req.cookies)
+    console.log('cookies: ', req.cookies)
 
     if (req.cookies.jbLoggerSession) {
         next()
