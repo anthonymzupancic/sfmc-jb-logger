@@ -27,12 +27,6 @@ define([
     // connection.on('clickedBack', onClickedBack);
     // connection.on('gotoStep', onGotoStep);
 
-    $.ajaxSetup({
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader('jb-session', getCookie('jbLoggerSession'));
-        }
-    });
-
 
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
