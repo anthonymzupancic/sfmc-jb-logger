@@ -245,7 +245,7 @@ function setCookie(cname, exdays) {
     let expires = "expires=" + d.toUTCString();
     let cvalue = uuidv4();
 
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    document.cookie = cname + "=" + cvalue + ";" + expires;
     console.log(document.cookie)
 }
 
