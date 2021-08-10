@@ -37,8 +37,24 @@ const activity = require('./routes/activity');
 const middleware = require('./routes/middleware');
 
 
+async function cookieValidator(cookies) {
+    try {
+        await externallyValidateCookie(cookies.jbLoggerSession)
+    } catch {
+        throw new Error('Invalid cookies')
+    }
+}
+
+async function validateCookies(req, res, next) {
+    await cookieValidator(req.cookies)
+    next()
+}
+
 //use routes/middleware
 app.use('/', express.static(path.join(__dirname, 'public')))
+app.use(validateCookies)
+
+
 app.use('/', middleware.authorize);
 app.use('/', express.static(path.join(__dirname, 'views')))
 
@@ -58,8 +74,12 @@ app.post('/journeybuilder/validate/', activity.validate);
 app.post('/journeybuilder/publish/', activity.publish);
 app.post('/journeybuilder/execute/', activity.execute);
 app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
-app.post('/journeybuilder/getLoggingSchema/', cors(), activity.getLoggingSchema);
+app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
 
+// error handler
+app.use(function(err, req, res, next) {
+    res.status(400).send(err.message)
+})
 
 
 http.createServer(app).listen(app.get('port'), function() {
