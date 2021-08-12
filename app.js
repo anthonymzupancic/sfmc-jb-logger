@@ -21,7 +21,6 @@ app.use(cookieParser())
 // Configure Express
 
 app.set('port', process.env.PORT || 3000);
-app.set('trust proxy', 1) // trust first proxy
 app.use(bodyParser.raw({ type: 'application/jwt' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
