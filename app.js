@@ -56,7 +56,7 @@ app.post('/journeybuilder/validate/', activity.validate);
 app.post('/journeybuilder/publish/', activity.publish);
 app.post('/journeybuilder/execute/', activity.execute);
 app.post('/journeybuilder/getattributegroup/', activity.getattributegroup);
-app.post('/journeybuilder/getLoggingSchema/', cors(), activity.getLoggingSchema);
+app.post('/journeybuilder/getLoggingSchema/', activity.getLoggingSchema);
 
 
 http.createServer(app).listen(app.get('port'), function() {

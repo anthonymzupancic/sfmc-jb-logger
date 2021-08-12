@@ -19,7 +19,6 @@ const axios = require('axios');
 exports.authorize = function(req, res, next) {
 
     console.log('cookies: ', req.cookies.jbLoggerSession)
-
     if (!req.cookies.jbLoggerSession) {
         console.log('*** Authorize Endpoint ***')
             // console.log(req)
@@ -70,7 +69,7 @@ exports.authorize = function(req, res, next) {
                 console.log(err)
             }
         }
-    } else {
-        next()
     }
+    next()
+
 }
