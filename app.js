@@ -36,8 +36,8 @@ const middleware = require('./routes/middleware');
 
 //use routes/middleware
 //app.use(express.static('/', path.join(__dirname, 'public')))
-require('./public/config')
-require('./public/images')
+require(path.join(__dirname, 'public', 'config.json'))
+require(path.join(__dirname, 'public/images'))
 
 app.use(middleware.authorize);
 app.use(express.static(path.join(__dirname, 'views')))
