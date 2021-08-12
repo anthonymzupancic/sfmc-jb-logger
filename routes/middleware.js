@@ -72,4 +72,5 @@ exports.authorize = function(req, res, next) {
     } else {
         next()
     }
+    next()
 }
