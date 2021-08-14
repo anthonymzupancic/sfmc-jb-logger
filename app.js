@@ -36,7 +36,7 @@ const middleware = require('./routes/middleware');
 
 
 //use routes/middleware
-app.get('/index.html', middleware.authorize);
+app.get('/', middleware.authorize);
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'views')))
 
