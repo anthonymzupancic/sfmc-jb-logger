@@ -186,6 +186,26 @@ define([
         console.log('*** in arguments ***')
         console.log(inArguments);
 
+
+
+
+
+        // if(inArguments.logging){
+        //     let html = '';
+
+        //     const logging = inArguments.logging;
+
+        //     html += '<div class="form-group mt-3">';
+        //         if (fieldType === 'Text' || fieldType === 'EmailAddress' && fieldName !== 'JourneyName') {
+        //             html += '<label>' + fieldName + '</label>';
+        //             html += '<input class="w-full-textarea field" name="' + fieldName + '" id="' + fieldName + '" />';
+        //         }
+        //     html += '</div>'
+
+        //     $('#loggingFields').append(html)
+        // }
+
+
         connection.trigger('updateButton', {
             button: 'next',
             text: 'done',

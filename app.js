@@ -34,6 +34,7 @@ const activity = require('./routes/activity');
 const middleware = require('./routes/middleware');
 
 
+
 //use routes/middleware
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(middleware.authorize);
