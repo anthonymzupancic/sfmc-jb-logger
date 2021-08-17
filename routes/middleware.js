@@ -17,7 +17,7 @@ const axios = require('axios');
 exports.authorize = function(req, res, next) {
     console.log("app locals: ", app.locals)
     console.log('cookies: ', req.cookies.jbLoggerSession)
-    if (req.cookies.jbLoggerSession || res.locals.authenticated) {
+    if (req.cookies.jbLoggerSession || app.locals.authenticated) {
         next()
     } else if (!req.cookies.jbLoggerSession) {
         console.log('*** Authorize Endpoint ***')
