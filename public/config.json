@@ -50,10 +50,10 @@
     },
     "userInterfaces": {
         "configModal": {
-            "height": 900,
-            "width": 800,
+            "height": 700,
+            "width": 600,
             "fullscreen": false,
-            "url": "https://twilio-integration-dev.herokuapp.com/views/index.html"
+            "url": "https://twilio-integration-dev.herokuapp.com/views"
         }
     },
     "schema": {
