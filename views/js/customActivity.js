@@ -86,6 +86,7 @@ define([
                         html += '</p>';
 
                         $('#loggingFields').append(html)
+
                     } else {
                         let html = '';
 
@@ -190,20 +191,20 @@ define([
 
 
 
-        // if(inArguments.logging){
-        //     let html = '';
+        if (inArguments[0].logging) {
+            let html = '';
 
-        //     const logging = inArguments.logging;
+            const logging = inArguments[0].logging;
 
-        //     html += '<div class="form-group mt-3">';
-        //         if (fieldType === 'Text' || fieldType === 'EmailAddress' && fieldName !== 'JourneyName') {
-        //             html += '<label>' + fieldName + '</label>';
-        //             html += '<input class="w-full-textarea field" name="' + fieldName + '" id="' + fieldName + '" />';
-        //         }
-        //     html += '</div>'
+            html += '<div class="form-group mt-3">';
+            if (fieldType === 'Text' || fieldType === 'EmailAddress' && fieldName !== 'JourneyName') {
+                html += '<label>' + fieldName + '</label>';
+                html += '<input class="w-full-textarea field" data-type="' + fieldType + '"  name="' + fieldName + '" id="' + fieldName + '" />';
+            }
+            html += '</div>'
 
-        //     $('#loggingFields').append(html)
-        // }
+            $('#loggingFields').append(html)
+        }
 
 
         connection.trigger('updateButton', {
@@ -237,7 +238,7 @@ define([
         $('#loggingFields :input').each(function() {
             args.push({
                 name: $(this).attr('id'),
-                value: $(this).val()
+                value: $(this).val(),
             })
         })
 

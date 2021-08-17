@@ -124,21 +124,6 @@ exports.execute = function(req, res) {
                 console.log('*** Decoded Arguments ***')
                 console.log(decodedArgs)
 
-                // const message = decodedArgs.message;
-                const exitCode = decodedArgs.exitCode;
-                // const toPhone = `+${decodedArgs.toPhone}`;
-                console.log('exitCode', exitCode)
-
-                const email = decodedArgs.sourceFields.filter((item) => {
-                    return item.fieldName === 'EmailAddress'
-                })
-                const id = decodedArgs.sourceFields.filter((item) => {
-                    return item.fieldName === 'ID'
-                })
-                const subscriberKey = decodedArgs.sourceFields.filter((item) => {
-                    return item.fieldName === 'SubscriberKey'
-                })
-
                 const loggingValues = decodedArgs.logging;
 
                 let payloadObj = {};
