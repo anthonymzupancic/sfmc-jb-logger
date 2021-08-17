@@ -16,6 +16,7 @@ const axios = require('axios');
 
 exports.authorize = function(req, res, next) {
     console.log('cookies: ', req.cookies.jbLoggerSession)
+    console.log("locals: ", res.locals)
 
     if (req.cookies.jbLoggerSession) {
         next()
@@ -52,7 +53,7 @@ exports.authorize = function(req, res, next) {
                             } else {
                                 console.log('Access Token Found')
                                 console.log(resp.data.access_token)
-
+                                res.locals.token = resp.data.access_token;
                                 next()
                             }
                         })
