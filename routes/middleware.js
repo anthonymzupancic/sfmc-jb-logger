@@ -15,7 +15,7 @@ app.use(cors())
 const axios = require('axios');
 
 exports.authorize = function(req, res, next) {
-    console.log(res.locals)
+    console.log("app locals: ", app.locals)
     console.log('cookies: ', req.cookies.jbLoggerSession)
     if (req.cookies.jbLoggerSession || res.locals.authenticated) {
         next()
@@ -53,7 +53,7 @@ exports.authorize = function(req, res, next) {
                                 console.log('Access Token Found')
                                 console.log(resp.data.access_token)
 
-                                res.locals.authenticated = true;
+                                app.locals.authenticated = true;
                                 next()
                             }
                         })
