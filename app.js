@@ -38,7 +38,7 @@ const middleware = require('./routes/middleware');
 //use routes/middleware
 app.use(express.static(path.join(__dirname, 'public')))
     //app.use(middleware.authorize);
-app.use(express.static(path.join(__dirname, 'views')))
+app.use('/views', express.static(path.join(__dirname, 'views')))
 
 
 // Express in Development Mode
