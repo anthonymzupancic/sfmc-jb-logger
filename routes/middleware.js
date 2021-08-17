@@ -10,8 +10,6 @@ var cookies = require('cookies');
 const cookieParser = require("cookie-parser");
 
 app.use(cookieParser())
-
-
 app.use(cors())
 
 const axios = require('axios');
@@ -19,11 +17,10 @@ const axios = require('axios');
 exports.authorize = function(req, res, next) {
 
     console.log('cookies: ', req.cookies.jbLoggerSession)
-    if (req.cookies.jbLoggerSession) {
+    if (req.cookies.jbLoggerSession || res.locals.authenticated) {
         next()
     } else if (!req.cookies.jbLoggerSession) {
         console.log('*** Authorize Endpoint ***')
-            // console.log(req)
 
         if (!req.query.code) {
             console.log('*** Retrieve Code ***')
@@ -56,6 +53,7 @@ exports.authorize = function(req, res, next) {
                                 console.log('Access Token Found')
                                 console.log(resp.data.access_token)
 
+                                res.locals.authenticated = true;
                                 next()
                             }
                         })
