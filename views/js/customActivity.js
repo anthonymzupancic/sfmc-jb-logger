@@ -20,7 +20,6 @@ define([
     connection.on('requestedInteraction', onRequestedInteraction);
     connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
     connection.on('requestedDataSources', onRequestedDataSources);
-
     connection.on('clickedNext', save);
 
     // connection.on('clickedNext', onClickedNext);
@@ -235,6 +234,8 @@ define([
 
         //Add configured Fields to args array
         let args = []
+        let loggingDE = $('#loggingDE').val();
+
         $('#loggingFields :input').each(function() {
             args.push({
                 name: $(this).attr('id'),
@@ -250,7 +251,8 @@ define([
 
         payload['arguments'].execute.inArguments[0] = {
             'logging': args,
-            'sourceFields': sourceFieldsArgs
+            'sourceFields': sourceFieldsArgs,
+            'loggingDE': loggingDE
         }
 
         payload['metaData'].isConfigured = true;

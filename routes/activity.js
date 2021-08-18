@@ -125,6 +125,7 @@ exports.execute = function(req, res) {
                 console.log(decodedArgs)
 
                 const loggingValues = decodedArgs.logging;
+                const loggingDE = decodedArgs.loggingDE;
 
                 let payloadObj = {};
                 for (const l in loggingValues) {
@@ -164,7 +165,7 @@ exports.execute = function(req, res) {
 
                         console.log(updateDE)
 
-                        let deInsertURL = `${restBase}data/v1/async/dataextensions/key:CustomLog2/rows`
+                        let deInsertURL = `${restBase}data/v1/async/dataextensions/key:${loggingDE}/rows`
 
                         axios.post(deInsertURL, updateDE, config)
                             .then((res) => {
