@@ -11,7 +11,6 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const errorhandler = require('errorhandler');
 const cookieParser = require("cookie-parser");
-const cookieSession = require('cookie-session');
 const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
 
 //load routes
