@@ -38,6 +38,7 @@
         "express-session": "^1.17.2",
         "gulp-json-modify": "^1.0.2",
         "gulp-sourcemaps": "^3.0.0",
+        "helmet": "^4.6.0",
         "jsonwebtoken": "^8.0.1",
         "request": "^2.81.0",
         "require": "^2.4.20",
