@@ -6,8 +6,9 @@ var app = express();
 var activity = require('./activity');
 var path = require('path');
 var cors = require('cors')
-app.use(cors())
 const axios = require('axios');
+
+app.use(cors())
 
 /*
  * GET home page.
