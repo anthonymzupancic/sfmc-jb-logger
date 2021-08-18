@@ -5,11 +5,10 @@ const express = require('express');
 const app = express();
 
 const path = require('path');
-const cookieSession = require('cookie-session')
+const axios = require('axios');
 const cookieParser = require("cookie-parser");
 
 app.use(cookieParser())
-const axios = require('axios');
 
 exports.authorize = function(req, res, next) {
     console.log('cookies: ', req.cookies.jbLoggerSession)
