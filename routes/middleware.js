@@ -2,16 +2,13 @@
 
 // Deps
 const express = require('express');
-var app = express();
+const app = express();
+
 const path = require('path');
-var cookieSession = require('cookie-session')
-var cors = require('cors')
-var cookies = require('cookies');
+const cookieSession = require('cookie-session')
 const cookieParser = require("cookie-parser");
 
 app.use(cookieParser())
-app.use(cors())
-
 const axios = require('axios');
 
 exports.authorize = function(req, res, next) {

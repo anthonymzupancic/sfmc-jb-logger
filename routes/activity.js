@@ -1,14 +1,13 @@
 'use strict';
-const axios = require('axios');
 const express = require('express');
-var app = express();
+const app = express();
+
 // Deps
+const util = require('util');
+const http = require('https');
+const axios = require('axios');
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
-var cors = require('cors')
-
-var util = require('util');
-var http = require('https');
 
 
 const ET_Client = require('sfmc-fuelsdk-node');
@@ -36,7 +35,6 @@ const authCreds = {
     "grant_type": 'client_credentials'
 }
 
-app.use(cors())
 
 exports.logExecuteData = [];
 
@@ -128,19 +126,10 @@ exports.execute = function(req, res) {
                 const loggingDE = decodedArgs.loggingDE;
 
                 let payloadObj = {};
+
                 for (const l in loggingValues) {
                     payloadObj[loggingValues[l].name] = loggingValues[l].value
                 }
-
-                // // execute twilio message
-                // client.messages
-                //     .create({
-                //         body: message,
-                //         from: process.env.fromPhone,
-                //         to: toPhone
-                //     })
-                //     .then(message => console.log(message.sid))
-                //     .catch(err => console.error(err));
 
                 //Authenticate API Calls
                 auth(authCreds)
@@ -162,19 +151,17 @@ exports.execute = function(req, res) {
                         }
 
                         updateDE.items.push(payloadObj)
-
                         console.log(updateDE)
 
-                        let deInsertURL = `${restBase}data/v1/async/dataextensions/key:${loggingDE}/rows`
+                        let asyncInsertAPI = `${restBase}data/v1/async/dataextensions/key:${loggingDE}/rows`
 
-                        axios.post(deInsertURL, updateDE, config)
+                        axios.post(asyncInsertAPI, updateDE, config)
                             .then((res) => {
                                 console.log(res)
                             })
                             .catch((err) => {
                                 console.log(err)
                             })
-
                     })
                     .catch((err) => {
                         console.log(err)
@@ -216,29 +203,18 @@ exports.validate = function(req, res) {
     res.send(200, 'Validate');
 };
 
-
-exports.getattributegroup = function(req, res) {
-
-    res.json(decoded)
-
-}
-
-
 exports.getLoggingSchema = function(req, res) {
     try {
         const loggingDE = req.body.loggingDE
-        console.log('•••loggingDE•••')
-        console.log(req.body)
 
         var options = {
             props: ['Name',
-                    'FieldType',
-                    'MaxLength',
-                    'DataExtension.CustomerKey',
-                    'IsPrimaryKey'
-                ] //required
-                ,
-            filter: { //remove filter for all.
+                'FieldType',
+                'MaxLength',
+                'DataExtension.CustomerKey',
+                'IsPrimaryKey'
+            ],
+            filter: {
                 leftOperand: 'DataExtension.CustomerKey',
                 operator: 'equals',
                 rightOperand: loggingDE

@@ -2,52 +2,40 @@
 // Module Dependencies
 // -------------------
 const express = require('express');
-const bodyParser = require('body-parser');
-const session = require('express-session')
-const cookieParser = require("cookie-parser");
-var cookieSession = require('cookie-session')
-const errorhandler = require('errorhandler');
+
 const http = require('http');
 const path = require('path');
-const request = require('request');
-var cookies = require('cookies');
-const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
+const cors = require('cors');
 const axios = require('axios');
-var cors = require('cors')
-
-var app = express();
-app.use(cookieParser())
-
-// Configure Express
-
-app.set('port', process.env.PORT || 3000);
-app.use(bodyParser.raw({ type: 'application/jwt' }));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors())
-
-//app.use(express.methodOverride());
-//app.use(express.favicon());
+const request = require('request');
+const bodyParser = require('body-parser');
+const errorhandler = require('errorhandler');
+const cookieParser = require("cookie-parser");
+const cookieSession = require('cookie-session');
+const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
 
 //load routes
 const routes = require('./routes');
 const activity = require('./routes/activity');
 const middleware = require('./routes/middleware');
 
+// Configure Express
+var app = express();
+app.set('port', process.env.PORT || 3000);
 
+app.use(cors())
+app.use(cookieParser())
+app.use(bodyParser.raw({ type: 'application/jwt' }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //use routes/middleware
 app.use(express.static(path.join(__dirname, 'public')))
 app.use('/views', middleware.authorize, express.static(path.join(__dirname, 'views')))
 
-
 // Express in Development Mode
 if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
-
-app.post('/login', routes.login);
-app.post('/logout', routes.logout);
-
 
 // Custom Hello World Activity Routes
 app.post('/journeybuilder/save/', activity.save);
