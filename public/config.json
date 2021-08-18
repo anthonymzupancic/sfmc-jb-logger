@@ -51,7 +51,7 @@
     "userInterfaces": {
         "configModal": {
             "height": 700,
-            "width": 600,
+            "width": 900,
             "fullscreen": false,
             "url": "https://twilio-integration-dev.herokuapp.com/views"
         }
