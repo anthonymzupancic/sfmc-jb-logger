@@ -14,11 +14,9 @@ var cookies = require('cookies');
 const JWT = require(path.join(__dirname, 'lib', 'jwtDecoder.js'));
 const axios = require('axios');
 var cors = require('cors')
-const helmet = require('helmet')
 
 var app = express();
 app.use(cookieParser())
-app.use(helmet())
 
 // Configure Express
 
