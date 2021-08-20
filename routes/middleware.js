@@ -21,7 +21,7 @@ exports.authorize = function(req, res, next) {
         if (!req.query.code) {
             console.log('*** Retrieve Code ***')
 
-            let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com';
+            let redirectURI = 'https%3A%2F%2Ftwilio-integration-dev.herokuapp.com/views';
             const authBase = 'https://mc1q10jrzwsds3bcgk0jjz2s8h80.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id='
             res.redirect(`${authBase}${process.env.sfmcAuthClientID}&redirect_uri=${redirectURI}`)
         } else if (req.query.code) {
