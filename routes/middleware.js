@@ -14,7 +14,7 @@ exports.authorize = function(req, res, next) {
     console.log('cookies: ', req.cookies.jbLoggerSession)
 
     if (req.cookies.jbLoggerSession) {
-        next('/views')
+        next()
     } else if (!req.cookies.jbLoggerSession) {
         console.log('*** Authorize Endpoint ***')
 
