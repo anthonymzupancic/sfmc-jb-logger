@@ -54,7 +54,7 @@ exports.authorize = function(req, res, next) {
                         })
                         .catch((err) => {
                             console.log(err)
-                            res.send(err)
+                            next()
                         })
 
                 } else {
