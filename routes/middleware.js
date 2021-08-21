@@ -37,7 +37,7 @@ exports.authorize = function(req, res, next) {
                             "code": code,
                             "client_id": process.env.sfmcAuthClientID,
                             "client_secret": process.env.sfmcAuthClientSecret,
-                            "redirect_uri": "https://twilio-integration-dev.herokuapp.com/"
+                            "redirect_uri": "https://twilio-integration-dev.herokuapp.com/views"
                         }
                     }
 
