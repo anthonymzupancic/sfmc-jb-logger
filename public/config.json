@@ -52,8 +52,7 @@
         "configModal": {
             "height": 700,
             "width": 900,
-            "fullscreen": false,
-            "url": "https://twilio-integration-dev.herokuapp.com/views"
+            "fullscreen": false
         }
     },
     "schema": {
