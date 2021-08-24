@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //use routes/middleware
 app.use(express.static(path.join(__dirname, 'public')))
     //app.use()
-app.use('/views', middleware.authorize, express.static(path.join(__dirname, 'views')))
+app.get('/views', middleware.authorize, express.static(path.join(__dirname, 'views')))
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
